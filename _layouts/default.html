@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="Pierre Vigier">
 
-        <title>{{ page.title }}</title>
+        <title>{% case page.type %}{% when 'month' %}Archives for {{ page.date | date: "%B %Y" }}{% else %}{{ page.title }}{% endcase %} - pvigier's blog</title>
         <link rel="shortcut icon" href="favicon.ico">
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,7 +18,7 @@
         <div class="blog-masthead">
             <div class="container">
                 <nav class="blog-nav">
-                    <a class="blog-nav-item{% if page.tab == 'blog' %} active{% endif %}" href="/">Blog</a>
+                    <a class="blog-nav-item{% if page.tab == 'blog' or page.type != nil %} active{% endif %}" href="/">Blog</a>
                     <a class="blog-nav-item{% if page.tab == 'projects' %} active{% endif %}" href="/projects">Projects</a>
                     <a class="blog-nav-item{% if page.tab == 'articles' %} active{% endif %}" href="/articles">Articles</a>
                     <a class="blog-nav-item{% if page.tab == 'cv' %} active{% endif %}" href="/cv">CV</a>

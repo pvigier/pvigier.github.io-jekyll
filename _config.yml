@@ -5,7 +5,8 @@ gems: [jekyll-paginate, jekyll-archives]
 paginate: 5
 paginate_path: "/:num/"
 jekyll-archives:
-    enabled: ['month']
-    layout: 'archive'
-    permalinks:
-        month: '/:year/:month/'
+        enabled: ['month']
+        layouts:
+            month: month-archive
+        permalinks:
+                month: '/:year/:month/'
