@@ -5,4 +5,9 @@ date: 2017-02-14
 author: pierre
 ---
 
-Well. Finally got around to putting this old website together. Neat thing about it - powered by [Jekyll](http://jekyllrb.com) and I can use Markdown to author my posts. It actually is a lot easier than I thought it was going to be.
+Welcome on my new website!
+
+I will try to keep it up-to-date. And to write a post as soon as I have an idea or discovered anything interesting. Stay Tuned!
+
+A short word on the technologies which proudly power this website. As you can see, the website is gracefully hosted by GitHub. Thanks guys! This website is completely static, I use [Jekyll](http://jekyllrb.com) to generate the pages. By the way, I found this [page](http://jmcglone.com/guides/github-pages/) very interesting to get started with Jekyll. Finally the design is made with [Bootstrap](http://getbootstrap.com).
+<!--more-->

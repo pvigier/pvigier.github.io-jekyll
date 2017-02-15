@@ -1,5 +1,6 @@
 name: Pierre Vigier
 markdown: kramdown
+excerpt_separator: <!--more-->
 future: true
 gems: [jekyll-paginate, jekyll-archives]
 paginate: 5
