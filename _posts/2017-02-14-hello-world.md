@@ -3,6 +3,7 @@ layout: post
 title: "Hello World!"
 date: 2017-02-14
 author: pierre
+tab: blog
 ---
 
 Welcome on my new website!
