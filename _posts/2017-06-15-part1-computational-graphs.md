@@ -534,7 +534,7 @@ With tanh             |  With ReLU
 
 # To go further
 
-Some problems to sharpen your understanding of neural networks :
+Some problems to sharpen your understanding of neural networks:
 * What is the smallest number of layers and neurons necessary to perfectly learn the XOR function? Verify your answer by experience.
 <a href="#clue1" data-toggle="collapse">Clues</a>
 <div id="clue1" class="collapse">
