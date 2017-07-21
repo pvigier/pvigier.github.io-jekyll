@@ -219,6 +219,7 @@ class Node:
 
     def set_parents(self, parents):
         # Fill self.parents
+        self.parents = []
         for i_input, (parent, i_parent_output) in enumerate(parents):
             self.parents.append((parent, i_parent_output))
             parent.add_child(self, i_input, i_parent_output)
@@ -304,36 +305,31 @@ class InputNode(Node):
         return self.value
 
     def compute_gradient(self):
-        return self.dJdy
+        return [self.dJdy[0]]
 {% endhighlight %}
 
 ## Parameter nodes
 
-The class `ParameterNode` has two new parameters `w` and `acc_dJdw`. We use the letter `w` to refer to the weights, like in neural networks. `acc_dJdw` represents an accumulator of the derivative of the cost with respect to the weights `w` over several backpropagations. Sometimes it is useful to average the gradient over several batches before using gradient descent.
+The class `ParameterNode` has a new parameter `w`. We use the letter `w` to refer to the weights, like in neural networks.
 
 The output of the node is simply the weight.
-
-In the method `compute_gradient`, the accumulator is updated before returning the gradient.
-
-There is also a method, `reset_accumulator` to reset the accumulator.
 
 {% highlight python %}
 class ParameterNode(Node):
     def __init__(self, w):
         Node.__init__(self)
         self.w = w
-        self.acc_dJdw = np.zeros(self.w.shape)
 
     def compute_output(self):
         return [self.w]
 
     def compute_gradient(self):
-        self.acc_dJdw += self.dJdy[0]
-        return self.dJdy
-
-    def reset_accumulator(self):
-        self.acc_dJdw.fill(0)
+        return [self.dJdy[0]]
 {% endhighlight %}
+
+This class is very simple. The only issue is that the constructor expect an initial value for the weights. There are several thumb rules regarding the initialization of the weights. The general idea is to sample from a zero mean distribution with a small standard deviation. You can see more details about initialization in [Efficient BackProp](yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf).
+
+You will see several examples of initialization later in the tutorial.
 
 ## Operation nodes
 
@@ -403,20 +399,20 @@ class Graph:
         self.parameter_nodes = parameter_nodes
 
         # Create a gradient node
-        GradientNode([cost_node])
+        GradientNode([(cost_node, 0)])
 
     def propagate(self, X):
         self.reset_memoization()
         for x, node in zip(X, self.input_nodes):
             node.set_value(x)
-        return [node.get_output() for node in self.output_nodes]
+        return [node.get_output(0) for node in self.output_nodes]
 
     def backpropagate(self, Y):
         for y, node in zip(Y, self.expected_output_nodes):
             node.set_value(y)
-        cost = self.cost_node.get_output()
+        cost = self.cost_node.get_output(0)
         for node in self.parameter_nodes:
-            node.get_gradient()
+            node.get_gradient(0)
         return cost
 
     def reset_memoization(self):
@@ -459,16 +455,11 @@ class OptimizationAlgorithm:
 
     def optimize(self, batch_size=1):
         for i, node in enumerate(self.parameter_nodes):
-            direction = self.compute_direction(i, node.acc_dJdw / batch_size)
+            direction = self.compute_direction(i, node.get_gradient(0) / batch_size)
             node.w -= self.learning_rate * direction
-        self.reset_accumulators()
 
     def compute_direction(self, i, grad):
         raise NotImplementedError()
-
-    def reset_accumulators(self):
-        for node in self.parameter_nodes:
-            node.reset_accumulator()
 {% endhighlight %}
 
 For gradient descent as explained before, we simply have $$v_t = \frac{\partial J}{\partial \theta}(\theta_t)$$.
