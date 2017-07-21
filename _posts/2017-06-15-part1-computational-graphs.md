@@ -4,6 +4,7 @@ title: "Part 1 - Computational graphs"
 date: 2017-06-15
 author: pierre
 tab: blog
+comments: true
 ---
 
 # Introduction
