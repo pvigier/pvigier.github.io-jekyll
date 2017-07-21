@@ -113,6 +113,8 @@ You can see gradient descent in action, in the animation below.
 
 ![Gradient descent in action](/media/img/part1/gradient_descent.gif){: .center-image }
 
+You can get the code of these two simulations [here](https://github.com/pvigier/gradient-descent). 
+
 I stop there for the brief introduction to machine learning. We will now see how to model some parametric functions and how they relate to neural networks.
 
 # Computational graphs
@@ -168,6 +170,8 @@ Finally, the OptimizationAlgorithm class implements an optimization algorithm li
 The UML diagram below gives a global view of the classes and their interactions.
 
 ![UML diagram of the library](/media/img/part1/uml_diagram.svg){: .center-image }
+
+And before, I forget you can retrieve the full code for this chapter [here](https://github.com/pvigier/pychain-part1).
 
 # Node class
 
