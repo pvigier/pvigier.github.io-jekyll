@@ -487,7 +487,7 @@ We are going to use fully-connected neural networks to learn two functions respe
 We will use the function `fully_connected` which takes as input a list of the sizes of the layers and returns a computational graph which represents such a network.
 
 {% highlight python %}
-def fully_connected(layers):
+def create_fully_connected_network(layers):
     nodes = []
     parameter_nodes = []
 
@@ -520,17 +520,19 @@ def fully_connected(layers):
     # Expected output
     expected_output_node = InputNode()
     # Cost function
-    cost_node = SigmoidCrossEntropyNode([(expected_output_node, 0), (cur_input_node, 0)])
+    cost_node = BinaryCrossEntropyNode([(expected_output_node, 0), (cur_input_node, 0)])
 
     nodes += [expected_output_node, cost_node]
     return Graph(nodes, [input_node], [cur_input_node], [expected_output_node], cost_node, parameter_nodes)
 {% endhighlight %}
 
-The function is a bit long but simple, we simply create nodes and connect them. First, we create an input node. Then, for each layer, we create a bias node, a parameter node, a multiplication node and an activation node. These nodes models the operation $$x \mapsto f((1 \mid x)W)$$ where $$(1 \mid x)$$ denotes the matrice $$x$$ to which we have added a column of 1 at the beginning, $$W$$ the weights of the parameter node and $$f$$ the activation function.
+The function is a bit long but simple, we simply create nodes and connect them. First, we create an input node. Then, for each layer, we create a bias node, a parameter node, a multiplication node and an activation node. These nodes model the operation $$x \mapsto f((1 \mid x)W)$$ where $$(1 \mid x)$$ denotes the matrice $$x$$ to which we have added a column of 1 at the beginning, $$W$$ the weights of the parameter node and $$f$$ the activation function.
 
 We use two different activation functions : $$\tanh$$ and $$\sigma$$. $$\tanh$$ is used in the hidden layers, it is a non linear function which maps $$\mathbb{R}$$ to $$]-1, 1[$$. It is very important that activation functions are non linear otherwise the multilayer neural network is equivalent to a one layer neural network.
 
-We use the sigmoid function as activation function for the output layer because it maps $$\mathbb{R}$$ to $$[0,1]$$ and consequently the output of the network can be interpreted as a probability, for example $$p(y=1 \mid x)$$. 
+We use the sigmoid function as activation function for the output layer because it maps $$\mathbb{R}$$ to $$]0,1[$$ and consequently the output of the network can be interpreted as a probability, usually $$p(y=1 \mid x)$$.
+
+For the cost function, we choose the binary cross entropy. If you want to know more about the output functions and the cost functions, you can read the appendix.
 
 ## XOR
 
@@ -540,7 +542,7 @@ Let's use this piece of code to train the network.
 {% highlight python %}
 # Create the graph and initialize the optimization algorithm
 layers = [4, 4, 1]
-graph = fully_connected(layers)
+graph = create_fully_connected_network(layers)
 sgd = GradientDescent(graph.get_parameter_nodes(), 0.1)
 # Train
 t = []
