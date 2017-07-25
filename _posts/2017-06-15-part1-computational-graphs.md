@@ -585,12 +585,12 @@ Some problems to sharpen your understanding of neural networks:
 * What is the smallest number of layers and neurons necessary to perfectly learn the XOR function? Verify your answer by experience.
 <a href="#clue1" data-toggle="collapse">Clues</a>
 <div id="clue1" class="collapse">
-As mentionned before, one layer (only the output layer) is not sufficient because the frontier would be a straight line. So we should take at least two layers. Each layer should have at least two neurons otherwise the frontier is again a straight line. A network with 2 layers and 2 neurons is the smallest network able to learn the XOR function. You could try to find acceptable weights by hand or you can use gradient descent!
+<p>As mentionned before, one layer (only the output layer) is not sufficient because the frontier would be a straight line. So we should take at least two layers. Each layer should have at least two neurons otherwise the frontier is again a straight line. A network with 2 layers and 2 neurons is the smallest network able to learn the XOR function. You could try to find acceptable weights by hand or you can use gradient descent!</p>
 </div>
 * Study the influence of the learning rate.
 <a href="#clue2" data-toggle="collapse">Clues</a>
 <div id="clue2" class="collapse">
-Try very small values, values around 1 and very high values.
+<p>Try very small values, values around 1 and very high values.</p>
 
 <table>
   <thead>
