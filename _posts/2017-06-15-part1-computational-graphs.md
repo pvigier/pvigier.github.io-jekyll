@@ -94,7 +94,7 @@ $$
 
 Let's visualize what this formula means and how it can be useful to find a good direction. The generalization of the tangent, which is a line, in a vector space is an hyperplane. In a 2D space it corresponds to a plane.
 
-![Taylor's theorem visualization](/media/img/part1/tangent_space.png){: .center-image }
+![Taylor's theorem visualization](/media/img/part1/tangent_space.png){: .center-image .modal-image }
 
 The plane in blue is the approximation given by Taylor's theorem. The points in orange are the outputs of $$f$$ for all points at a same distance $$d$$ to $$x_0$$. In green, it's the output of the point at distance $$d$$ of $$x_0$$ in the direction of the gradient and in blue, it's the output of the point at distance $d$ in the opposite direction of the gradient.
 
@@ -112,7 +112,7 @@ where $$\eta$$ is called the *learning rate*. It is a parameter that controls th
 
 You can see gradient descent in action, in the animation below.
 
-![Gradient descent in action](/media/img/part1/gradient_descent.gif){: .center-image }
+![Gradient descent in action](/media/img/part1/gradient_descent.gif){: .center-image .modal-image }
 
 You can get the code of these two simulations [here](https://github.com/pvigier/gradient-descent). 
 
@@ -126,15 +126,15 @@ Let's see some examples to show how this tool can be used to model useful functi
 
 Imagine, you want to fit very simple data like in the figure below.
 
-![Linear regression](/media/img/part1/linear_regression.png){: .center-image }
+![Linear regression](/media/img/part1/linear_regression.png){: .center-image .modal-image }
 
 The natural idea is to use a function like this one $$f_{\theta} : x \mapsto ax + b$$ where $$\theta = (a, b)$$ is the parameter of the function. This function can be represented with the following computational graph.
 
-![Computational grah for the linear regression](/media/img/part1/linear_regression_graph.svg){: .center-image }
+![Computational grah for the linear regression](/media/img/part1/linear_regression_graph.svg){: .center-image .modal-image }
 
 Now, imagine you have to solve a more difficult problem and you want to use a neural network, like the one below.
 
-![Neural networks 3-5-3](/media/img/part1/network_3_5_3.svg){: .center-image }
+![Neural networks 3-5-3](/media/img/part1/network_3_5_3.svg){: .center-image .modal-image }
 
 It has two layers, the hidden layer uses $$\tanh$$ as activation function and the output layer uses the sigmoid $$\sigma : t \mapsto \frac{1}{1 + \exp(-t)}$$.
 
@@ -142,7 +142,7 @@ This model is strictly equivalent to the function $$f_{\theta} : x \mapsto \sigm
 
 The following computational graph corresponds to the neural network depicted above.
 
-![Computational graph for the neural networks](/media/img/part1/graph_3_5_3.svg){: .center-image }
+![Computational graph for the neural networks](/media/img/part1/graph_3_5_3.svg){: .center-image .modal-image }
 
 We can see several things from these examples. Firstly there are differents nodes :
 * Input nodes (in rose) : they represent the inputs of the function. In our examples, they are the $$x$$ nodes.
@@ -170,7 +170,7 @@ Finally, the OptimizationAlgorithm class implements an optimization algorithm li
 
 The UML diagram below gives a global view of the classes and their interactions.
 
-![UML diagram of the library](/media/img/part1/uml_diagram.svg){: .center-image }
+![UML diagram of the library](/media/img/part1/uml_diagram.svg){: .center-image .modal-image }
 
 And before, I forget you can retrieve the full code for this chapter [here](https://github.com/pvigier/pychain-part1).
 
@@ -178,11 +178,11 @@ And before, I forget you can retrieve the full code for this chapter [here](http
 
 A node have several inputs and several outputs. During the propagation, a node uses its inputs to compute its ouputs as depicted below.
 
-![Propagation in a node](/media/img/part1/node_propagation.svg){: .center-image }
+![Propagation in a node](/media/img/part1/node_propagation.svg){: .center-image .modal-image }
 
 The goal of the backpropagation is to compute the derivative of the cost with respect to the parameters to use the gradient descent algorithm. To do that, we are going to use the *chain rule*, a lot. Indeed, thanks to the chain rule, it is possible to express the derivative of the cost with respect to an input of a node with the derivatives of the cost with respect to the outputs of the same node. 
 
-![Backpropagation in a node](/media/img/part1/node_backpropagation.svg){: .center-image }
+![Backpropagation in a node](/media/img/part1/node_backpropagation.svg){: .center-image .modal-image }
 
 Precisely, if a node have $$m$$ inputs and $$n$$ outputs, we have :
 
@@ -196,7 +196,7 @@ Consequently, we are going to backpropagate the derivatives from the "end" of th
 
 An illustration with the neural networks shown before :
 
-![Backpropagation in a graph](/media/img/part1/graph_backpropagation.svg){: .center-image }
+![Backpropagation in a graph](/media/img/part1/graph_backpropagation.svg){: .center-image .modal-image }
 
 ## Base class
 
@@ -239,7 +239,7 @@ A node has a 2D list of its children too. The first dimension is the output indi
 
 OK, it is a bit hard to follow. Hopefully a diagram will make it crystal clear!
 
-![Node links](/media/img/part1/node_links.svg){: .center-image }
+![Node links](/media/img/part1/node_links.svg){: .center-image .modal-image }
 
 We can set the parents during the initialization or later by using `set_parents`. We have not to manually set the children.
 
@@ -385,7 +385,7 @@ Another way of proceeding that I prefer is to add the cost function directly in 
 
 Consider the graph representing the neural networks described above. If we had an input node $$y$$ to represent the expected output and we choose the squared error as cost function, we obtain this new graph:
 
-![A graph with cost inside it](/media/img/part1/graph_with_cost.svg){: .center-image }
+![A graph with cost inside it](/media/img/part1/graph_with_cost.svg){: .center-image .modal-image }
 
 The yellow node at the end is a gradient node which always returns 1 as gradient.
 
@@ -565,7 +565,7 @@ Below, you can see such generated images for two different activation functions 
 
 With tanh             |  With ReLU
 :-------------------------:|:-------------------------:
-![XOR with tanh as activation function](/media/img/part1/xor_4_4_1_tanh.png){: .center-image } | ![XOR with ReLU as activation function](/media/img/part1/xor_4_4_1_relu.png){: .center-image }
+![XOR with tanh as activation function](/media/img/part1/xor_4_4_1_tanh.png){: .center-image .modal-image } | ![XOR with ReLU as activation function](/media/img/part1/xor_4_4_1_relu.png){: .center-image .modal-image }
 
 ## Disk
 
@@ -577,7 +577,7 @@ To test the code for the disk function, you just have to comment/uncomment few l
 
 With tanh             |  With ReLU
 :-------------------------:|:-------------------------:
-![XOR with tanh as activation function](/media/img/part1/disk_4_4_1_tanh.png){: .center-image } | ![XOR with ReLU as activation function](/media/img/part1/disk_4_4_1_relu.png){: .center-image }
+![XOR with tanh as activation function](/media/img/part1/disk_4_4_1_tanh.png){: .center-image .modal-image } | ![XOR with ReLU as activation function](/media/img/part1/disk_4_4_1_relu.png){: .center-image .modal-image }
 
 # To go further
 
