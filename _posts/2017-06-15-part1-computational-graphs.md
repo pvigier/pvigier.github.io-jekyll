@@ -50,7 +50,7 @@ Another reason why I do not present neural networks, is that we will adopt a mod
 
 ## The learning problem
 
-Let's speak a bit of machine learning, more precisely of supervised learning. In supervised learning, there is an unknown function $$g : \mathcal{X} \rightarrow \mathcal{Y}$$ and we have a dataset of examples $$D = ((x_1, y_1), ..., (x_N, y_N))$$ such that $$\forall (x, y) \in D, y = g(x)$$. The goal is to use the dataset $$D$$ to reconstruct $$g$$. In other words, we want to find a function $$f$$ such that :
+Let's speak a bit of machine learning, more precisely of supervised learning. In supervised learning, there is an unknown function $$g : \mathcal{X} \rightarrow \mathcal{Y}$$ and we have a dataset of examples $$D = ((x_1, y_1), ..., (x_N, y_N))$$ such that $$\forall (x, y) \in D, y = g(x)$$. The goal is to use the dataset $$D$$ to reconstruct $$g$$. In other words, we want to find a function $$f$$ such that:
 
 $$
 \forall x \in \mathcal{X}, f(x) \approx g(x)
@@ -58,7 +58,7 @@ $$
 
 To go further we have two issues to tackle. The first one is that we have not access to the value of $$g$$ for all $$x$$ in $$\mathcal{X}$$, only those in $$D$$. Consequently, we will use a method called *empirical risk minimization* (ERM). Intuitively, we will try to have $$\forall (x, y) \in D, y \approx f(x)$$ and hope that it works well for the other values.
 
-Then we need to formalize a bit the approximation symbol $$\approx$$. To do that, we will use a cost function, we will note it $$J$$. There are a variety of different cost functions, a famous one is the quadratic cost :
+Then we need to formalize a bit the approximation symbol $$\approx$$. To do that, we will use a cost function, we will note it $$J$$. There are a variety of different cost functions, a famous one is the quadratic cost:
 
 $$
 J(f, D) = \sum_{(x, y) \in D}{||y - f(x)||_2^2}
@@ -68,9 +68,9 @@ If you want to know more about cost functions, how to derive them from statistic
 
 Now that we have a cost function, our goal is to find a function $$f$$ such that $$J(f, D)$$ is small.
 
-We still have a big problem. What is $$f$$? We could try to find the best $$f$$ in the whole space function but it is not a good idea because there is an infinity of functions which have a cost equal to zero and most of them generalize very badly. We will instead restrict ourselves to a specific class of smoother functions and for that we are going to use, like I said before, parametric functions. A parametric function is simply a function $$f_{\theta}$$ that depends on a parameter $$\theta$$.
+We still have a big problem. What is $$f$$? We could try to find the best $$f$$ in the whole space of functions but it is not a good idea because there is an infinity of functions which have a cost equal to zero and most of them generalize very badly. We will instead restrict ourselves to a specific class of smoother functions and for that we are going to use, like I said before, parametric functions. A parametric function is simply a function $$f_{\theta}$$ that depends on a parameter $$\theta$$.
 
-The problem is now to find the best possible $$\theta$$ to fit our data. Formally, we will try to solve the following problem :
+The problem is now to find the best possible $$\theta$$ to fit our data. Formally, we will try to solve the following problem:
 
 $$\theta^* = \underset{\theta}{argmin}J(f_{\theta}, D))$$
 
@@ -130,7 +130,7 @@ Imagine, you want to fit very simple data like in the figure below.
 
 The natural idea is to use a function like this one $$f_{\theta} : x \mapsto ax + b$$ where $$\theta = (a, b)$$ is the parameter of the function. This function can be represented with the following computational graph.
 
-![Computational grah for the linear regression](/media/img/part1/linear_regression_graph.svg){: .center-image .modal-image }
+![Computational graph for the linear regression](/media/img/part1/linear_regression_graph.svg){: .center-image .modal-image }
 
 Now, imagine you have to solve a more difficult problem and you want to use a neural network, like the one below.
 
@@ -144,10 +144,10 @@ The following computational graph corresponds to the neural network depicted abo
 
 ![Computational graph for the neural networks](/media/img/part1/graph_3_5_3.svg){: .center-image .modal-image }
 
-We can see several things from these examples. Firstly there are differents nodes :
-* Input nodes (in rose) : they represent the inputs of the function. In our examples, they are the $$x$$ nodes.
-* Operation nodes (in blue) : they are nodes that represent operations. They take inputs, make a computation and give ouputs. In our examples, the $$\sigma$$, $$\tanh$$, $$\times$$, $$+$$ nodes are operation nodes.
-* Parameter nodes (in green) : they represent the parameters of the function. In our example, they are $$a$$, $$b$$, $$W_1$$ and $$W_2$$.
+We can see several things from these examples. Firstly there are differents nodes:
+* Input nodes (in rose): they represent the inputs of the function. In our examples, they are the $$x$$ nodes.
+* Operation nodes (in blue): they are nodes that represent operations. They take inputs, make a computation and give ouputs. In our examples, the $$\sigma$$, $$\tanh$$, $$\times$$, $$+$$ nodes are operation nodes.
+* Parameter nodes (in green): they represent the parameters of the function. In our example, they are $$a$$, $$b$$, $$W_1$$ and $$W_2$$.
 
 Secondly, it allows a more compact notation, instead of drawing lots of neurons, we can only draw few nodes to represent a whole network.
 
@@ -160,7 +160,7 @@ In the next sections, we will explain how to code a computational graph to model
 
 First, I am going to present the architecture of the library. Then we are going to explain the code.
 
-There are three main classes that we are going to code in this part : the Node class, the Graph class and the OptimizationAlgorithm class.
+There are three main classes that we are going to code in this part: the Node class, the Graph class and the OptimizationAlgorithm class.
 
 The Node class contains most of the logic of the library. It's the hard part.
 
@@ -184,7 +184,7 @@ The goal of the backpropagation is to compute the derivative of the cost with re
 
 ![Backpropagation in a node](/media/img/part1/node_backpropagation.svg){: .center-image .modal-image }
 
-Precisely, if a node have $$m$$ inputs and $$n$$ outputs, we have :
+Precisely, if a node have $$m$$ inputs and $$n$$ outputs, we have:
 
 $$
 \forall i \in \{1, ..., m\}, \frac{\partial J}{\partial x_i} = \sum_{j=1}^{n}{\frac{\partial y_j}{\partial x_i}\frac{\partial J}{\partial y_j}}
@@ -194,7 +194,7 @@ And the term $$\frac{\partial y_j}{\partial x_i}$$ only depends of the nature of
 
 Consequently, we are going to backpropagate the derivatives from the "end" of the graph to the parameter nodes.
 
-An illustration with the neural networks shown before :
+An illustration with the neural networks shown before:
 
 ![Backpropagation in a graph](/media/img/part1/graph_backpropagation.svg){: .center-image .modal-image }
 
@@ -428,11 +428,11 @@ class Graph:
         return self.parameter_nodes
 {% endhighlight %}
 
-It takes the list of all the nodes in the graph. In addition, it needs to know the function of several nodes in the graph : the inputs, the ouputs, the expected outputs and the cost.
+It takes the list of all the nodes in the graph. In addition, it needs to know the function of several nodes in the graph: the inputs, the ouputs, the expected outputs and the cost.
 
-There are also two useful functions :
-* `propagate` : to compute the outputs of the graph ;
-* `backpropagate` : to accumulate the gradient of the cost with respect to the parameters.
+There are also two useful functions:
+* `propagate`: to compute the outputs of the graph ;
+* `backpropagate`: to accumulate the gradient of the cost with respect to the parameters.
 
 Finally, the method `reset_memoization` resets the flags for all the nodes and `get_parameter_nodes` returns the parameter nodes. The latter method is useful to give to the optimization algorithm the nodes for which it has to optimize the weights.
 
@@ -442,7 +442,7 @@ The last class we have to write before we can test our library is the `Optimizat
 
 The class is a generic template for all first-order iterative optimization algorithms such as gradient descent.
 
-For this kind of algorithm at each step $$t$$, we compute a direction $$v_t$$ toward which we should move the parameter $$\theta_t$$. We have :
+For this kind of algorithm at each step $$t$$, we compute a direction $$v_t$$ toward which we should move the parameter $$\theta_t$$. We have:
 
 $$
 \theta_{t+1} = \theta_t - \eta v_t
@@ -528,7 +528,7 @@ def create_fully_connected_network(layers):
 
 The function is a bit long but simple, we simply create nodes and connect them. First, we create an input node. Then, for each layer, we create a bias node, a parameter node, a multiplication node and an activation node. These nodes model the operation $$x \mapsto f((1 \mid x)W)$$ where $$(1 \mid x)$$ denotes the matrice $$x$$ to which we have added a column of 1 at the beginning, $$W$$ the weights of the parameter node and $$f$$ the activation function.
 
-We use two different activation functions : $$\tanh$$ and $$\sigma$$. $$\tanh$$ is used in the hidden layers, it is a non linear function which maps $$\mathbb{R}$$ to $$]-1, 1[$$. It is very important that activation functions are non linear otherwise the multilayer neural network is equivalent to a one layer neural network.
+We use two different activation functions: $$\tanh$$ and $$\sigma$$. $$\tanh$$ is used in the hidden layers, it is a non linear function which maps $$\mathbb{R}$$ to $$]-1, 1[$$. It is very important that activation functions are non linear otherwise the multilayer neural network is equivalent to a one layer neural network.
 
 We use the sigmoid function as activation function for the output layer because it maps $$\mathbb{R}$$ to $$]0,1[$$ and consequently the output of the network can be interpreted as a probability, usually $$p(y=1 \mid x)$$.
 
