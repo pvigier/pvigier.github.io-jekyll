@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Part 1 - Computational graphs"
-date: 2017-06-15
+date: 2017-07-21
 author: pierre
 tab: blog
 comments: true
