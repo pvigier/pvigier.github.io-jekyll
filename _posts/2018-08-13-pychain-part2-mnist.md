@@ -6,7 +6,7 @@ author: pierre
 tab: blog
 comments: true
 ---
-In [part 1]({{ site.baseurl }}{% post_url 2017-07-21-part1-computational-graphs %}), we have create a fully functional library which is able to create and train neural networks using computational. We used on very simple examples. Today, we are going to try it on a more serious problem: character recognition.
+In [part 1]({{ site.baseurl }}{% post_url 2017-07-21-pychain-part1-computational-graphs %}), we have create a fully functional library which is able to create and train neural networks using computational. We used on very simple examples. Today, we are going to try it on a more serious problem: character recognition.
 
 We are going to use a well-known database in the machine learning and deep learning world named MNIST. The database is available on [Yann LeCun's website](http://yann.lecun.com/exdb/mnist/). If you read a bit about neural networks before you should have already seen his name. He is a French scientist who is one of the pioneers of neural networks and inventors of convolutional neural networks and he is now the director of AI at Facebook.
 
