@@ -6,13 +6,13 @@ author: pierre
 tab: blog
 comments: true
 ---
-In [part 1]({{ site.baseurl }}{% post_url 2017-07-21-pychain-part1-computational-graphs %}), we have create a fully functional library which is able to create and train neural networks using computational. We used on very simple examples. Today, we are going to try it on a more serious problem: character recognition.
+In [part 1]({{ site.baseurl }}{% post_url 2017-07-21-pychain-part1-computational-graphs %}), we have created a fully functional library which is able to create and train neural networks using computational graphs. We used them on very simple examples. Today, we are going to try it on a more serious problem: character recognition.
 
-We are going to use a well-known database in the machine learning and deep learning world named MNIST. The database is available on [Yann LeCun's website](http://yann.lecun.com/exdb/mnist/). If you read a bit about neural networks before you should have already seen his name. He is a French scientist who is one of the pioneers of neural networks and inventors of convolutional neural networks and he is now the director of AI at Facebook.
+We are going to use a well-known database in the machine learning and deep learning world named MNIST. The database is available on [Yann LeCun's website](http://yann.lecun.com/exdb/mnist/). If you have read a bit about neural networks before you should have already seen his name. He is a French scientist who is one of the pioneers of neural networks and inventors of convolutional neural networks and he is now the director of AI at Facebook.
 
 Character recognition is an emblematic problem for two reasons. Firstly, it is one of the first successes and industrial applications of neural networks. It was used since the 90's to read checks. Secondly, computer vision has always been a leading application domain for neural networks.
 
-In this part, we are going to briefly discover the MNIST database then, we are going to train some networks on it and finally, we are going to explore a bit how a neural network works. 
+In this part, we are going to briefly discover the MNIST database. Then, we are going to train some networks on it and finally, we are going to explore a bit how a neural network works. 
 
 <!--more-->
 
@@ -20,7 +20,7 @@ In this part, we are going to briefly discover the MNIST database then, we are g
 
 ## Get the dataset
 
-Firstly, you should download the four files named "train-images-idx3-ubyte.gz", "train-labels-idx1-ubyte.gz", "t10k-images-idx3-ubyte.gz", "t10k-labels-idx1-ubyte.gz". Then create a folder examples/mnist/mnist and uncompress them in the latter. If you have not already a file archiver, I can advise you to use [7-zip](http://www.7-zip.org/) for Windows, [The Unarchiver](https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12) for MacOS, on Linux you should already have one.
+Firstly, you should download the four files named "train-images-idx3-ubyte.gz", "train-labels-idx1-ubyte.gz", "t10k-images-idx3-ubyte.gz", "t10k-labels-idx1-ubyte.gz". Then create a folder examples/mnist/mnist and uncompress them in the latter. If you have not already a file archiver, I can advise you to use [7-zip](http://www.7-zip.org/) for Windows and [The Unarchiver](https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12) for MacOS. As for Linux users, you should already have one.
 
 You can read the full specification on the database's page. But it is not necessary, I have already written a script to read the database for you. You should only know that the database is separated on two parts: the training set and the test set. The training set contains 60 000 labelled images and we are going to use it to train the network. The test set contains only 10 000 labelled images and we are going to use it only to test the network, not to train it. It is very important to keep separated the two parts otherwise, your accuracy would be largely overestimated.
 
@@ -54,7 +54,7 @@ $$
 
 with $$\sigma_j^2 = \frac{1}{N}\sum_{i=1}^{N}{(x^{(i)}_{d_j})^2}$$.
 
-Dividing by the standard deviation scale the values so that their order of magnitude is about 1.
+Dividing by the standard deviation scales the values so that their order of magnitude is about 1.
 
 On the image below, you can see the effects of these three preprocessings. Notice the different effects of each of them.
 
@@ -62,7 +62,7 @@ On the image below, you can see the effects of these three preprocessings. Notic
 
 You might ask why it is useful to preprocess the data before training. I think there are at least two reasons. 
 
-The first is one is that as there is no dominant or privileged dimension in the data and it can speed up the training. I think it is not totally obvious to see how the shape of the dataset can modify the shape of the cost function and help the gradient descent algorithm. So I made a little simulation. I create a very simple dataset where the inputs have only one dimension with a mean of 2 and a standard deviation of 3. The outputs are given by $$f : x \mapsto 3x + 1$$. Then I choose a very simple model, the linear regression, with only two parameters so that we can easily visualize the cost function. Finally, I choose the mean squared error as cost function. 
+The first one is as there is no dominant or privileged dimension in the data, it can speed up the training. I think it is not totally obvious to see how the shape of the dataset can modify the shape of the cost function and help the gradient descent algorithm. So I made a little simulation. I created a very simple dataset where the inputs have only one dimension with a mean of 2 and a standard deviation of 3. The outputs are given by $$f : x \mapsto 3x + 1$$. Then I chose a very simple model, the linear regression, with only two parameters so that we can easily visualize the cost function. Finally, I chose the mean squared error as cost function. 
 
 ![Effect of preprocessings on the cost function](/media/img/part2/cost_function.gif){: .center-image .modal-image }
 
@@ -73,7 +73,7 @@ If you want to see the code for the preprocessings and the animation of gradient
 
 The other advantage, is that when the data are normalized, it is easier to compare the parameters and the results with other problems. Many of the thumb rules for setting the hyperparameters such as the learning rates assume that the data are preprocessed.
 
-In our case, we won't use all these fancy things. We will keep things simple and only cancel the mean and divide by 255 to have the values in $$[-0.5, 0.5]$$. A reason why, we don't divide by the standard deviation is that some pixels are white in all the images and consequently their standard deviation is equal to zero.
+In our case, we won't use all these fancy things. We will keep things simple and only cancel the mean and divide by 255 to have the values in $$[-0.5, 0.5]$$. A reason why we don't divide by the standard deviation is that some pixels are white in all the images and consequently their standard deviation is equal to zero.
 
 {% highlight python %}
 def preprocess_dataset(X, mean=None):
@@ -101,7 +101,7 @@ Y_test = Y_test.reshape((len(Y_test), 1))
 
 First, we retrieve the images thanks to the functions in mnist.py. Then we preprocess the dataset and shuffle it. Finally for the training, we create a one-hot encoded matrix for the labels called `ohe_Y`.
 
-Our neural network won't output a class directly, instead it will output the probability distribution $$p(y \mid x)$$ where $$x$$ is the input. Concretely, for MNIST, the network will output a vector of $$\mathbb{R}^{10}$$ which represents $$(p(y=0 \mid x), \ldots, p(y=9 \mid x))$$. So the network will learn to map an input to a distribution probability. Thus, our target outputs should also be a distribution probability. Consequently, we transforms $$y^{(i)}$$ to $$y^{(i)}_{ohe}$$ according to:
+Our neural network won't output a class directly. Instead it will output the probability distribution $$p(y \mid x)$$ where $$x$$ is the input. Concretely, for MNIST, the network will output a vector of $$\mathbb{R}^{10}$$ which represents $$(p(y=0 \mid x), \ldots, p(y=9 \mid x))$$. So the network will learn to map an input to a distribution probability. Thus, our target outputs should also be a distribution probability. Consequently, we transform $$y^{(i)}$$ to $$y^{(i)}_{ohe}$$ according to:
 
 $$
 \begin{array}{rcl}
@@ -130,7 +130,7 @@ nb_times_dataset = 1
 graph = create_fully_connected_network(layers)
 {% endhighlight %}
 
-The function `create_fully_connected_network` is very similar to the one of the previous part. I don't paste the code, you can retrieve it [there](https://github.com/pvigier/pychain-part2) in examples/mnist. But, I add a little diagram to visualize what the function is doing:
+The function `create_fully_connected_network` is very similar to the one of the previous part. I didn't paste the code, you can retrieve it [there](https://github.com/pvigier/pychain-part2) in examples/mnist. But I add a little diagram to visualize what the function is doing:
 
 ![Graph used for MNIST](/media/img/part2/graph_mnist.svg){: .center-image .modal-image }
 
@@ -167,11 +167,11 @@ There is a parameter `monitor` which allows to enable monitoring. If it is activ
 
 All that remains to do is calling the function! With this architecture, you should obtain about 91.5% of accuracy with only one pass over the dataset and reach more than 92% with more passes. One pass take a little less than 3s on my computuer. I find the performance pretty decent!
 
-To modify the architecture, you just have to change the value of the variable `layer`. For instance, to use a 3 layer neural network whose layers have respectively a size of 128, 64 and 10, you juste have to replace `layers = [10]` by `layers = [128, 64, 10]`. After 10 passes, these architectures achieves 97.8% of accuracy. It is an incredible result for our little library!
+To modify the architecture, you just have to change the value of the variable `layer`. For instance, to use a 3 layer neural network whose layers have respectively a size of 128, 64 and 10, you just have to replace `layers = [10]` by `layers = [128, 64, 10]`. After 10 passes, these architectures achieve 97.8% of accuracy. It is an incredible result for our little library!
 
 # Interpretation
 
-Our networks achieve great results but can we go further and try to understand a bit how they works. We will explore two ways of understanding them. Firstly, we are going to try to understand the role of the weights and we will conjecture that neural networks combine elementary features to create complex ones and finally take a decision. Then, we will see that indeed, neural networks create features that are discriminating and allows to take a decision.
+Our networks achieve great results but can we go further and try to understand a bit how they work? We will explore two ways of understanding them. Firstly, we are going to try to understand the role of the weights and we will conjecture that neural networks combine elementary features to create complex ones and finally take a decision. Then, we will see that indeed, neural networks create features that are discriminating and allows to take a decision.
 
 ## Weights
 
@@ -195,9 +195,9 @@ Let's see the weights of the first layer of a multilayer network [64, 32, 16, 10
 
 ![Weights of the first layer for a multilayer network](/media/img/part2/weights_64_32_16_10.png){: .center-image .modal-image }
 
-It is way more difficult to see digits in the weights. However we can see small areas which are really bright of dark. These small areas corresponds to small shapes which are discriminating. 
+It is way more difficult to see digits in the weights. However we can see small areas which are really bright of dark. These small areas correspond to small shapes which are discriminating. 
 
-For example on the image of the 5th row and 7th column we can see a brigth area which is looking for the presence of black pixels there. These neuron will output a positive value for digits where there are black pixels there like 8 or 6 but negative values for 3 or 9. Consequently, it allows to discriminate the digits with a closed loop on the bottom and those which have not got one.
+For example on the image of the 5th row and 7th column we can see a bright area which is looking for the presence of black pixels there. This neuron will output a positive value for digits where these pixels are black. This is the case for 8 and 6. On the contrary, It will output negative values for a 3 or a 9. Consequently, it allows to discriminate the digits with a closed loop at the bottom and those which have not got one.
 
 The next layers will then combine these *basic features* to create more complex ones. And finally the last layer will take these *deep features* created by the first layers as input to take the final decision.
 
@@ -205,7 +205,7 @@ The next layers will then combine these *basic features* to create more complex 
 
 Let's look a bit more at these deep features.
 
-A multilayer neural network can be divided into two parts. The first layers which create the deep features and the last layer which gives the output. However, it is important to remark that the last layer is simply a linear classifier.
+A multilayer neural network can be divided in two parts. The first layers which create the deep features and the last layer which gives the output. However, it is important to remark that the last layer is simply a linear classifier.
 
 ![Decomposition of a neural networks](/media/img/part2/deep_features.svg){: .center-image .modal-image }
 
@@ -213,7 +213,7 @@ The linear classifiers are really simple to analyze and understand. We will cons
 
 ### Linear classifiers
 
-We will decribe two types of linear classifier: the binary linear classifier and the multiclass linear classifier.
+We will describe two types of linear classifier: the binary linear classifier and the multiclass linear classifier.
 
 The output of a binary linear classifier is a single real number given by:
 
@@ -235,7 +235,7 @@ By the way they are called linear classifiers because they use linear combinatio
 
 What it is interesting to know for a classifier is the shape of its *frontiers*. Let $$A_k = \{ x \in \mathcal{X}, g(x) = k \}$$, it is the subset of the input space for which the output class is $$k$$, we will call $$A_k$$ the *decision area* for class $$k$$. The frontiers are the areas which separate an $$A_i$$ from another $$A_j$$.
 
-Let's determine the decision areas and the frontiers, to do that I have written a small program which randomly creates a linear classifier and plot the decision areas. You can get it [here](https://github.com/pvigier/linear-classifiers). Here are the results for a binary classifier and a multiclass classifier:
+Let's determine the decision areas and the frontiers. In order to do that, I have written a small program which randomly creates a linear classifier and plots the decision areas. You can get it [here](https://github.com/pvigier/linear-classifiers). Here are the results for a binary classifier and a multiclass classifier:
 
 Binary             |  Multiclass
 :-------------------------:|:-------------------------:
@@ -245,21 +245,21 @@ For a binary linear classifier, the input space is divided in two half-spaces by
 
 For a multiclass linear classifier, the input space is divided in cells which are intersection of half-spaces. Concretely, the cells have their sides which are flat.
 
-If you want to prove formally these results, you can look at the exercises at the end of this part.
+If you want to formally prove these results, you can look at the exercises at the end of this part.
 
 What we have seen is that if we want a linear classifier to classify correctly our inputs, it should be possible to separate the different classes with hyperplanes. We often say that the classes should be *linearly separable*
 
 Generally, the classes are not linearly separable so the accuracy of linear classifiers is not great. That's a reason why we use neural networks to create non-linear functions which are able to model non-linear frontiers.
 
-This is a point of view, now we can see another one. Multilayer neural networks try to find a transform from the input space $$\mathcal{X}$$ where the classes are not linearly separable to a space of deep features where they are.
+This is a point of view, now we can see another one. Multilayer neural networks try to find a transformation from the input space $$\mathcal{X}$$ where the classes are not linearly separable to a space of deep features where they are.
 
 In the next parts, we will show several examples where neural networks are indeed able to create deep features that make classes linearly separable or almost.
 
 ### Deep features in XOR and the disk
 
-Do you remember the two examples of the previous part. They were very simple problems where the frontiers were non-linear. Hence, they are perfect candidates to see if the deep features are linearly separable.
+Do you remember the two examples of the previous part? They were very simple problems where the frontiers were non-linear. Hence, they are perfect candidates to see if the deep features are linearly separable.
 
-I have modified a bit the code which create the computational graph in order to have access to the output of the last layer.
+I have slightly modified the code which creates the computational graph in order to have access to the output of the last layer.
 
 In addition, I have added the function `display_deep_features` which displays the deep features. I copy the code below:
 
@@ -292,7 +292,7 @@ Here are the results for XOR:
 
 The four points of the dataset which were not linearly separable now clearly are.
 
-And here are two differents results for the disk problem:
+And here are two different results for the disk problem:
 
 ![Deep features for the disk](/media/img/part2/disk_deep_features1.png){: .center-image .modal-image }
 ![Deep features for the disk](/media/img/part2/disk_deep_features2.png){: .center-image .modal-image }
@@ -311,7 +311,7 @@ The points of a same color are clearly gathered on a same region of the space bu
 
 The first explanation is that the network does not obtain an accuracy of 100% but only 97.8% so the deep features should only be almost linearly separable. However this does not completely explain this messy result.
 
-The other explanation is that the deep features are almost linearly separable in their space which has here 64 dimensions. And when we project the deep features in 2D we totally lost the linear separability.
+The other explanation is that the deep features are almost linearly separable in their space which has here 64 dimensions. And when we project the deep features in 2D we totally loose the linear separability.
 
 Let's try to project them in the 3D space in order to retain more information:
 
@@ -335,14 +335,14 @@ Some problems to have fun:
 * Try to find the best architecture and parameters to achieve the highest accuracy on the test set.
 <a href="#clue1" data-toggle="collapse">Clues</a>
 <div id="clue1" class="collapse">
-<p>On his <a href="http://yann.lecun.com/exdb/mnist/index.html">page</a> Yann LeCun report results for different models including feedforward neural networks. It can gives you some ideas for the architectures. My best accuracy is 97.8%, try to beat it! You will surely overfit, maybe you can look at regularization to improve your results.</p>
+<p>On his <a href="http://yann.lecun.com/exdb/mnist/index.html">page</a> Yann LeCun reports results for different models including feedforward neural networks. It can give you some ideas for the architectures. My best accuracy is 97.8%, try to beat it! You will surely overfit, maybe you can look at regularization to improve your results.</p>
 
 <p>If you achieve a better result, send me a mail or leave a comment with your parameters and your best accuracy. I will update the record and credit you.</p>
 </div>
 * The shape in the weights are a bit noisy. Add weight decay in the model and see how it smoothes the shapes. Explain the phenomenon.
 <a href="#clue2" data-toggle="collapse">Clues</a>
 <div id="clue2" class="collapse">
-<p>There are several way to add weight decay: by modifying the graph or by modifying the optimization algorithm. The second solution is the fastest to implement, the update rule for weights is:</p>
+<p>There are several ways to add weight decay: by modifying the graph or by modifying the optimization algorithm. The second solution is the fastest to implement, the update rule for weights is:</p>
 
 $$
 \theta_{t+1} = (1-\lambda)\theta_t - \eta \frac{\partial J}{\partial \theta}(\theta_t)
@@ -358,12 +358,12 @@ $$
 
 <p>I have no good explanation for this phenomenon at the moment. If you find one please send me a mail!</p>
 </div>
-* Proof that a binary linear classifier separate the space in two half-spaces and that a multiclass linear classifier separates the space in cells which are intersection of half-spaces.
+* Proof that a binary linear classifier separates the space in two half-spaces and that a multiclass linear classifier separates the space in cells which are intersection of half-spaces.
 <a href="#clue3" data-toggle="collapse">Clues</a>
 <div id="clue3" class="collapse">
 <p>Let's denote \(f\) the output of the classifier and \(A_k\) the points of space that belong to class k according to the classifier.</p>
 
-<p>For a binary linear classifier, we have \(f(x)=\sigma(w^Tx)\) and \(A_1 = \{x \in \mathcal{X}, f(x) \geq 0.5\}\) but \(\sigma(w^Tx) \geq 0.5\) is equivalent to \(w^Tx \geq 0.5\). \(w^Tx = 0.5\) is the equation of an hyperplane so \(A_1 = \{x \in \mathcal{X}, w^Tx \geq 0.5\}\) contains all the points which are on one side of the hyperlane. \(A_0\) contains the other half-space.</p>
+<p>For a binary linear classifier, we have \(f(x)=\sigma(w^Tx)\) and \(A_1 = \{x \in \mathcal{X}, f(x) \geq 0.5\}\) but \(\sigma(w^Tx) \geq 0.5\) is equivalent to \(w^Tx \geq 0.5\). \(w^Tx = 0.5\) is the equation of a hyperplane so \(A_1 = \{x \in \mathcal{X}, w^Tx \geq 0.5\}\) contains all the points which are on one side of the hyperlane. \(A_0\) contains the other half-space.</p>
 
 <p>For a multiclass linear classifier, we have \(f(x)_k=softmax(x)_k=\frac{\exp(w_k^Tx)}{\sum_{j}{\exp(w_j^Tx)}}\) and \(A_k = \{x \in \mathcal{X}, k = argmax_j(f(x)_j)\}\). The denominator of softmax is the same for all \(j\) so it does not matter for determining the maximum. Thus \(argmax_j(f(x)_j) = argmax_j(\exp(w_j^Tx)) = argmax_j(w_j^Tx)\) because \(\exp\) is increasing. 
 
