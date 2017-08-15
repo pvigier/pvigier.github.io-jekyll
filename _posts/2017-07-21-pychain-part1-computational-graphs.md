@@ -7,8 +7,6 @@ tab: blog
 comments: true
 ---
 
-# Introduction
-
 Welcome in this big tutorial on neural networks!
 
 Our goal is to write our own deep learning framework like TensorFlow or Torch. We are going to learn in-depth how neural networks work, all the mechanics behind them.
