@@ -590,6 +590,8 @@ Some problems to sharpen your understanding of neural networks:
 <div id="clue2" class="collapse">
 <p>Try very small values, values around 1 and very high values.</p>
 
+<p>You can see on the curves below that the cost tends to zero for learning rates small enough. And the larger the learning rate is, the faster the cost tends to zero. However for too large learning rates the cost does not tend to zero anymore.</p>
+
 <table>
   <thead>
     <tr>

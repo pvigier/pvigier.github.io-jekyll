@@ -94,7 +94,7 @@ Y = Y.reshape((len(Y), 1))
 ohe_Y = one_hot_encode(Y)
 
 X_test, (_, _), Y_test = get_test_set('examples/mnist/mnist')
-X_test, _ = normalized_dataset(X_test, mean)
+X_test, _ = preprocess_dataset(X_test, mean)
 X_test, Y_test = shuffle_dataset(X_test, Y_test)
 Y_test = Y_test.reshape((len(Y_test), 1))
 {% endhighlight %}
