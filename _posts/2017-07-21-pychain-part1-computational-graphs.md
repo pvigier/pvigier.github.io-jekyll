@@ -330,7 +330,7 @@ class ParameterNode(Node):
         return [self.dJdy[0]]
 {% endhighlight %}
 
-This class is very simple. The only issue is that the constructor expect an initial value for the weights. There are several thumb rules regarding the initialization of the weights. The general idea is to sample from a zero mean distribution with a small standard deviation. You can see more details about initialization in [Efficient BackProp](yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf).
+This class is very simple. The only issue is that the constructor expect an initial value for the weights. There are several thumb rules regarding the initialization of the weights. The general idea is to sample from a zero mean distribution with a small standard deviation. You can see more details about initialization in [Efficient BackProp](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf).
 
 You will see several examples of initialization later in the tutorial.
 
