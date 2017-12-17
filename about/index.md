@@ -7,7 +7,7 @@ tab: about
 
 <img src="/media/img/profil_low.jpg" alt="Me" style="float:right;width:30%;">
 
-I'm currently a second year student in a French engineering school called Supélec.
+I'm currently a master student in at EPFL in Switzerland.
 
 I'm interested in computer science, math, programming, video games and sci-fi.
 
