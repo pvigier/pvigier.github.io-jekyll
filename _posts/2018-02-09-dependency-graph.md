@@ -22,7 +22,7 @@ However, the true reason why I created this tool is not because I like to see be
 
 <!--more-->
 
-## Circular dependencies
+## Circular dependencies
 
 Fistly, let us be clear about what is a circular dependencies.
 
