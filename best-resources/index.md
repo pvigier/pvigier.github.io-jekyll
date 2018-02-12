@@ -5,8 +5,6 @@ tab: best resources
 ---
 # Best Resources
 
-## 3D
-
 ## AI
 
 ## C++
@@ -18,6 +16,8 @@ tab: best resources
 ## Machine learning
 
 ## MOOCs
+
+## OpenGL
 
 ## PCG 
 

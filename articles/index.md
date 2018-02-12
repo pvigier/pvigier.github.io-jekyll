@@ -5,6 +5,10 @@ tab: articles
 ---
 # Articles
 
+## C++
+
+* [Circular dependencies in C++]({{ site.baseurl }}{% post_url 2018-02-09-dependency-graph %})
+
 ## Deep learning
 
 * [Part 1 - Computational graphs]({{ site.baseurl }}{% post_url 2017-07-21-pychain-part1-computational-graphs %})
