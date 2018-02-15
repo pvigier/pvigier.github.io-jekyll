@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Non empty destructor in C++"
+title: "Non empty destructors in C++"
 date: 2018-02-09
 author: pierre
 tab: blog

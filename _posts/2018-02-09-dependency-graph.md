@@ -22,7 +22,7 @@ However, the true reason why I created this tool is not because I like to see be
 
 <!--more-->
 
-## Circular dependencies
+# Circular dependencies
 
 Fistly, let us be clear about what is a circular dependencies.
 
@@ -80,7 +80,7 @@ Design patterns like [Observer](http://gameprogrammingpatterns.com/observer.html
 
 Finally, you could use my little script to monitor the architecture of your project.
 
-## Some details on the code
+# Some details on the code
 
 The script is pretty simple. I use the `re` module of Python to find the `#include`'s in source files. 
 
