@@ -12,7 +12,7 @@ I face one recently which was really annoying. In this article, I want to share 
 
 # The problem
 
-The problem is not really that the destructor is not empty but that the destructor is non trivial: there is a release of memory or some states are changed in another part of the app.
+The problem is not really that the destructor is non empty but that the destructor is non trivial: there is a release of memory or some states are changed in another part of the app.
 
 Let us take a very simple example with a class that does dynamic allocation to explain the problem:
 
@@ -53,11 +53,11 @@ A `Segmentation fault` will occur.
 
 Why?
 
-Because when we the `main` function ends, the destructor of `A` is called to delete `a` and `anotherA`. When `a` is destroyed the memory cell to which `a`'s `mPointer` points to is freed. Then, when `anotherA` is destroyed, we try to free the memory to which `anotherA`'s `mPointer` points to. But as `anotherA` is a copy of `a`, its `mPointer` points to the same memory cell as `a`'s `mPointer`. Thus we try to free twice the same memory cell which causes the `Segmentation fault`.
+Because when the `main` function ends, the destructor of `A` is called to delete `a` and `anotherA`. When `a` is destroyed the memory cell to which `a`'s `mPointer` points to is freed. Then, when `anotherA` is destroyed, we try to free the memory to which `anotherA`'s `mPointer` points to. But as `anotherA` is a copy of `a`, its `mPointer` points to the same memory cell as `a`'s `mPointer`. Thus we try to free twice the same memory cell which causes the `Segmentation fault`.
 
-So the problem is that because of copy the destructor is called twice on the same attributes.
+So the problem is that because of the copy the destructor is called twice on the same attributes.
 
-Note that the copy or move constructor are often called when we use containers. For instance, there is a copy or a move when the `std::vector`'s `push_back` is called.
+Note that the copy or move constructors are often called when we use containers. For instance, there is a copy or a move when the `std::vector`'s `push_back` is called.
 
 <!--more-->
 
@@ -140,9 +140,9 @@ The code is simpler, we have not to worry about the memory and the previous `mai
 
 If adequate, I think that this solution should be chosen.
 
-# Last solution: forbid copy and move
+# Third solution: forbid copy and move
 
-The last solution is a bit radical: it is to forbid copy and move.
+The third solution is a bit radical: it is to forbid copy and move.
 
 To do that I use the two following class:
 
@@ -166,7 +166,7 @@ public:
 };
 ```
 
-As copy and move is not sure for A, I would make A inheriting of both:
+As copy and move are not sure for A, I would make A inherit from both:
 
 ```cpp
 class A : public NonCopyable, public NonMovable
@@ -187,8 +187,60 @@ private:
 }
 ```
 
-This time, If we try to compile the previous `main`, we would obtain a compile-time error. But if the program compile, we are ensured that no wild `Segmentation Fault` will appear because of a copy or a mode.
+This time, If we try to compile the previous `main`, we would obtain a compile-time error. But if the program compile, we are ensured that no wild `Segmentation Fault` will occur during execution because of a copy or a move.
 
 This solution has the benefit of being very fast to implement.
+
+# Fourth solution : set up and tear down
+
+The last solution is to manage the initialization and the finalization outside of the constructor and the destructor.
+
+In our example, we could use a method `setUp` to allocate the memory and `tearDown` to release it:
+
+```cpp
+class A
+{
+public:
+	A() : mPointer(nullptr)
+	{
+
+	}
+
+	~A()
+	{
+		
+	}
+
+	void setUp()
+	{
+		mPointer = new int(0)
+	}
+
+	void tearDown()
+	{
+		delete mPointer;
+		mPointer = nullptr;
+	}
+
+private:
+	int* mPointer;
+}
+```
+
+Then we can transform the previous `main` to obtain the correct behavior:
+
+```cpp
+int main()
+{
+	A a;
+	a.setUp();
+	A anotherA(a);
+	a.tearDown();
+
+	return 0;
+}
+```
+
+This solution works well but requires from the user of the class to be more careful and to manage himself the memory.
 
 That's all for this post, I hope you find it useful.

@@ -8,6 +8,7 @@ tab: articles
 ## C++
 
 * [Circular dependencies in C++]({{ site.baseurl }}{% post_url 2018-02-09-dependency-graph %})
+* [Non empty destructors in C++]({{ site.baseurl }}{% post_url 2018-02-15-non-empty-destructors %})
 
 ## Deep learning
 
