@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Part 2 - Application: MNIST"
+title: "Pychain Part 2 - Application: MNIST"
 date: 2017-08-13
 author: pierre
 tab: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Non empty destructors in C++"
-date: 2018-02-09
+date: 2018-02-15
 author: pierre
 tab: blog
 comments: true
@@ -132,7 +132,7 @@ public:
 	}
 
 private:
-	std::shared_ptr<int> mPointer;
+	std::unique_ptr<int> mPointer;
 }
 ```
 
