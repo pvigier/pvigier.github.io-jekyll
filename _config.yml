@@ -2,7 +2,8 @@ name: Pierre Vigier
 markdown: kramdown
 excerpt_separator: <!--more-->
 future: true
-gems: [jekyll-paginate, jekyll-archives]
+url: "https://pvigier.github.io"
+plugins: [jekyll-paginate, jekyll-archives, jekyll-sitemap]
 paginate: 5
 paginate_path: "/:num/"
 jekyll-archives:

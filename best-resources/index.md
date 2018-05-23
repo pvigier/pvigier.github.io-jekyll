@@ -2,6 +2,7 @@
 layout: common
 title: Best Resources
 tab: best resources
+sitemap: false
 ---
 # Best Resources
 
