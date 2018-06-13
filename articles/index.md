@@ -20,3 +20,10 @@ tab: articles
 * Part 6 - Application: text generation
 * Appendix A - Cost functions
 * Appendix B - Nodes' formulas
+
+## PCG
+
+* [Perlin noise with numpy]({{ site.baseurl }}{% post_url 2018-06-13-perlin-noise-numpy %})
+
+## Math
+* [Fractal Image Compression]({{ site.baseurl }}{% post_url 2018-05-14-fractal-image-compression %})

@@ -19,7 +19,7 @@ This part is quite technical, you can skip it if you are only interested by a do
 
 ## Contractions
 
-Let $$(E, d)$$ a [complete metric space](https://en.wikipedia.org/wiki/Complete_metric_space) and $$f : E \rightarrow E$$ a mapping from $$E$$ to $$E$$.
+Let $$(E, d)$$ be a [complete metric space](https://en.wikipedia.org/wiki/Complete_metric_space) and $$f : E \rightarrow E$$ a mapping from $$E$$ to $$E$$.
 
 We will say that $$f$$ is a [contraction](https://en.wikipedia.org/wiki/Contraction_mapping) if there exists $$0 < s < 1$$ such that:
 
