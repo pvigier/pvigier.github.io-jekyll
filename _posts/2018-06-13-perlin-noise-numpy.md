@@ -7,11 +7,11 @@ tab: blog
 comments: true
 ---
 
-Hi everyone, I have written an implementation of Perlin noise with numpy that is pretty fast and I want to share it with you.
+Hi everyone, I have written an implementation of Perlin noise with numpy that is pretty fast and I want to share it with you. The code is available [here](https://github.com/pvigier/perlin-numpy).
 
 # Perlin noise
 
-My code looks like the original implementation. The only differences is that I tried to use the vectorized operations of numpy as much as possible instead of `for` loops. Because as you may know, loops are really slow in Python.
+My code looks like the original implementation. The only difference is that I tried to use the vectorized operations of numpy as much as possible instead of `for` loops. Because as you may know, loops are really slow in Python.
 
 Here is the code:
 
