@@ -3,3 +3,6 @@ _site
 # Drafts
 drafts/
 media/img/part3
+
+# Gem
+*.lock
