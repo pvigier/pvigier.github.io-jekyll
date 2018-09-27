@@ -5,8 +5,8 @@ tab: games
 ---
 # Games
 
-In this page, I list all my finished games:
+In this page, I list all my published games:
 
 * [Jumpy Fox](https://play.google.com/store/apps/details?id=com.PierreVigier.JumpyFox)
-* [City Builder](https://github.com/pvigier/CityBuilder)
+* [Simulopolis](https://pvigier.itch.io/simulopolis)
 
