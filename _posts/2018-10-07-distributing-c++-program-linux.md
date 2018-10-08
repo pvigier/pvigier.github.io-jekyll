@@ -1,13 +1,15 @@
 ---
 layout: post
 title: "Distributing a C++ program on Linux"
-date: 2018-10-06
+date: 2018-10-07
 author: pierre
 tab: blog
 comments: true
 ---
 
-Hi! Today I will tackle a problem I faced when I wanted to distribute the alpha version of Simulopolis two weeks ago: distributing a C++ binary on different Linux distributions.
+Hi! 
+
+Today I will tackle a problem I faced when I wanted to distribute the alpha version of Simulopolis two weeks ago: distributing a C++ binary on different Linux distributions.
 
 So two weeks ago, I was happy, I had a version of Simulopolis which ran smoothly on my laptop. And I thought it was time to share it with people to have some feedback. Very naively, I took the binary and the assets, put them on a new folder and uploaded the whole thing on itch.io.
 
@@ -21,7 +23,7 @@ Uhh, this was not expected!
 
 ![Disappointed gif](https://media.giphy.com/media/U4VXRfcY3zxTi/giphy.gif){: .center-image .modal-image }
 
-We read the error message, it tells that a dependency I use to build the game is missing on my brother's system. So he tried to install Boost Serialization, SFML and TinyXML the three libraries I use in Simulopolis. But that does not solve the problem because the program is looking for a specific version of the dependency (here the version 1.65.1 of Boost serialization). And as he was on a different Linux distribution, Fedora, than me, Ubuntu, it was not the same version of Boost Serialization that was available in its package manager.
+We read the error message, it tells that a dependency I use to build the game is missing on my brother's system. So he tried to install Boost Serialization, SFML and TinyXML the three libraries I use in Simulopolis. But that did not solve the problem because the program is looking for a specific version of the dependency (here the version 1.65.1 of Boost serialization). And as he was on a different Linux distribution, Fedora, than me, Ubuntu, it was not the same version of Boost Serialization that was available in its package manager.
 
 <!--more-->
 
