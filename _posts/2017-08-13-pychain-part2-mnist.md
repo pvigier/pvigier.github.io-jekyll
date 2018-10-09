@@ -5,6 +5,7 @@ date: 2017-08-13
 author: pierre
 tab: blog
 comments: true
+tags: math python
 ---
 In [part 1]({{ site.baseurl }}{% post_url 2017-07-21-pychain-part1-computational-graphs %}), we have created a fully functional library which is able to create and train neural networks using computational graphs. We used them on very simple examples. Today, we are going to try it on a more serious problem: character recognition.
 

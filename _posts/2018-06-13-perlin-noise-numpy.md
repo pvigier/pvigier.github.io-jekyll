@@ -5,6 +5,7 @@ date: 2018-06-13
 author: pierre
 tab: blog
 comments: true
+tags: pcg python
 ---
 
 Hi everyone, I have written an implementation of Perlin noise with numpy that is pretty fast and I want to share it with you. The code is available [here](https://github.com/pvigier/perlin-numpy).

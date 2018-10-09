@@ -5,6 +5,7 @@ date: 2018-02-15
 author: pierre
 tab: blog
 comments: true
+tags: cpp
 ---
 Have you already faced problems with non trivial destructors?
 

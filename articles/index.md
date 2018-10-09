@@ -7,9 +7,9 @@ tab: articles
 
 ## C++
 
-* [Distributing a C++ program on Linux]({{ site.baseurl }}{% post_url 2018-10-07-distributing-c++-program-linux %})
 * [Circular dependencies in C++]({{ site.baseurl }}{% post_url 2018-02-09-dependency-graph %})
 * [Non empty destructors in C++]({{ site.baseurl }}{% post_url 2018-02-15-non-empty-destructors %})
+* [Distributing a C++ program on Linux]({{ site.baseurl }}{% post_url 2018-10-07-distributing-c++-program-linux %})
 
 ## Deep learning
 
@@ -33,3 +33,4 @@ tab: articles
 ## Simulopolis
 
 * [Simulopolis alpha is released]({{ site.baseurl }}{% post_url 2018-10-06-simulopolis-alpha-1 %})
+* [Terrain generation in Simulopolis]({{ site.baseurl }}{% post_url 2018-10-08-terrain-generation-simulopolis %})

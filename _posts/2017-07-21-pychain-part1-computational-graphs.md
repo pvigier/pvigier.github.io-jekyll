@@ -5,6 +5,7 @@ date: 2017-07-21
 author: pierre
 tab: blog
 comments: true
+tags: math python
 ---
 
 Welcome in this big tutorial on neural networks!

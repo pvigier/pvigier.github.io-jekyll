@@ -5,6 +5,7 @@ date: 2018-05-14
 author: pierre
 tab: blog
 comments: true
+tags: math python
 ---
 
 One year ago, I coded a very simple implementation of fractal image compression for a course and I made the code available on github [there](https://github.com/pvigier/fractal-image-compression).

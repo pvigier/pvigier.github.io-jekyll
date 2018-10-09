@@ -1,9 +1,9 @@
 ---
 layout: common
 ---
-<h2>Archive of posts from {{ page.date | date: "%B %Y" }}</h2>
+<h2>Tag: {{ page.tag }}</h2>
 <ul>
-{% for post in page.posts %}
+{% for post in site.tags[page.tag] %}
   <li>
     <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
     <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

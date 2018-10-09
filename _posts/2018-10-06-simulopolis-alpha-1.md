@@ -5,6 +5,7 @@ date: 2018-10-06
 author: pierre
 tab: blog
 comments: true
+tags: simulopolis
 ---
 
 ![Cover](/media/img/simulopolis-alpha-1/cover.png){: .center-image .modal-image }
