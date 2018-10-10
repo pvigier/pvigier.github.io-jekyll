@@ -5,4 +5,7 @@ layout: blog
     <h2 class="blog-post-title">{{ page.title }}</h2>
     <p class="blog-post-meta">{{ page.date | date_to_string }} by <a href="/">{{ page.author }}</a></p>
     {{ content }}
+    {% if page.tags.size > 0 %}
+	<p>Tags: {% for tag in page.tags %}<span class="label label-primary"><a href="/tag/{{ tag }}">{{ tag }}</a></span> {% endfor %}</p>
+	{% endif %}
 </div><!-- /.blog-post -->

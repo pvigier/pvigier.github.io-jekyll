@@ -1,12 +1,23 @@
 <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+	<div class="sidebar-module">
+        <h4>Tags</h4>
+        <ol class="list-unstyled">
+		{% for tag in site.tags %}
+			<li><a href="/tag/{{ tag[0] }}">{{ tag[0] }} ({{ tag[1].size }})</a></li>
+		{% endfor %}
+        </ol>
+    </div>
     <div class="sidebar-module">
         <h4>Archives</h4>
         <ol class="list-unstyled">
+		{% assign counter = 0 %}
         {% for post in site.posts %}
             {% assign currentdate = post.date | date: "%B %Y" %}
+            {% assign date = post.previous.date | date: "%B %Y"%}
+            {% assign counter = counter | plus: 1 %}
             {% if currentdate != date %}
-            <li id="y{{currentdate}}"><a href="{{ post.date | date: "/%Y/%m" }}">{{ currentdate }}</a></li>
-            {% assign date = currentdate %} 
+			<li id="y{{currentdate}}"><a href="{{ post.date | date: "/%Y/%m" }}">{{ currentdate }} ({{ counter }})</a></li>
+				{% assign counter = 0 %}
             {% endif %}
         {% endfor %}
         </ol>
@@ -15,6 +26,7 @@
         <h4>Follow me</h4>
         <ol class="list-unstyled">
             <li><a href="https://github.com/pvigier">GitHub</a></li>
+            <li><a href="https://pvigier.itch.io/">itch.io</a></li>
             <li><a href="https://twitter.com/PierreVigier">Twitter</a></li>
             <li><a href="/rss.xml">RSS</a></li>
         </ol>
