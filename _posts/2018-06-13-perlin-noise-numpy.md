@@ -43,7 +43,7 @@ def generate_perlin_noise_2d(shape, res):
     return np.sqrt(2)*((1-t[:,:,1])*n0 + t[:,:,1]*n1)
 ```
 
-If you are familiar with Perlin noise, nothing should surprise you. Otherwise, I can suggest you to read the first pages of this [article](http://staffwww.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf) which explain Perlin noise very well in my opinion.
+If you are familiar with Perlin noise, nothing should surprise you. Otherwise, I can suggest you to read the first pages of this [article](http://staffwww.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf) which explains Perlin noise very well in my opinion.
 
 An example of what the function generates:
 

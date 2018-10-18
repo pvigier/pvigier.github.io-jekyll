@@ -19,7 +19,7 @@ Here are some screenshots of terrains from the game.
 
 In this article, I will not describe the C++ code used in the game as it is verbose and unnecessarily complicated. Instead, I will use the Python code I used to design the generator. 
 
-Indeed, I found much more pleasant to use Python for prototyping as it is really fast to write something which works, there are good libraries and we do not have to wait for compilation every time we made a change. It is especially true for procedural content generation where we have to iterate a lot before obtaining something decent.
+Indeed, I found much more pleasant to use Python for prototyping as it is really fast to write something which works, there are good libraries and we do not have to wait for compilation every time we make a change. It is especially true for procedural content generation where we have to iterate a lot before obtaining something decent.
 
 The code I will present is the exact translation in Python of what is currently implemented in the game. It is based on the implementation of Perlin noise I described previously in this [article]({{ site.baseurl }}{% post_url 2018-06-13-perlin-noise-numpy %}). As usual, you can find the whole project on [github](https://github.com/pvigier/simulopolis-terrain-generator).
 
