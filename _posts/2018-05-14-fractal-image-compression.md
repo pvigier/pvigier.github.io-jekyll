@@ -145,7 +145,7 @@ In each section, I will copy the interesting snippets of code but you can find t
 
 I keep things really simple. The source blocks and the destination blocks segment the image as a grid, as on the image above.
 
-The size of the blocks are powers of two as it makes things easier. The destination blocks are 8 by 8 while the source blocks are 4 by 4.
+The size of the blocks are powers of two as it makes things easier. The source blocks are 8 by 8 while the destination blocks are 4 by 4.
 
 There exists more advanced schemes for segmentation. For instance, we can use a quadtree to segment more the areas with lots of details.
 
