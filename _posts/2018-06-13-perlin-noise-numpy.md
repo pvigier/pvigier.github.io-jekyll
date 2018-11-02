@@ -47,7 +47,7 @@ If you are familiar with Perlin noise, nothing should surprise you. Otherwise, I
 
 An example of what the function generates:
 
-![](https://raw.githubusercontent.com/pvigier/perlin-numpy/master/examples/perlin.png)
+![Perlin noise](/media/img/perlin2d/perlin2d.png){: .center-image .modal-image }
 
 I normalized the gradients so that the noise is always between -1 and 1.
 
@@ -71,7 +71,7 @@ return noise
 
 An example of what we can obtain:
 
-![](https://raw.githubusercontent.com/pvigier/perlin-numpy/master/examples/fractal.png)
+![Fractal noise](/media/img/perlin2d/fractal2d.png){: .center-image .modal-image }
 
 The fractal noise is not always between -1 and 1 but between -2 and 2 if you keep the persistance equals to 0.5.
 
