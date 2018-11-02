@@ -162,8 +162,8 @@ class NonMovable
 {
 public:
     NonMovable() = default;
-    NonMovable(NonCopyable&&) = delete;
-    NonCopyable& operator=(NonCopyable&&) = delete;
+    NonMovable(NonMovable&&) = delete;
+    NonMovable& operator=(NonMovable&&) = delete;
 };
 ```
 
