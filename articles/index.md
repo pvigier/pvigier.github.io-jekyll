@@ -25,6 +25,7 @@ tab: articles
 ## PCG
 
 * [Perlin noise with numpy]({{ site.baseurl }}{% post_url 2018-06-13-perlin-noise-numpy %})
+* [3D Perlin noise with numpy]({{ site.baseurl }}{% post_url 2018-11-02-3d-perlin-noise-numpy %})
 
 ## Math
 
@@ -34,3 +35,4 @@ tab: articles
 
 * [Simulopolis alpha is released]({{ site.baseurl }}{% post_url 2018-10-06-simulopolis-alpha-1 %})
 * [Terrain generation in Simulopolis]({{ site.baseurl }}{% post_url 2018-10-08-terrain-generation-simulopolis %})
+* [Simulopolis alpha 3 is released]({{ site.baseurl }}{% post_url 2018-11-03-simulopolis-alpha-3 %})
