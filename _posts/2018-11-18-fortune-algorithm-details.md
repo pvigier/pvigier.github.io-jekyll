@@ -102,7 +102,7 @@ struct HalfEdge
 };
 ```
 
-You might wonder what is an half-edge. An edge in the Voronoi diagram is shared by two adjacent cells. In the DCEL data structure, we split these edges in two half-edges, one for each cell, and they are linked by the `twin` pointer. Moreover, a half-edge has an origin vertex and a destination vertex. The `incidentFace` field points to the face to which the half-edge belongs to. Finally, in DCEL, cells are implemented as a circular doubly linked list of half-edges where adjacent half-edges are linked together. Thus the `prev` and `next` fields points to the previous and next half-edges in the cell.
+You might wonder what is a half-edge. An edge in the Voronoi diagram is shared by two adjacent cells. In the DCEL data structure, we split these edges in two half-edges, one for each cell, and they are linked by the `twin` pointer. Moreover, a half-edge has an origin vertex and a destination vertex. The `incidentFace` field points to the face to which the half-edge belongs to. Finally, in DCEL, cells are implemented as a circular doubly linked list of half-edges where adjacent half-edges are linked together. Thus the `prev` and `next` fields points to the previous and next half-edges in the cell.
 
 On the image below, you can visualize all these fields for the red half-edge:
 
@@ -124,7 +124,7 @@ The standard way to implement the event queue is to use a priority queue. During
 
 There are two ways to tackle this problem. The first and simplest one is to add a `valid` flag to events. We set `valid` to `true` initially. Then instead of removing the circle event from the queue, we just set its flag to `false`. Finally, when we process the events in the main loop, if the `valid` flag of an event equals to `false`, we simply discard it and process the next one.
 
-The second method which I adopted is not to use `std::priority_queue`. Instead, I implemented my own priority queue which supports removal of any element it contains. The implementation of such a queue is pretty straightfoward. I choose this method because I find it makes the code for the algorithm clearer.
+The second method which I adopted is not to use `std::priority_queue`. Instead, I implemented my own priority queue which supports removal of any element it contains. The implementation of such a queue is pretty straightforward. I choose this method because I find it makes the code for the algorithm clearer.
 
 # Beachline
 
@@ -161,7 +161,7 @@ struct Arc
 };
 ```
 
-The first three fields are for the tree structure. The `leftHalfEdge` field points to the half-edge drawn by the left extremity of the arc. And `rightHalfEdge` to the half-edge drawn by the right extremity. The two pointers `prev` and `next` are useful to have a direct access to the previous and next arcs in the beachline. They also allow to traverse the beachline like a doubly linked list. Finally, every arc have a color which is used to balance the beachline.
+The first three fields are for the tree structure. The `leftHalfEdge` field points to the half-edge drawn by the left extremity of the arc. And `rightHalfEdge` to the half-edge drawn by the right extremity. The two pointers `prev` and `next` are useful to have a direct access to the previous and next arcs in the beachline. They also allow to traverse the beachline like a doubly linked list. Finally, every arc has a color which is used to balance the beachline.
 
 I choose to use the [red-black scheme](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) to balance the beachline. My code is directly inspired from [CLRS](https://en.wikipedia.org/wiki/Introduction_to_Algorithms). The two interesting algorithms described in the chapter 13 of the book are `insertFixup` and `deleteFixup` which balance the tree after insertion/deletion. 
 
