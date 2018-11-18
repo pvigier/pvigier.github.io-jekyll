@@ -12,7 +12,7 @@ The last few weeks, I worked on an implementation of the [Fortune's algorithm](h
 
 ![Voronoi diagram](/media/img/fortune/voronoi_intersected.png)
 
-For each input point, which is called a site, we want to find the set of points which is nearer to this site than to any other site. These sets of points form cells as you can see on the image above.
+For each input point, which is called a site, we want to find the set of points which are nearer to this site than to any other site. These sets of points form cells as you can see on the image above.
 
 What is remarkable about the Fortune's algorithm is that it constructs such diagrams in $$O(n\log n)$$ time (which is optimal for an algorithm which uses comparisons) where $$n$$ is the number of sites. 
 
@@ -102,7 +102,7 @@ struct HalfEdge
 };
 ```
 
-You might wonder what is an half-edge. An edge in the Voronoi diagram is shared by two adjacent cells. In the DCEL data structure, we split these edge in two half-edges, one for each cell, and they are link by the `twin` pointer. Moreover, an half-edge have an origin vertex and a destination vertex. The `incidentFace` field points to the face to which the half-edge belongs to. Finally, in DCEL, cells are implemented as a circular doubly linked list of half-edges where adjacent half-edges are linked together. Thus the `prev` and `next` fields points to the previous and next half-edges in the cell.
+You might wonder what is an half-edge. An edge in the Voronoi diagram is shared by two adjacent cells. In the DCEL data structure, we split these edges in two half-edges, one for each cell, and they are linked by the `twin` pointer. Moreover, a half-edge has an origin vertex and a destination vertex. The `incidentFace` field points to the face to which the half-edge belongs to. Finally, in DCEL, cells are implemented as a circular doubly linked list of half-edges where adjacent half-edges are linked together. Thus the `prev` and `next` fields points to the previous and next half-edges in the cell.
 
 On the image below, you can visualize all these fields for the red half-edge:
 
@@ -122,20 +122,20 @@ struct Face
 
 The standard way to implement the event queue is to use a priority queue. During the processing of site and circle events we may need to remove circle events from the queue because they are not valid anymore. But most of the standard implementations of priority queues does not allow to remove an element which is not the top one. In particular that is the case for `std::priority_queue`.
 
-There are two ways to tackle this problem. The first and simplest one is to add a `valid` flag to events. We set `valid` to `true` initially. Then instead of removing the circle event from the queue, we just set its flag to `false`. Finally, when we process the events in the main loop, if the `valid` flag of an event equals to `false`, we simply discard this event and process the next one.
+There are two ways to tackle this problem. The first and simplest one is to add a `valid` flag to events. We set `valid` to `true` initially. Then instead of removing the circle event from the queue, we just set its flag to `false`. Finally, when we process the events in the main loop, if the `valid` flag of an event equals to `false`, we simply discard it and process the next one.
 
-The second method which I adopted is not to use `std::priority_queue`. Instead, I implemented my own priority queue which supports removal of any elements it contains. The implementation of such a queue is pretty straightfoward. I choose this method because I find it makes the code for the algorithm clearer.
+The second method which I adopted is not to use `std::priority_queue`. Instead, I implemented my own priority queue which supports removal of any element it contains. The implementation of such a queue is pretty straightfoward. I choose this method because I find it makes the code for the algorithm clearer.
 
 # Beachline
 
 The beachline data structure is the tricky part of the algorithm. If not implemented correctly there is no guarantee that the algorithm will run in $$O(n\log n)$$. The key to reach this time complexity is to use a self-balancing tree. That's easier said than done!
 
-In most resources I have consulted (the two blog articles aforementioned and *Computational Geometry*), they advise two implement the beachline as a tree where interior nodes represent breakpoints and leaves represent arcs. But they do not indicate how to balance the tree. I think that this representation is not the best possible because:
+In most resources I have consulted (the two blog articles aforementioned and *Computational Geometry*), they advise to implement the beachline as a tree where interior nodes represent breakpoints and leaves represent arcs. But they do not indicate how to balance the tree. I think that this representation is not the best possible because:
 
 * there is redundant information: we know that there is a breakpoint between two adjacent arcs, it is not necessary to represent them using nodes
 * it is not very adequate for self-balancing: it is only possible to balance the subtree formed by the breakpoints. Indeed, we cannot balance the whole tree because otherwise arcs may become interior nodes and breakpoints leaves. Writing an algorithm to balance only the subtree formed by the interior nodes seems like a nightmare to me.
 
-Thus, I decided to represent the beachline differently. In my implementation the beachline is still a tree but all nodes represent an arc. This representation have none of the previous shortcomings.
+Thus, I decided to represent the beachline differently. In my implementation the beachline is still a tree but all nodes represent an arc. This representation has none of the previous shortcomings.
 
 Here is the definition of an `Arc` in my implementation:
 
@@ -161,7 +161,7 @@ struct Arc
 };
 ```
 
-The first three fields are for the tree structure. The `leftHalfEdge` field points to the half-edge drawn by the left extremity of the arc. And `rightHalfEdge` to the half-edge drawn by the right one. The two pointers `prev` and `next` are useful to have a direct access to the previous and next arc in the beachline. They also allow to traverse the beachline like a doubly linked list. Finally, every arc have a color which is used to balance the beachline.
+The first three fields are for the tree structure. The `leftHalfEdge` field points to the half-edge drawn by the left extremity of the arc. And `rightHalfEdge` to the half-edge drawn by the right extremity. The two pointers `prev` and `next` are useful to have a direct access to the previous and next arcs in the beachline. They also allow to traverse the beachline like a doubly linked list. Finally, every arc have a color which is used to balance the beachline.
 
 I choose to use the [red-black scheme](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) to balance the beachline. My code is directly inspired from [CLRS](https://en.wikipedia.org/wiki/Introduction_to_Algorithms). The two interesting algorithms described in the chapter 13 of the book are `insertFixup` and `deleteFixup` which balance the tree after insertion/deletion. 
 
@@ -271,7 +271,7 @@ This article was pretty long. And I am sure that many things are still unclear. 
 To finish this article and to be sure we have not done all of this for nothing I have measured the time it takes to compute the Voronoi diagram for different numbers of sites on my (cheap) laptop:
 
 * $$n = 1000$$: 3ms
-* $$ n = 10000$$: 50ms
+* $$n = 10000$$: 50ms
 * $$n = 100000$$: 1000ms
 
 I have nothing to compare these durations with but it seems blazing fast!
