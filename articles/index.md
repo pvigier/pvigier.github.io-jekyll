@@ -36,3 +36,8 @@ tab: articles
 * [Simulopolis alpha is released]({{ site.baseurl }}{% post_url 2018-10-06-simulopolis-alpha-1 %})
 * [Terrain generation in Simulopolis]({{ site.baseurl }}{% post_url 2018-10-08-terrain-generation-simulopolis %})
 * [Simulopolis alpha 3 is released]({{ site.baseurl }}{% post_url 2018-11-03-simulopolis-alpha-3 %})
+
+## Geometry
+
+
+* [Fortune's algorithm, the details]({{ site.baseurl }}{% post_url 2018-11-18-fortune-algorithm-details %})
