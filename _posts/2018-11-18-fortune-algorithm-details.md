@@ -102,7 +102,7 @@ struct HalfEdge
 };
 ```
 
-You might wonder what is a half-edge. An edge in the Voronoi diagram is shared by two adjacent cells. In the DCEL data structure, we split these edges in two half-edges, one for each cell, and they are linked by the `twin` pointer. Moreover, a half-edge has an origin vertex and a destination vertex. The `incidentFace` field points to the face to which the half-edge belongs to. Finally, in DCEL, cells are implemented as a circular doubly linked list of half-edges where adjacent half-edges are linked together. Thus the `prev` and `next` fields points to the previous and next half-edges in the cell.
+You might wonder what is a half-edge. An edge in a Voronoi diagram is shared by two adjacent cells. In the DCEL data structure, we split these edges in two half-edges, one for each cell, and they are linked by the `twin` pointer. Moreover, a half-edge has an origin vertex and a destination vertex. The `incidentFace` field points to the face to which the half-edge belongs to. Finally, in DCEL, cells are implemented as a circular doubly linked list of half-edges where adjacent half-edges are linked together. Thus the `prev` and `next` fields points to the previous and next half-edges in the cell.
 
 On the image below, you can visualize all these fields for the red half-edge:
 
@@ -120,7 +120,7 @@ struct Face
 
 # Event queue
 
-The standard way to implement the event queue is to use a priority queue. During the processing of site and circle events we may need to remove circle events from the queue because they are not valid anymore. But most of the standard implementations of priority queues does not allow to remove an element which is not the top one. In particular that is the case for `std::priority_queue`.
+The standard way to implement the event queue is to use a priority queue. During the processing of site and circle events we may need to remove circle events from the queue because they are not valid anymore. But most of the standard implementations of priority queues do not allow to remove an element which is not the top one. In particular that is the case for `std::priority_queue`.
 
 There are two ways to tackle this problem. The first and simplest one is to add a `valid` flag to events. We set `valid` to `true` initially. Then instead of removing the circle event from the queue, we just set its flag to `false`. Finally, when we process the events in the main loop, if the `valid` flag of an event equals to `false`, we simply discard it and process the next one.
 
@@ -135,7 +135,7 @@ In most resources I have consulted (the two blog articles aforementioned and *Co
 * there is redundant information: we know that there is a breakpoint between two adjacent arcs, it is not necessary to represent them using nodes
 * it is not very adequate for self-balancing: it is only possible to balance the subtree formed by the breakpoints. Indeed, we cannot balance the whole tree because otherwise arcs may become interior nodes and breakpoints leaves. Writing an algorithm to balance only the subtree formed by the interior nodes seems like a nightmare to me.
 
-Thus, I decided to represent the beachline differently. In my implementation the beachline is still a tree but all nodes represent an arc. This representation has none of the previous shortcomings.
+Thus, I decided to represent the beachline differently. In my implementation the beachline is still a tree, but all nodes represent an arc. This representation has none of the previous shortcomings.
 
 Here is the definition of an `Arc` in my implementation:
 
@@ -194,7 +194,7 @@ void Beachline::insertBefore(Arc* x, Arc* y)
 
 The insertion of `y` before `x` is made in three steps:
 
-1. Find the place to insert the new node. To do that I use the following observation: either the left child of `x` is `Nil` or it is the right child of `x->prev` and the one that is `Nil` is before `x` and after`x->prev`.
+1. Find the place to insert the new node. To do that I use the following observation: either the left child of `x` is `Nil` or it is the right child of `x->prev`, and the one that is `Nil` is before `x` and after`x->prev`.
 2. We maintain a structure of doubly linked list inside the beachline so we must update the `prev` and `next` pointers of `x->prev`, `y` and `x` accordingly.
 3. Finally, we just call the `insertFixup` method described in the book to balance the tree. 
 
@@ -218,7 +218,7 @@ Fortunately, Fortune's algorithm gives us a way to quickly find the infinite edg
 
 My bounding algorithm takes a box as input and has three steps:
 
-1. It will makes sure that every vertices of the diagram is contained inside the box.
+1. It will make sure that every vertices of the diagram is contained inside the box.
 2. Clip every infinite edge.
 3. Close the cells.
 
@@ -226,7 +226,7 @@ Step 1 is trivial, we just expand the box if it does not a contain a vertex.
 
 Step 2 is pretty simple too, it just consists of computing intersections between rays and the box.
 
-Step 3 is not very difficult neither but it requires to be very careful. I do it in two steps. Firstly, I add the corners of the box to cells that need them in their vertices. Secondly, I make sure that all the vertices of a cell are linked by half-edges.
+Step 3 is not very difficult neither, but it requires to be very careful. I do it in two steps. Firstly, I add the corners of the box to cells that need them in their vertices. Secondly, I make sure that all the vertices of a cell are linked by half-edges.
 
 I encourage you to read the code or ask questions if you want more details on this part.
 
@@ -244,7 +244,7 @@ Cool! But the first image at the top of the article is cooler, isn't it?
 
 In many applications, it is useful to have the intersection between a Voronoi diagram and a box, it is what is shown on the first image.
 
-The good news is that it is a lot easier now that we have bounded the diagram. The bad news is that once again even if the algorithm is not over-complicated we will have to be careful.
+The good news is that it is a lot easier now that we have bounded the diagram. The bad news is that once again even if the algorithm is not over-complicated, we will have to be careful.
 
 The idea is the following: for each cell we traverse its half-edges and we check the intersection between this half-edge and the box. There are five cases:
 
@@ -252,7 +252,7 @@ The idea is the following: for each cell we traverse its half-edges and we check
 2. The half-edge is completely outside the box: we discard this half-edge
 3. The half-edge is going outside the box: we clip the half-edge and we store it as the *last half-edge that went outside*.
 4. The half-edge is going inside the box: we clip the half-edge and we add half-edges to link it with the *last half-edge that went outside* (we store it at case 3 or 5)
-5. The half-edge crosses the box twice: we clip the half-edge, we add half-edges to link it with the *last half-edge that went outside* and we store it as the new *last half-edge that went outside*. 
+5. The half-edge crosses the box twice: we clip the half-edge, we add half-edges to link it with the *last half-edge that went outside*, and we store it as the new *last half-edge that went outside*. 
 
 Uh, that's a lot of cases. I made a picture to visualize them: 
 
@@ -266,7 +266,7 @@ After we applied this algorithm to the bounded diagram, we have the expected res
 
 # Conclusion
 
-This article was pretty long. And I am sure that many things are still unclear. Nevertheless, I hope that you find it useful. Do not hesitate to read the code if you want to see all the details and if you have any question you can ask them in the comment section below.
+This article was pretty long. And I am sure that many things are still unclear. Nevertheless, I hope you find it useful. Do not hesitate to read the code if you want to see all the details and if you have any question you can ask them in the comment section below.
 
 To finish this article and to be sure we have not done all of this for nothing I have measured the time it takes to compute the Voronoi diagram for different numbers of sites on my (cheap) laptop:
 
@@ -274,7 +274,7 @@ To finish this article and to be sure we have not done all of this for nothing I
 * $$n = 10000$$: 50ms
 * $$n = 100000$$: 1000ms
 
-I have nothing to compare these durations with but it seems blazing fast!
+I have nothing to compare these durations with, but it seems blazing fast!
 
 # References
 

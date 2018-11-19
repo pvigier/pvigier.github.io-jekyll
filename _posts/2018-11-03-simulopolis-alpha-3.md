@@ -22,9 +22,9 @@ On this screenshot, you can saw some minor changes on the interface and the main
 
 I worked a lot on the user interface. In alpha 1, the window's resolution was 800x600 and it was not possible to resize the window which makes the experience very painful on some screen. 
 
-Thus in alpha 2, I made the window resizable and I improved the GUI code to make widgets resizable too. It was a lot of work but I am very satisfied with the result. The GUI code starts to look like a small library and I am thinking about separating this code from the rest of the game to publish it as a library.
+Thus, in alpha 2, I made the window resizable and I improved the GUI code to make widgets resizable too. It was a lot of work, but I am very satisfied with the result. The GUI code starts to look like a small library and I am thinking about separating this code from the rest of the game to publish it as a library.
 
-In alpha 3, I continued to improve the interface by fixing some small issues. In addition in the city creation screen, I prefilled the city name input field with a randomly chosen city name. The list of city names is based on this Wikipedia's [list of mythological places](https://en.wikipedia.org/wiki/List_of_mythological_places).
+In alpha 3, I continued to improve the interface by fixing some small issues. In addition, in the city creation screen, I prefilled the city name input field with a randomly chosen city name. The list of city names is based on this Wikipedia's [list of mythological places](https://en.wikipedia.org/wiki/List_of_mythological_places).
 
 Finally, I implemented a new GUI widget called `GuiText` which allows to display text on several lines and to choose its alignment (left, right, centered, justified). This widget was particularly useful to implement the newspaper window.
 

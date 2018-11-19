@@ -42,7 +42,7 @@ The game is available on [itch.io](https://pvigier.itch.io/simulopolis) on Windo
 
 <iframe src="https://itch.io/embed/295935" width="552" height="167" frameborder="0"></iframe>
 
-However, I have to warn you that the game is not finished. Many features are missing, there is no tutorial, the interface is ugly, ... This makes the game hardly playable. But you can try this first version to see where I start and see the future evolution.
+However, I must warn you that the game is not finished. Many features are missing, there is no tutorial, the interface is ugly, ... This makes the game hardly playable. But you can try this first version to see where I start and see the future evolution.
 
 Finally, the game is open-source. It is licensed under the GPLv3. You can find the code on my [github account](https://github.com/pvigier/Simulopolis).
 

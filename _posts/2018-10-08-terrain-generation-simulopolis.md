@@ -75,7 +75,7 @@ It's already less monotonous:
 
 # Trees
 
-The rule for generating trees is more complicated. I wanted to put trees far from water, in the hills. Thus I reuse the previous noise texture and interpret it as altitude.
+The rule for generating trees is more complicated. I wanted to put trees far from water, in the hills. Thus, I reuse the previous noise texture and interpret it as altitude.
 
 At the tiles that are not water, the noise is between `threshold` and 1. I normalize this value between 0 and 1 again by using this formula: `(noise - threshold) / (1 - threshold)`.
 

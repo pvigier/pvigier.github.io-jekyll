@@ -36,7 +36,7 @@ There are two important theorems on contractions: the [Contraction Mapping Theor
 
 <a href="#proof1" data-toggle="collapse">Show the proof</a>
 <div id="proof1" class="collapse">
-<p>First let us proof that the sequence \((u_n)\) defined by \(\left\{\begin{alignat*}{2}u_0 & = x\\ u_{n+1} & = f(u_n)\end{alignat*}\right.\) is convergent for all \(x \in E\).</p>
+<p>First, let us proof that the sequence \((u_n)\) defined by \(\left\{\begin{alignat*}{2}u_0 & = x\\ u_{n+1} & = f(u_n)\end{alignat*}\right.\) is convergent for all \(x \in E\).</p>
 
 <p>For all \(m < n \in \mathbb{N}\): </p>
 
@@ -96,7 +96,7 @@ Now, let $$x \in E$$ the image we want to compress.
 We will segment twice the image in blocks:
 
 * Firstly, we partition the image in *destination* or *range* blocks $$R_1, ..., R_L$$. These blocks are disjoint and they cover the whole image.
-* Then, we segment the image in *source* or *domain* blocks $$D_1, ..., D_K$$. These blocks are not necessary disjoint and neither they necessary cover the image.
+* Then, we segment the image in *source* or *domain* blocks $$D_1, ..., D_K$$. These blocks are not necessarily disjoint and neither they necessarily cover the image.
 
 For instance, we can segment the image like this:
 
@@ -147,15 +147,15 @@ I keep things really simple. The source blocks and the destination blocks segmen
 
 The size of the blocks are powers of two as it makes things easier. The source blocks are 8 by 8 while the destination blocks are 4 by 4.
 
-There exists more advanced schemes for segmentation. For instance, we can use a quadtree to segment more the areas with lots of details.
+There exist more advanced schemes for segmentation. For instance, we can use a quadtree to segment more the areas with lots of details.
 
 ## Transformations
 
 In this section, we will show how to construct the contractions from $$D_{k}$$ to $$R_l$$.
 
-Remember that we want to generate a mapping $$f_l$$ such that $$f(x_{D_k})$$ is near to $$x_{R_l}$$. So the more mappings we generate, the more likely we are to find a good one. 
+Remember that we want to generate a mapping $$f_l$$ such that $$f(x_{D_k})$$ is near to $$x_{R_l}$$. So, the more mappings we generate, the more likely we are to find a good one. 
 
-However the quality of the compression depends on the number of bits necessary to save $$f_l$$. So if we have a set of functions that is too large, the compression will be bad. There is a tradeoff to find.
+However, the quality of the compression depends on the number of bits necessary to save $$f_l$$. So if we have a set of functions that is too large, the compression will be bad. There is a tradeoff to find.
 
 I chose that $$f_l$$ will have the following form:
 $$
@@ -281,7 +281,7 @@ def decompress(transformations, source_size, destination_size, step, nb_iter=8):
     return iterations
 ```
 
-It works because the contraction has an unique fixed point and whatever initial image we choose, we will tend to it.
+It works because the contraction has a unique fixed point and whatever initial image we choose, we will tend to it.
 
 I think, it is time for a little example. We will try to compress and decompress this image of a monkey:
 

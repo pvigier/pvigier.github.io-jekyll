@@ -7,13 +7,13 @@ tab: blog
 comments: true
 tags: cpp
 ---
-Have you already faced problems with non trivial destructors?
+Have you already faced problems with nontrivial destructors?
 
 I face one recently which was really annoying. In this article, I want to share with you my knowledge of this problem and the solutions I use to address it.
 
 # The problem
 
-The problem is not really that the destructor is non empty but that the destructor is non trivial: there is a release of memory or some states are changed in another part of the app.
+The problem is not really that the destructor is nonempty but that the destructor is nontrivial: there is a release of memory or some states are changed in another part of the app.
 
 Let us take a very simple example with a class that does dynamic allocation to explain the problem:
 
@@ -54,9 +54,9 @@ A `Segmentation fault` will occur.
 
 Why?
 
-Because when the `main` function ends, the destructor of `A` is called to delete `a` and `anotherA`. When `a` is destroyed the memory cell to which `a`'s `mPointer` points to is freed. Then, when `anotherA` is destroyed, we try to free the memory to which `anotherA`'s `mPointer` points to. But as `anotherA` is a copy of `a`, its `mPointer` points to the same memory cell as `a`'s `mPointer`. Thus we try to free twice the same memory cell which causes the `Segmentation fault`.
+Because when the `main` function ends, the destructor of `A` is called to delete `a` and `anotherA`. When `a` is destroyed the memory cell to which `a`'s `mPointer` points to is freed. Then, when `anotherA` is destroyed, we try to free the memory to which `anotherA`'s `mPointer` points to. But as `anotherA` is a copy of `a`, its `mPointer` points to the same memory cell as `a`'s `mPointer`. Thus, we try to free twice the same memory cell which causes the `Segmentation fault`.
 
-So the problem is that because of the copy the destructor is called twice on the same attributes.
+So, the problem is that because of the copy the destructor is called twice on the same attributes.
 
 Note that the copy or move constructors are often called when we use containers. For instance, there is a copy or a move when the `std::vector`'s `push_back` is called.
 
@@ -72,7 +72,7 @@ The [rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_program
 * copy constructor
 * copy assignment operator
 
-In particular, if the destructor is non empty then we should define the copy constructor and the copy assignment operator.
+In particular, if the destructor is nonempty then we should define the copy constructor and the copy assignment operator.
 
 So for our previous class `A`, we would do the following:
 
@@ -188,11 +188,11 @@ private:
 }
 ```
 
-This time, If we try to compile the previous `main`, we would obtain a compile-time error. But if the program compile, we are ensured that no wild `Segmentation Fault` will occur during execution because of a copy or a move.
+This time, if we try to compile the previous `main`, we would obtain a compile-time error. But if the program compile, we are ensured that no wild `Segmentation Fault` will occur during execution because of a copy or a move.
 
 This solution has the benefit of being very fast to implement.
 
-# Fourth solution : set up and tear down
+# Fourth solution: set up and tear down
 
 The last solution is to manage the initialization and the finalization outside of the constructor and the destructor.
 

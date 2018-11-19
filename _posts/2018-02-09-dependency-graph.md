@@ -25,11 +25,11 @@ However, the true reason why I created this tool is not because I like to see be
 
 # Circular dependencies
 
-Fistly, let us be clear about what is a circular dependencies.
+Fistly, let us be clear about what is a circular dependency.
 
-Suppose that you have two classes A and B. If A uses B and conversely then there is a circular dependency. However, the circular dependency maybe more subtle. For instance, it may be A that uses B that uses C that uses A.
+Suppose that you have two classes A and B. If A uses B and conversely then there is a circular dependency. However, the circular dependency maybe subtler. For instance, it may be A that uses B that uses C that uses A.
 
-In C++, if a file "A.h" includes "B.h" then "B.h" can not include "A.h". The only way for B to use A is to forward declare A, use pointers or references on A in the header and finally include "A.h" in "B.cpp".
+In C++, if a file "A.h" includes "B.h" then "B.h" cannot include "A.h". The only way for B to use A is to forward declare A, use pointers or references on A in the header and finally include "A.h" in "B.cpp".
 
 For example, these three files should compile successfully.
 

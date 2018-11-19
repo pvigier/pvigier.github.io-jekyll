@@ -12,7 +12,7 @@ Hi!
 
 Today I will tackle a problem I faced when I wanted to distribute the alpha version of Simulopolis two weeks ago: distributing a C++ binary on different Linux distributions.
 
-So two weeks ago, I was happy, I had a version of Simulopolis which ran smoothly on my laptop. And I thought it was time to share it with people to have some feedback. Very naively, I took the binary and the assets, put them on a new folder and uploaded the whole thing on itch.io.
+So, two weeks ago, I was happy as I had a version of Simulopolis which ran smoothly on my laptop. And I thought it was time to share it with people to have some feedback. Very naively, I took the binary and the assets, put them on a new folder and uploaded the whole thing on itch.io.
 
 Then, I sent a message to my big brother telling him that he can try my game. He downloaded the game and when he tried to run the game, he obtained this error message:
 
@@ -56,7 +56,7 @@ It reads the information written in the binary (see [ELF](https://en.wikipedia.o
 0x000000000000001d (RUNPATH)            Library runpath: [lib]
 ```
 
-Now you must add your dependencies in the `lib/` folder. But how to know which files it is neccessary to put there? Again, using the `readelf -d` command we can read the shared libraries that are needed by the binary. For Simulopolis, it is:
+Now you must add your dependencies in the `lib/` folder. But how to know which files it is necessary to put there? Again, using the `readelf -d` command we can read the shared libraries that are needed by the binary. For Simulopolis, it is:
 
 ```
 0x0000000000000001 (NEEDED)             Shared library: [libsfml-audio.so.2.5]

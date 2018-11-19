@@ -29,7 +29,7 @@ You can read the full specification on the database's page. But it is not necess
 
 ## Preprocessings
 
-Firstly, before training our computational graphs, we should preprocess the data. In general a good thing to do is to center the data. To be clear, if we have $$x^{(1)}, ..., x^{(N)} \in \mathbb{R}^n$$ as data, the centered vectors are defined by:
+Firstly, before training our computational graphs, we should preprocess the data. In general, a good thing to do is to center the data. To be clear, if we have $$x^{(1)}, ..., x^{(N)} \in \mathbb{R}^n$$ as data, the centered vectors are defined by:
 
 $$
 x^{(i)}_{c_j} = x^{(i)}_j - \mu_j
@@ -47,7 +47,7 @@ $$
 
 We left multiply because we have adopted a row convention.
 
-Finally the last common preprocessing is to equalize the covariance. For doing this, we divide each dimension by its standard deviation:
+Finally, the last common preprocessing is to equalize the covariance. For doing this, we divide each dimension by its standard deviation:
 
 $$
 \tilde{x}^{(i)}_j = \frac{x^{(i)}_{d_j}}{\sigma_j}
@@ -63,7 +63,7 @@ On the image below, you can see the effects of these three preprocessings. Notic
 
 You might ask why it is useful to preprocess the data before training. I think there are at least two reasons. 
 
-The first one is as there is no dominant or privileged dimension in the data, it can speed up the training. I think it is not totally obvious to see how the shape of the dataset can modify the shape of the cost function and help the gradient descent algorithm. So I made a little simulation. I created a very simple dataset where the inputs have only one dimension with a mean of 2 and a standard deviation of 3. The outputs are given by $$f : x \mapsto 3x + 1$$. Then I chose a very simple model, the linear regression, with only two parameters so that we can easily visualize the cost function. Finally, I chose the mean squared error as cost function. 
+The first one is as there is no dominant or privileged dimension in the data, it can speed up the training. I think it is not totally obvious to see how the shape of the dataset can modify the shape of the cost function and help the gradient descent algorithm. So, I made a little simulation. I created a very simple dataset where the inputs have only one dimension with a mean of 2 and a standard deviation of 3. The outputs are given by $$f : x \mapsto 3x + 1$$. Then I chose a very simple model, the linear regression, with only two parameters so that we can easily visualize the cost function. Finally, I chose the mean squared error as cost function. 
 
 ![Effect of preprocessings on the cost function](/media/img/part2/cost_function.gif){: .center-image .modal-image }
 
@@ -114,7 +114,7 @@ $$
 
 (with the convention that the $$0^{th}$$ element is the first one)
 
-For instance $$3$$ will be mapped to $$(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)$$ and $$9$$ to $$(0, 0, 0, 0, 0, 0, 0, 0, 0, 1)$$.
+For instance, $$3$$ will be mapped to $$(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)$$ and $$9$$ to $$(0, 0, 0, 0, 0, 0, 0, 0, 0, 1)$$.
 
 That's all for the dataset and preprocessings. We are now ready to train some neural networks!
 
@@ -164,21 +164,21 @@ def train_and_monitor(monitor=True):
                 accuracies_test.append(accuracy(graph, X_test, Y_test))
 {% endhighlight %}
 
-There is a parameter `monitor` which allows to enable monitoring. If it is activated, the accuracy on the training and the test set will be computed periodically. Then at the end of the training, the learning curves will be shown. It is very practical to analyze the dynamic of training or to check if overfitting occured.
+There is a parameter `monitor` which allows to enable monitoring. If it is activated, the accuracy on the training and the test set will be computed periodically. Then at the end of the training, the learning curves will be shown. It is very practical to analyze the dynamic of training or to check if overfitting occurred.
 
-All that remains to do is calling the function! With this architecture, you should obtain about 91.5% of accuracy with only one pass over the dataset and reach more than 92% with more passes. One pass take a little less than 3s on my computuer. I find the performance pretty decent!
+All that remains to do is calling the function! With this architecture, you should obtain about 91.5% of accuracy with only one pass over the dataset and reach more than 92% with more passes. One pass takes a little less than 3s on my computer. I find the performance pretty decent!
 
-To modify the architecture, you just have to change the value of the variable `layer`. For instance, to use a 3 layer neural network whose layers have respectively a size of 128, 64 and 10, you just have to replace `layers = [10]` by `layers = [128, 64, 10]`. After 10 passes, these architectures achieve 97.8% of accuracy. It is an incredible result for our little library!
+To modify the architecture, you just have to change the value of the variable `layer`. For instance, to use a 3 layers neural network whose layers have respectively a size of 128, 64 and 10, you just have to replace `layers = [10]` by `layers = [128, 64, 10]`. After 10 passes, these architectures achieve 97.8% of accuracy. It is an incredible result for our little library!
 
 # Interpretation
 
-Our networks achieve great results but can we go further and try to understand a bit how they work? We will explore two ways of understanding them. Firstly, we are going to try to understand the role of the weights and we will conjecture that neural networks combine elementary features to create complex ones and finally take a decision. Then, we will see that indeed, neural networks create features that are discriminating and allows to take a decision.
+Our networks achieve great results, but can we go further and try to understand a bit how they work? We will explore two ways of understanding them. Firstly, we are going to try to understand the role of the weights and we will conjecture that neural networks combine elementary features to create complex ones and finally take a decision. Then, we will see that indeed, neural networks create features that are discriminating and allows to take a decision.
 
 ## Weights
 
-The first layer of neurons directly takes the intensities of pixels as inputs. Consequently it is possible to visualize the weights and to interpret them.
+The first layer of neurons directly takes the intensities of pixels as inputs. Consequently, it is possible to visualize the weights and to interpret them.
 
-If $$W$$ is the weights matrice of the first layer which contains $$m$$ neurones then the $$j^{th}$$ column corresponds to the $$j^{th}$$ neuron and the coefficient $$w_{ij}$$ to the weight of neuron $$j$$ associated to pixel $$i$$. Thus, it is possible to reshape the $$j^{th}$$ column into an image and see the importance of each pixel for each neurone. The image below shows clearly how to interpret the weights matrice:
+If $$W$$ is the weights matrix of the first layer which contains $$m$$ neurons then the $$j^{th}$$ column corresponds to the $$j^{th}$$ neuron and the coefficient $$w_{ij}$$ to the weight of neuron $$j$$ associated to pixel $$i$$. Thus, it is possible to reshape the $$j^{th}$$ column into an image and see the importance of each pixel for each neuron. The image below shows clearly how to interpret the weights matrix:
 
 ![Interpretation of the weights matrix of the first layer](/media/img/part2/weights_visualization.svg){: .center-image .modal-image }
 
@@ -196,11 +196,11 @@ Let's see the weights of the first layer of a multilayer network [64, 32, 16, 10
 
 ![Weights of the first layer for a multilayer network](/media/img/part2/weights_64_32_16_10.png){: .center-image .modal-image }
 
-It is way more difficult to see digits in the weights. However we can see small areas which are really bright of dark. These small areas correspond to small shapes which are discriminating. 
+It is way more difficult to see digits in the weights. However, we can see small areas which are really bright of dark. These small areas correspond to small shapes which are discriminating. 
 
-For example on the image of the 5th row and 7th column we can see a bright area which is looking for the presence of black pixels there. This neuron will output a positive value for digits where these pixels are black. This is the case for 8 and 6. On the contrary, It will output negative values for a 3 or a 9. Consequently, it allows to discriminate the digits with a closed loop at the bottom and those which have not got one.
+For example, on the image of the 5th row and 7th column we can see a bright area which is looking for the presence of black pixels there. This neuron will output a positive value for digits where these pixels are black. This is the case for 8 and 6. On the contrary, It will output negative values for a 3 or a 9. Consequently, it allows to discriminate the digits with a closed loop at the bottom and those which have not got one.
 
-The next layers will then combine these *basic features* to create more complex ones. And finally the last layer will take these *deep features* created by the first layers as input to take the final decision.
+The next layers will then combine these *basic features* to create more complex ones. And finally, the last layer will take these *deep features* created by the first layers as input to take the final decision.
 
 ## Deep features
 
@@ -248,7 +248,7 @@ For a multiclass linear classifier, the input space is divided in cells which ar
 
 If you want to formally prove these results, you can look at the exercises at the end of this part.
 
-What we have seen is that if we want a linear classifier to classify correctly our inputs, it should be possible to separate the different classes with hyperplanes. We often say that the classes should be *linearly separable*
+What we have seen is that if we want a linear classifier to correctly classify our inputs, it should be possible to separate the different classes with hyperplanes. We often say that the classes should be *linearly separable*
 
 Generally, the classes are not linearly separable so the accuracy of linear classifiers is not great. That's a reason why we use neural networks to create non-linear functions which are able to model non-linear frontiers.
 
@@ -298,7 +298,7 @@ And here are two different results for the disk problem:
 ![Deep features for the disk](/media/img/part2/disk_deep_features1.png){: .center-image .modal-image }
 ![Deep features for the disk](/media/img/part2/disk_deep_features2.png){: .center-image .modal-image }
 
-These are great figures! In both case, the deep features make the dataset linearly separable.
+These are great figures! In both cases, the deep features make the dataset linearly separable.
 
 On these simple problems, neural networks successfully transform the inputs to deep features where classes are linearly separable.
 
@@ -308,9 +308,9 @@ Let's do the same experiment on MNIST. I use the network [128, 64, 10] which giv
 
 ![Deep features for MNIST in 2D](/media/img/part2/mnist_deep_features.png){: .center-image .modal-image }
 
-The points of a same color are clearly gathered on a same region of the space but it is clearly not linearly separable.
+The points of a same color are clearly gathered on a same region of the space, but it is clearly not linearly separable.
 
-The first explanation is that the network does not obtain an accuracy of 100% but only 97.8% so the deep features should only be almost linearly separable. However this does not completely explain this messy result.
+The first explanation is that the network does not obtain an accuracy of 100% but only 97.8% so the deep features should only be almost linearly separable. However, this does not completely explain this messy result.
 
 The other explanation is that the deep features are almost linearly separable in their space which has here 64 dimensions. And when we project the deep features in 2D we totally loose the linear separability.
 

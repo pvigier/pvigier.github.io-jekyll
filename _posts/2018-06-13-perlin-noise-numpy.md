@@ -8,7 +8,7 @@ comments: true
 tags: pcg python
 ---
 
-Hi everyone, I have written an implementation of Perlin noise with numpy that is pretty fast and I want to share it with you. The code is available [here](https://github.com/pvigier/perlin-numpy).
+Hi everyone, I have written an implementation of Perlin noise with numpy that is pretty fast, and I want to share it with you. The code is available [here](https://github.com/pvigier/perlin-numpy).
 
 # Perlin noise
 
@@ -73,6 +73,6 @@ An example of what we can obtain:
 
 ![Fractal noise](/media/img/perlin2d/fractal2d.png){: .center-image .modal-image }
 
-The fractal noise is not always between -1 and 1 but between -2 and 2 if you keep the persistance equals to 0.5.
+The fractal noise is not always between -1 and 1 but between -2 and 2 if you keep the persistence equals to 0.5.
 
 I will show you in future articles how I used Perlin noise and fractal noise in my projects.

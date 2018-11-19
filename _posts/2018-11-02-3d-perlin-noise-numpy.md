@@ -18,7 +18,7 @@ I move the old code which generates 2D Perlin noise in the file `perlin2d.py` an
 
 # Code
 
-The only difficulty to generalize the 2D code to 3D is the increased number of cases in each steps. Besides, we need to be careful with indices:
+The only difficulty to generalize the 2D code to 3D is the increased number of cases in each step. Besides, we need to be careful with indices:
 
 ```python
 def generate_perlin_noise_3d(shape, res):
@@ -62,7 +62,7 @@ def generate_perlin_noise_3d(shape, res):
     return ((1-t[:,:,:,2])*n0 + t[:,:,:,2]*n1)
 ```
 
-The adaptation of the code to generate 3D fractal is more direct and simple:
+The adaptation of the code to generate 3D fractal is more direct and simpler:
 
 ```python
 def generate_fractal_noise_3d(shape, res, octaves=1, persistence=0.5):

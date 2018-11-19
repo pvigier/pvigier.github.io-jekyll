@@ -12,7 +12,7 @@ Welcome in this big tutorial on neural networks!
 
 Our goal is to write our own deep learning framework like TensorFlow or Torch. We are going to learn in-depth how neural networks work, all the mechanics behind them.
 
-We will get our hands dirty and code everything! In this tutorial, we will use Python3 and scipy but I hope that the code and the ideas are clear enough so that you can adapt the code to your favourite language. 
+We will get our hands dirty and code everything! In this tutorial, we will use Python3 and scipy but I hope that the code and the ideas are clear enough so that you can adapt the code to your favorite language. 
 
 First, I show you the plan. In this part, we are going to quickly introduce neural networks and then, we will introduce computational graphs in order to model them. In the end of this part, we are going to use our implementation to learn some non-linear functions.
 
@@ -22,7 +22,7 @@ Then, we will tackle recurrent neural networks and show how to model them with o
 
 In part 4, we will go further with recurrent neural networks and introduce the well-known LSTM cell. We will briefly compare it with fully-connected recurrent neural networks.
 
-To approach part 6, some more efficient optimization algorithms are necessary. Consequently we will discuss them in part 5.
+To approach part 6, some more efficient optimization algorithms are necessary. Consequently, we will discuss them in part 5.
 
 Have you ever read [this fabulous article](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) by Andrej Karpathy? Yes? Cool, because, we are going to reproduce his results with our own library in part 6. Amazing, isn’t it?
 
@@ -63,7 +63,7 @@ $$
 J(f, D) = \sum_{(x, y) \in D}{||y - f(x)||_2^2}
 $$
 
-If you want to know more about cost functions, how to derive them from statistics, regularization, etc ... You are welcome to read the appendix on cost functions.
+If you want to know more about cost functions, how to derive them from statistics, regularization, etc. You are welcome to read the appendix on cost functions.
 
 Now that we have a cost function, our goal is to find a function $$f$$ such that $$J(f, D)$$ is small.
 
@@ -77,7 +77,7 @@ Such a problem is called an *optimization problem* and there exist good tools to
 
 ## Gradient descent
 
-I am going to present quickly an algorithm to find a good $$\theta$$. The algorithm is called *gradient descent*. It consists of choosing randomly an initial parameter $$\theta_0$$ and at each step of the algorithm we will optimize locally to improve the solution. The idea is to make small steps to diminish the cost. We have to decide in which direction we make these steps.
+I am going to quickly present an algorithm to find a good $$\theta$$. The algorithm is called *gradient descent*. It consists of choosing randomly an initial parameter $$\theta_0$$ and at each step of the algorithm we will optimize locally to improve the solution. The idea is to make small steps to diminish the cost. We have to decide in which direction we make these steps.
 
 Thanks to [Taylor's theorem](https://en.wikipedia.org/wiki/Taylor%27s_theorem), we know that around a point $$x_0$$, a differentiable function $$f$$ can be approximated by:
 
@@ -85,13 +85,13 @@ $$
 f(x) \approx f(x_0) + \frac{\partial f}{\partial x}(x_0)^T(x - x_0)
 $$
 
-Maybe your are more familiar with the 1D case which says that around a point a differentiable function can be approximated by its tangent:
+Maybe you are more familiar with the 1D case which says that around a point a differentiable function can be approximated by its tangent:
 
 $$
 f(x) \approx f(x_0) + f'(x_0)(x - x_0)
 $$
 
-Let's visualize what this formula means and how it can be useful to find a good direction. The generalization of the tangent, which is a line, in a vector space is an hyperplane. In a 2D space it corresponds to a plane.
+Let's visualize what this formula means and how it can be useful to find a good direction. The generalization of the tangent, which is a line, in a vector space is a hyperplane. In a 2D space it corresponds to a plane.
 
 ![Taylor's theorem visualization](/media/img/part1/tangent_space.png){: .center-image .modal-image }
 
@@ -143,7 +143,7 @@ The following computational graph corresponds to the neural network depicted abo
 
 ![Computational graph for the neural networks](/media/img/part1/graph_3_5_3.svg){: .center-image .modal-image }
 
-We can see several things from these examples. Firstly there are differents nodes:
+We can see several things from these examples. Firstly there are different nodes:
 * Input nodes (in rose): they represent the inputs of the function. In our examples, they are the $$x$$ nodes.
 * Operation nodes (in blue): they are nodes that represent operations. They take inputs, make a computation and give ouputs. In our examples, the $$\sigma$$, $$\tanh$$, $$\times$$, $$+$$ nodes are operation nodes.
 * Parameter nodes (in green): they represent the parameters of the function. In our example, they are $$a$$, $$b$$, $$W_1$$ and $$W_2$$.
@@ -183,7 +183,7 @@ The goal of the backpropagation is to compute the derivative of the cost with re
 
 ![Backpropagation in a node](/media/img/part1/node_backpropagation.svg){: .center-image .modal-image }
 
-Precisely, if a node have $$m$$ inputs and $$n$$ outputs, we have:
+Precisely, if a node has $$m$$ inputs and $$n$$ outputs, we have:
 
 $$
 \forall i \in \{1, ..., m\}, \frac{\partial J}{\partial x_i} = \sum_{j=1}^{n}{\frac{\partial y_j}{\partial x_i}\frac{\partial J}{\partial y_j}}
@@ -199,7 +199,7 @@ An illustration with the neural networks shown before:
 
 ## Base class
 
-Most of the code is contained in the base class. We are going to divide the work in two stages. First we are going to see the methods that are useful to create the computational graph. Then we are going to describe the methods used during the propagation and the backpropagation.
+Most of the code is contained in the base class. We are going to divide the work in two stages. First, we are going to see the methods that are useful to create the computational graph. Then we are going to describe the methods used during the propagation and the backpropagation.
 
 Let's see the first part of the code.
 
@@ -232,11 +232,11 @@ class Node:
         self.children[i_output].append((child, i_child_input))
 {% endhighlight %}
 
-A node has a list of its parents, the list have the following form `[(node1, i_output1), (node2, i_output2), ... ]`. For each parent node, we precise the indice of its output to which the current node is connected. The first couple corresponds to the first input of the node $$x_1$$, the second to $$x_2$$, etc.
+A node has a list of its parents, the list have the following form `[(node1, i_output1), (node2, i_output2), ... ]`. For each parent node, we precise the index of its output to which the current node is connected. The first couple corresponds to the first input of the node $$x_1$$, the second to $$x_2$$, etc.
 
-A node has a 2D list of its children too. The first dimension is the output indice. And for each output indice, there is a list containing the nodes connected to this output. The list has the following form `[(node1, i_input1), (node2, i_input2), ...]`. For each child node, we precise the indice of its input that is connected to this output.
+A node has a 2D list of its children too. The first dimension is the output index. And for each output index, there is a list containing the nodes connected to this output. The list has the following form `[(node1, i_input1), (node2, i_input2), ...]`. For each child node, we precise the index of its input that is connected to this output.
 
-OK, it is a bit hard to follow. Hopefully a diagram will make it crystal clear!
+OK, it is a bit hard to follow. Hopefully, a diagram will make it crystal clear!
 
 ![Node links](/media/img/part1/node_links.svg){: .center-image .modal-image }
 
@@ -331,7 +331,7 @@ class ParameterNode(Node):
         return [self.dJdy[0]]
 {% endhighlight %}
 
-This class is very simple. The only issue is that the constructor expect an initial value for the weights. There are several thumb rules regarding the initialization of the weights. The general idea is to sample from a zero mean distribution with a small standard deviation. You can see more details about initialization in [Efficient BackProp](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf).
+This class is very simple. The only issue is that the constructor expects an initial value for the weights. There are several thumb rules regarding the initialization of the weights. The general idea is to sample from a zero mean distribution with a small standard deviation. You can see more details about initialization in [Efficient BackProp](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf).
 
 You will see several examples of initialization later in the tutorial.
 
@@ -354,7 +354,7 @@ class SigmoidNode(Node):
 
 To have decent performances in Python, it is very important to use numpy at most and to forbid for-loops. Consequently, it is important to express the formulas in term of matrix operations.
 
-If you want to see all the formulas and how to derive the backpropagation formulas you can go to the appendix on matrix derivations.
+If you want to see all the formulas and how to derive the backpropagation formulas, you can go to the appendix on matrix derivations.
 
 ## Gradient nodes
 
@@ -525,9 +525,9 @@ def create_fully_connected_network(layers):
     return Graph(nodes, [input_node], [cur_input_node], [expected_output_node], cost_node, parameter_nodes)
 {% endhighlight %}
 
-The function is a bit long but simple, we simply create nodes and connect them. First, we create an input node. Then, for each layer, we create a bias node, a parameter node, a multiplication node and an activation node. These nodes model the operation $$x \mapsto f((1 \mid x)W)$$ where $$(1 \mid x)$$ denotes the matrice $$x$$ to which we have added a column of 1 at the beginning, $$W$$ the weights of the parameter node and $$f$$ the activation function.
+The function is a bit long but simple, we simply create nodes and connect them. First, we create an input node. Then, for each layer, we create a bias node, a parameter node, a multiplication node and an activation node. These nodes model the operation $$x \mapsto f((1 \mid x)W)$$ where $$(1 \mid x)$$ denotes the matrix $$x$$ to which we have added a column of 1 at the beginning, $$W$$ the weights of the parameter node and $$f$$ the activation function.
 
-We use two different activation functions: $$\tanh$$ and $$\sigma$$. $$\tanh$$ is used in the hidden layers, it is a non linear function which maps $$\mathbb{R}$$ to $$]-1, 1[$$. It is very important that activation functions are non linear otherwise the multilayer neural network is equivalent to a one layer neural network.
+We use two different activation functions: $$\tanh$$ and $$\sigma$$. $$\tanh$$ is used in the hidden layers, it is a nonlinear function which maps $$\mathbb{R}$$ to $$]-1, 1[$$. It is very important that activation functions are nonlinear otherwise the multilayer neural network is equivalent to a one layer neural network.
 
 We use the sigmoid function as activation function for the output layer because it maps $$\mathbb{R}$$ to $$]0,1[$$ and consequently the output of the network can be interpreted as a probability, usually $$p(y=1 \mid x)$$.
 
@@ -535,7 +535,7 @@ For the cost function, we choose the binary cross entropy. If you want to know m
 
 ## XOR
 
-Learning XOR is an interesting problem because XOR is surely the simplest boolean function that can not be learnt by a linear classifier. Crafted features or a deep neural network are necessary to solve this non linear problem.
+Learning XOR is an interesting problem because XOR is surely the simplest boolean function that cannot be learnt by a linear classifier. Crafted features or a deep neural network are necessary to solve this nonlinear problem.
 
 Let's use this piece of code to train the network.
 {% highlight python %}
@@ -558,7 +558,7 @@ for i_pass in range(nb_passes):
     print(cost)
 {% endhighlight %}
 
-Finally, you can use the `visualize` to compute the output of the graph for every $$x \in [-0.5, 1.5]^2$$ and see the frontier. You can see that the network models a non linear function.
+Finally, you can use the `visualize` to compute the output of the graph for every $$x \in [-0.5, 1.5]^2$$ and see the frontier. You can see that the network models a nonlinear function.
 
 Below, you can see such generated images for two different activation functions for the hidden layers. We can note that $$\tanh$$ seems to create smooth frontiers while $$ReLU$$ creates sharper ones. 
 
@@ -570,7 +570,7 @@ With tanh             |  With ReLU
 
 Just for fun let's learn another function and generate beautiful images. The function we want to learn is such that $$f(x) = 1$$ if $$x$$ is inside the disk of radius 0.5 and centered on (0.5, 0.5) and $$f(x) = 0$$ otherwise.
 
-The function is clearly non linear and consequently, it is a perfect problem for a neural network.
+The function is clearly nonlinear and consequently, it is a perfect problem for a neural network.
 
 To test the code for the disk function, you just have to comment/uncomment few lines in train.py. Below, there are some outputs.
 
