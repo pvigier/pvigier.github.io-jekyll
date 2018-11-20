@@ -270,9 +270,10 @@ This article was pretty long. And I am sure that many things are still unclear. 
 
 To finish this article and to be sure we have not done all of this for nothing I have measured the time it takes to compute the Voronoi diagram for different numbers of sites on my (cheap) laptop:
 
-* $$n = 1000$$: 3ms
-* $$n = 10000$$: 50ms
-* $$n = 100000$$: 1000ms
+* $$n = 1000$$: 2ms
+* $$n = 10000$$: 33ms
+* $$n = 100000$$: 450ms
+* $$n = 1000000$$: 6600ms
 
 I have nothing to compare these durations with, but it seems blazing fast!
 
