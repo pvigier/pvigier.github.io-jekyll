@@ -16,7 +16,7 @@
             {% assign date = post.previous.date | date: "%B %Y"%}
             {% assign counter = counter | plus: 1 %}
             {% if currentdate != date %}
-			<li id="y{{currentdate}}"><a href="{{ post.date | date: "/%Y/%m" }}">{{ currentdate }} ({{ counter }})</a></li>
+			<li id="y{{currentdate}}"><a href="{{ post.date | date: '/%Y/%m' }}">{{ currentdate }} ({{ counter }})</a></li>
 				{% assign counter = 0 %}
             {% endif %}
         {% endfor %}
