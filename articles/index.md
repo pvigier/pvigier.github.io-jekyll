@@ -36,8 +36,12 @@ tab: articles
 * [Simulopolis alpha is released]({{ site.baseurl }}{% post_url 2018-10-06-simulopolis-alpha-1 %})
 * [Terrain generation in Simulopolis]({{ site.baseurl }}{% post_url 2018-10-08-terrain-generation-simulopolis %})
 * [Simulopolis alpha 3 is released]({{ site.baseurl }}{% post_url 2018-11-03-simulopolis-alpha-3 %})
+* [Simulopolis is dead]({{ site.baseurl }}{% post_url 2019-05-05-simulopolis-is-dead %})
 
 ## Geometry
 
-
 * [Fortune's algorithm, the details]({{ site.baseurl }}{% post_url 2018-11-18-fortune-algorithm-details %})
+
+## Git
+
+* [Commit graph drawing algorithms]({{ site.baseurl }}{% post_url 2019-05-06-commit-graph-drawing-algorithms %})
