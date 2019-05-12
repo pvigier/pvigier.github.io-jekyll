@@ -4,7 +4,6 @@ title: "Simulopolis alpha is released"
 date: 2018-10-06
 author: pierre
 tab: blog
-comments: true
 tags: simulopolis
 ---
 

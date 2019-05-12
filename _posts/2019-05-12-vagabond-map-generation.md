@@ -4,7 +4,6 @@ title: "Vagabond &ndash; Map generation"
 date: 2019-05-12
 author: pierre
 tab: blog
-comments: true
 tags: vagabond pcg
 ---
 

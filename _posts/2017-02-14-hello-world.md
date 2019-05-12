@@ -4,7 +4,6 @@ title: "Hello World!"
 date: 2017-02-14
 author: pierre
 tab: blog
-comments: true
 ---
 
 Welcome on my new website!

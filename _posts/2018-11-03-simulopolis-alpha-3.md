@@ -4,7 +4,6 @@ title: "Simulopolis alpha 3 is released"
 date: 2018-11-03
 author: pierre
 tab: blog
-comments: true
 tags: simulopolis
 ---
 

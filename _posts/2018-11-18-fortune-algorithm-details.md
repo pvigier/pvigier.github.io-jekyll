@@ -4,7 +4,6 @@ title: "Fortune's algorithm, the details"
 date: 2018-11-18
 author: pierre
 tab: blog
-comments: true
 tags: cpp geometry
 ---
 

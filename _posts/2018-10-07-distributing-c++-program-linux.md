@@ -4,7 +4,6 @@ title: "Distributing a C++ program on Linux"
 date: 2018-10-07
 author: pierre
 tab: blog
-comments: true
 tags: cpp linux simulopolis
 ---
 

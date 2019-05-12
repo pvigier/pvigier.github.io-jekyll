@@ -4,7 +4,6 @@ title: "Commit graph drawing algorithms"
 date: 2019-05-06
 author: pierre
 tab: blog
-comments: true
 tags: graph git
 ---
 

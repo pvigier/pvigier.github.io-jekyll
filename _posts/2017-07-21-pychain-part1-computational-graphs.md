@@ -4,7 +4,6 @@ title: "Pychain Part 1 - Computational graphs"
 date: 2017-07-21
 author: pierre
 tab: blog
-comments: true
 tags: math python
 ---
 

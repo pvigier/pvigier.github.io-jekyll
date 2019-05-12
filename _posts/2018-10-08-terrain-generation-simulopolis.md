@@ -4,7 +4,6 @@ title: "Terrain generation in Simulopolis"
 date: 2018-10-08
 author: pierre
 tab: blog
-comments: true
 tags: pcg simulopolis
 ---
 

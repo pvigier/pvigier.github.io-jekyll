@@ -4,7 +4,6 @@ title: "Fractal Image Compression"
 date: 2018-05-14
 author: pierre
 tab: blog
-comments: true
 tags: math python
 ---
 

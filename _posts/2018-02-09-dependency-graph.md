@@ -4,7 +4,6 @@ title: "Circular dependencies in C++"
 date: 2018-02-09
 author: pierre
 tab: blog
-comments: true
 tags: cpp python
 ---
 Hi guys, it has been a while since the last post.

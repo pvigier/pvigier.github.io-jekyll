@@ -4,7 +4,6 @@ title: "Perlin noise with numpy"
 date: 2018-06-13
 author: pierre
 tab: blog
-comments: true
 tags: pcg python
 ---
 

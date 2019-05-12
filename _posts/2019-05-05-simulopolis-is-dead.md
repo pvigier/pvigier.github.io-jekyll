@@ -4,7 +4,6 @@ title: "Simulopolis is dead"
 date: 2019-05-05
 author: pierre
 tab: blog
-comments: true
 tags: simulopolis
 ---
 
