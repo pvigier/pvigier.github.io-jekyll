@@ -10,7 +10,7 @@ tags: graph git
 
 ![A commit graph drawn by gitamine](/media/img/commit-graph/many_merges/gitamine.png){: width="300px" .center-image .modal-image }
 
-*This article is one of the chapter of my master thesis entitled "Design and implementation of a graphical user interface for git". It describes the algorithm I designed to draw the commit graph in my own prototype git client called [gitamine](https://github.com/pvigier/gitamine). I have adapted the content so that it fits better with this blog.*
+*This article is one chapter of my master thesis entitled "Design and implementation of a graphical user interface for git". It describes the algorithm I designed to draw the commit graph in my own prototype git client called [gitamine](https://github.com/pvigier/gitamine). I have adapted the content so that it fits better with this blog.*
 
 Drawing graphs is a very complex topic in general but here we want to draw a specific type of graphs: commit graphs. Commit graphs have several several pieces of information that simplify the problem. The most important ones are that the graph is directed and acyclic and that the commits have timestamps.
 
