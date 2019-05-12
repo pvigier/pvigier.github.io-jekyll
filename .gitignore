@@ -6,3 +6,6 @@ media/img/part3
 
 # Gem
 *.lock
+
+# Visual Studio Code
+.vscode/
