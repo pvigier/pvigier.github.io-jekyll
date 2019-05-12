@@ -45,3 +45,7 @@ tab: articles
 ## Git
 
 * [Commit graph drawing algorithms]({{ site.baseurl }}{% post_url 2019-05-06-commit-graph-drawing-algorithms %})
+
+# Vagabond
+
+* [Vagabond &ndash; Map generation]({{ site.baseurl }}{% post_url 2019-05-12-vagabond-map-generation %})
