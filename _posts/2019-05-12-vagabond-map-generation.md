@@ -122,7 +122,7 @@ I assign each of them using a [Whittaker diagram](http://w3.marietta.edu/~biol/b
 
 # Useful links
 
-Before to finish this article, I must cite some other map generators that inspired me:
+Before finishing this article, I must cite some other map generators that inspired me:
 
 * [Fantasy Map Generator](https://azgaar.wordpress.com) by Azgaar
 * [Generating fantasy maps](http://mewo2.com/notes/terrain/) by Martin O'Leary
