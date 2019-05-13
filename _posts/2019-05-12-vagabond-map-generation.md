@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &ndash; Map generation"
+title: "Vagabond &#8211; Map generation"
 date: 2019-05-12
 author: pierre
 tab: blog

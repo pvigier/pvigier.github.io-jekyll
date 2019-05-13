@@ -48,4 +48,4 @@ tab: articles
 
 # Vagabond
 
-* [Vagabond &ndash; Map generation]({{ site.baseurl }}{% post_url 2019-05-12-vagabond-map-generation %})
+* [Vagabond &#8211; Map generation]({{ site.baseurl }}{% post_url 2019-05-12-vagabond-map-generation %})
