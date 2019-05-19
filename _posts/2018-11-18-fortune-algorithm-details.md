@@ -9,7 +9,7 @@ tags: cpp geometry
 
 The last few weeks, I worked on an implementation of the [Fortune's algorithm](https://en.wikipedia.org/wiki/Fortune%27s_algorithm) in C++. This algorithm takes a set of 2D points and construct the [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) of these points. If you wonder what is a Voronoi diagram, it looks like this:
 
-![Voronoi diagram](/media/img/fortune/voronoi_intersected.png)
+![Voronoi diagram](/media/img/fortune/voronoi_intersected.png){: width="400" .center-image .modal-image }
 
 For each input point, which is called a site, we want to find the set of points which are nearer to this site than to any other site. These sets of points form cells as you can see on the image above.
 
