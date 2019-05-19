@@ -49,3 +49,4 @@ tab: articles
 # Vagabond
 
 * [Vagabond &#8211; Map generation]({{ site.baseurl }}{% post_url 2019-05-12-vagabond-map-generation %})
+* [Vagabond &#8211; Borders, Rivers, Cities and Road]({{ site.baseurl }}{% post_url 2019-05-19-vagabond-borders-rivers-cities-roads %})
