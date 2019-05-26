@@ -116,7 +116,7 @@ Here are the final results for roads:
 :---:|:---:
 ![](/media/img/vagabond-borders-rivers-cities-roads/roads/Biome_5.png){: width="250" .modal-image } | ![](/media/img/vagabond-borders-rivers-cities-roads/roads/Biome_7.png){: width="250" .modal-image }
 
-I really like how the roads look. Moreover, the algorithm is robust: it always give good result. And it is easily extensible: we can take into account elevation or biomes by modifying the cost function used by A*.
+I really like how the roads look. Moreover, the algorithm is robust: it always give a good result. And it is easily extensible: we can take into account elevation or biomes by modifying the cost function used by A*.
 
 # Conclusion
 
