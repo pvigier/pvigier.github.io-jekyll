@@ -1,10 +1,12 @@
 ---
 layout: post
 title: "Vagabond &#8211; Generating tiles"
-date: 2019-05-19
+date: 2019-05-26
 author: pierre
 tab: blog
 tags: vagabond pcg
+redirect_from:
+  - /2019/05/19/vagabond-generating-tiles.html
 ---
 
 ![](/media/img/vagabond-generating-tiles/rasterization_results.gif){: width="400" .center-image .modal-image }
@@ -66,11 +68,11 @@ It is much more appealing than the straight borders!
 
 I have not progressed very quickly this week as I knew nothing about rasterization at the beginning of the week. So I had to learn and experiment a lot to obtain good results.
 
-If I have one advice to give is to use algorithms that avoids floating point numbers such as Bresenham's algorithms as they are faster and there are no rounding issues.
+If I have one piece of advice to offer: it is to use algorithms that avoid floating point numbers such as Bresenham's algorithms as they are faster and there are no rounding issues.
 
 I have already started to work on rasterizing roads and rivers but it is not finished yet. I will polish that next week and generate some vegetations to fill the biomes.
 
-See you next week for more!
+See you [next week]({{ site.baseurl }}{% post_url 2019-06-02-vagabond-rasterizing-roads-rivers %}) for more!
 
 # Useful links
 

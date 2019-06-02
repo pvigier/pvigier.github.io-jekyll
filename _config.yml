@@ -3,7 +3,7 @@ markdown: kramdown
 excerpt_separator: <!--more-->
 future: true
 url: "https://pvigier.github.io"
-plugins: [jekyll-paginate, jekyll-archives, jekyll-sitemap]
+plugins: [jekyll-paginate, jekyll-archives, jekyll-sitemap, jekyll-redirect-from]
 paginate: 5
 paginate_path: "/:num/"
 jekyll-archives:

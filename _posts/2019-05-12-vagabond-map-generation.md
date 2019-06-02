@@ -129,6 +129,6 @@ Before finishing this article, I must cite some other map generators that inspir
 * [Here Dragons Abound](https://heredragonsabound.blogspot.com) by Scott Turner
 * [Polygonal Map Generation for Games](http://www-cs-students.stanford.edu/~amitp/game-programming/polygon-map-generation/) by Amit Patel
 
-The next steps are to generate the rivers, the regions and placing some cities. See you next week for more!
+The next steps are to generate the rivers, the regions and placing some cities. See you [next week]({{ site.baseurl }}{% post_url 2019-05-19-vagabond-borders-rivers-cities-roads %}) for more!
 
 *If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
