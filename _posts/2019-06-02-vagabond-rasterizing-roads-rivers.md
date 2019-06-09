@@ -83,7 +83,7 @@ That's all for this week. I spent a lot of time refactoring my code to be able t
 
 The next steps are refining the object placement algorithm and adding decorations and vegetation for other biomes.
 
-See you next week for more!
+See you [next week]({{ site.baseurl }}{% post_url 2019-06-09-vagabond-forest-generation %}) for more!
 
 # Useful links
 
