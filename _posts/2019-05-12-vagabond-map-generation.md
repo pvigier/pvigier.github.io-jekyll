@@ -9,7 +9,7 @@ tags: vagabond pcg
 
 ![](/media/img/vagabond-map-generation/0/Biome.png){: width="400" .center-image .modal-image }
 
-In this first devlog about Vagabond, I am going to talk about the map generation algorithm I have started to design. Indeed, in Vagabond all the maps will be procedurally generated. 
+In this first devlog about Vagabond, I am going to talk about the map generation algorithm I have started to design. Indeed, in Vagabond all the maps will be procedurally generated.
 
 Firstly, I will list some of the constraints that will influcence the design of the map generation pipeline:
 

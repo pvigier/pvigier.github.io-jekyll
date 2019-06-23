@@ -31,7 +31,7 @@ The strength:
 
 One idea may be to have different parameters for different biomes. For instance, we could increase the frequency for borders between snow and sea to have some fjords.
 
-However, I want to keep things simple for now so I use a low frequency and low strength for all borders. Here are the results for four seeds: 
+However, I want to keep things simple for now so I use a low frequency and low strength for all borders. Here are the results for four seeds:
 
 {: .image-table }
 ![](/media/img/vagabond-borders-rivers-cities-roads/borders/Biome_0.png){: width="250" .modal-image } | ![](/media/img/vagabond-borders-rivers-cities-roads/borders/Biome_3.png){: width="250" .modal-image }
@@ -48,7 +48,7 @@ One small thing I wanted to do last week was to unite adjacent cells with the sa
 :---:|:---:
 ![](/media/img/vagabond-borders-rivers-cities-roads/regions/Biome_5.png){: width="250" .modal-image } | ![](/media/img/vagabond-borders-rivers-cities-roads/regions/Biome_7.png){: width="250" .modal-image }
 
-I don't know exactly what I will do with these regions yet. But it seems so natural to join adjacent cells that I had to do that. Maybe I will give them names so that NPC can refer to them. 
+I don't know exactly what I will do with these regions yet. But it seems so natural to join adjacent cells that I had to do that. Maybe I will give them names so that NPC can refer to them.
 
 # Rivers
 
@@ -76,7 +76,7 @@ In the animation below, you can observe how this part changes when there are mor
 
 The second part is just the size (number of edges) of the river. And I just multiply the two parts to obtain the final score. This is pretty simple but it works well.
 
-Moreover, we can also distort the river as we distorted the borders to obtain more natural rivers with meanders: 
+Moreover, we can also distort the river as we distorted the borders to obtain more natural rivers with meanders:
 
 {: .image-table }
 ![](/media/img/vagabond-borders-rivers-cities-roads/rivers/Biome_0.png){: width="250" .modal-image } | ![](/media/img/vagabond-borders-rivers-cities-roads/rivers/Biome_3.png){: width="250" .modal-image }

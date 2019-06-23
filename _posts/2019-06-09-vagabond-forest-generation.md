@@ -9,7 +9,7 @@ tags: vagabond pcg
 
 ![](/media/img/vagabond-forest-generation/cell_generation.gif){: width="400" .center-image .modal-image }
 
-This week, I continue to work on the object placement system that I started to implement [last week]({{ site.baseurl }}{% post_url 2019-06-02-vagabond-rasterizing-roads-rivers %}). I entitled this article "Forest generation" as we will place trees, but we will also place other decorations that will fill biomes such as plants, bushes, rocks, carcasses, etc.
+This week, I have continued to work on the object placement system that I started to implement [last week]({{ site.baseurl }}{% post_url 2019-06-02-vagabond-rasterizing-roads-rivers %}). I entitled this article "Forest generation" as we will place trees, but we will also place other decorations that will fill biomes such as plants, bushes, rocks, carcasses, etc.
 
 <!--more-->
 
@@ -25,7 +25,7 @@ To solve this problem, I will generate several classes of points that have diffe
 
 The common way to perform multi-class Poisson disk sampling is to reuse the algorithm for the one-class case to generate several layers of points (one layer for each class) and then to discard samples that overlapped. Usually, the layers are ordered so that higher layers have priority over lower layers. And we put the classes with larger minimal distances in the higher layers.
 
-I decided to use another method and to generate simultaneously the samples for all the classes. I have not had the time to compare both methods in term of performance and quality of the sampling yet. But if people are interested, I will write a separate article describing the algorithms in detail and analyzing the differences.
+I decided to use another method and to generate simultaneously the samples for all the classes. I have not had the time to compare both methods in term of performance and quality of the sampling yet. But if some of you are interested, I will write a separate article describing the algorithms in detail and analyzing the differences.
 
 Here is a picture with four classes that have different properties:
 
@@ -33,7 +33,7 @@ Here is a picture with four classes that have different properties:
 
 # Filling the cells
 
-Now that we have an algorithm to place objects, it is time to effectively add objects. For now, I annotate each object with two distances (one for the minimal distance with objects of the same class and the minimal distance with objects of other classes). But I may change the system where a same class can represent several objects because I have many objects that have the same properties. For instance, all the variations of the same flower have the same properties.
+Now that we have an algorithm to place objects, it is time to effectively add objects. For now, I annotated each object with two distances (one for the minimal distance with objects of the same class and the minimal distance with objects of other classes). But I may change the system where a same class can represent several objects because I have many objects that have the same properties. For instance, all the variations of the same flower have the same properties.
 
 Here is an example of a cell filled with multi-class Poisson disk sampling where I displayed the disk of each object:
 
@@ -45,7 +45,7 @@ We can check that no center of a disk is inside another disk.
 
 That's all for this week. It took me some time to design the algorithm, ingest all the objects in the editor and tweak the parameters for the generation. But I also started to code some parts of the game engine and to design other generators.
 
-Next, I think I will work on the dungeon and cave generator.
+Next, I think I will work on the [dungeon and cave generator]({{ site.baseurl }}{% post_url 2019-06-23-vagabond-dungeon-cave-generation %}).
 
 See you next week for more!
 
