@@ -89,7 +89,7 @@ One thing that I will surely implement later is a flood fill to remove unreachab
 
 This is the first leg of the long journey of building an interesting dungeon generator. I am happy with the results so far. I am especially proud of the constrained cellular automaton method to have controllable and organic caves. I also like the fact that each step of the generation is separated from the others and can be modified independently.
 
-The next step is to generate tiles from the output of this generator to have much more appealing dungeons.
+The next step is to [generate tiles]({{ site.baseurl }}{% post_url 2019-06-30-vagabond-dungeon-cave-generation-part2 %}) from the output of this generator to have much more appealing dungeons.
 
 See you next week for more!
 
