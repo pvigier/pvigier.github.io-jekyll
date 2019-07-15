@@ -111,7 +111,7 @@ Before finishing this article, I would like to share with you some ideas for imp
 
 ## Dynamic number of components and systems
 
-It is a bit cumbersome too to have to specify in advance the maximum number of components and systems as template parameters. I think it would be possible to replace the `std::array`s in `EntityManager` by `std::vector`s without a big penalty in performance.
+It is not convenient to have to specify in advance the maximum number of components and systems as template parameters. I think it would be possible to replace the `std::array`s in `EntityManager` by `std::vector`s without a big penalty in performance.
 
 However, `std::bitset` requires to know its number of bits at compile time. Currently, my idea to fix this issue is that instead of having a `std::vector<bitset<ComponentCount>>` in `EntityContainer`, we just use a `std::vector<char>` and we allocate enough bytes to represent the bit sets of all the entities. Then, we implement a lightweight class `BitsetView` that takes as input a pair of pointers for the beginning and the end of the bit set and we perform all the useful operations of `std::bitset` in this range of memory.
 
@@ -154,7 +154,7 @@ To mitigate that, we can store pointers to systems interested by a given compone
 
 My last idea induces more changes in the design of the library.
 
-Instead that it is systems that manages their sets of entities, it would be the role of the entity manager. The advantage would be that if two systems are interested in the same set of components, we do not duplicate the subset of entities that satisfy these requirements.
+Instead that it is systems that manage their sets of entities, it would be the role of the entity manager. The advantage would be that if two systems are interested in the same set of components, we do not duplicate the subset of entities that satisfy these requirements.
 
 The systems would just declare their requirements to the entity manager. Then the entity manager will maintain all the different subsets of entities. Finally, the systems would request entities with a syntax like this one:
 

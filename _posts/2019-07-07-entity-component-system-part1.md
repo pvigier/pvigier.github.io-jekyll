@@ -252,7 +252,7 @@ void remove(Entity entity)
 }
 ```
 
-The last method is `reserve`, its purpose is to reserve memory for the different containers. As you may know, memory allocation is an expansive operation, so if you roughly know how many entities there will be in your game, reserving the memory can speed up things:
+The last method is `reserve`, its purpose is to reserve memory for the different containers. As you may know, memory allocation is an expensive operation, so if you roughly know how many entities there will be in your game, reserving the memory can speed up things:
 
 ```cpp
 void reserve(std::size_t size)
@@ -532,7 +532,7 @@ void removeEntity(Entity entity)
 
 ## EntityManager
 
-All the important logic is in the other classes, the entity manager just tie all the pieces together.
+All the important logic is in the other classes, the entity manager just ties all the pieces together.
 
 Let us look at its declaration:
 
@@ -630,7 +630,7 @@ void registerComponent()
 }
 ```
 
-`createSystem` creates a new system of the given types and set its type:
+`createSystem` creates a new system of the given type and sets its type:
 
 ```cpp
 template<typename T, typename ...Args>
@@ -677,7 +677,7 @@ bool hasComponent(Entity entity) const
 }
 ```
 
-`hasComponents` uses a fold expression to create a bit set that represents the required components and then use it against the entity's bit set to assess if the entity has all the required components:
+`hasComponents` uses a fold expression to create a bit set that represents the required components and then uses it against the entity's bit set to assess if the entity has all the required components:
 
 ```cpp
 template<typename ...Ts>
@@ -820,7 +820,7 @@ According to gprof, it seems that the `std::unordered_map`s are clearly the bott
 
 ## Comparison with `std::map`
 
-I was curious to see the difference of performance between `unordered_map` and `map` so I replaced `unordered_map`s by `map`s in the code. This implementation is available [here](https://github.com/pvigier/ecs/tree/map)
+I was curious to see the difference of performance between `std::unordered_map` and `std::map` so I replaced `std::unordered_map`s by `std::map`s in the code. This implementation is available [here](https://github.com/pvigier/ecs/tree/map)
 
 Here are the results on the benchmarks:
 
