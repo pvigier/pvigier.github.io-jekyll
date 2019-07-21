@@ -49,7 +49,7 @@ I made a small window with some metrics to get started with ImGui:
 
 # Conclusion
 
-That is all for this week. I did not code a lot, I essentially design the engine. Next week, I will add more features to the graphics engine and maybe start to work on the networking part.
+That is all for this week. I did not code a lot, I essentially designed the engine. Next week, I will add more features to the graphics engine and maybe start to work on the networking part.
 
 See you next week for more!
 
