@@ -53,7 +53,7 @@ The only drawback is that I require OpenGL 3.3. But nowadays, it is really a low
 
 That is all for this week. I am happy that I can finally display the world and move inside it.
 
-Next, I will continue to work on the graphics engine and in particular on the lighting system.
+Next, I will continue to work on the graphics engine and in particular on the [lighting system]({{ site.baseurl }}{% post_url 2019-07-28-vagabond-2d-light-system %}).
 
 See you next week for more!
 
