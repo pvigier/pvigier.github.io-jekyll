@@ -36,7 +36,7 @@ For each point light that is visible on screen, I draw a square centered on the 
 
 The next step is to choose a formula to describe the color received by a point from the light.
 
-As a point light emit the same light in all the directions, the color received only depends on the distance. Hence, we can use a formula which looks like that:
+As a point light emits the same light in all the directions, the color received only depends on the distance. Hence, we can use a formula which looks like that:
 
 $$
 C(d) = attenuation(d) \times I \times C_{light}
@@ -58,7 +58,7 @@ Here is another example with a point light of same radius, intensity and color b
 
 ![](/media/img/vagabond-2d-light-system/realist.png){: width="400" .center-image .modal-image }
 
-Consequently, I looked for other formulas, that are maybe less physically realist, but that give better results.
+Consequently, I looked for other formulas, that are maybe less physically realist, but that gives better results.
 
 I start with a simple linear attenuation:
 
@@ -86,7 +86,7 @@ Finally, I advise to use a texture that supports [HDR](https://learnopengl.com/A
 
 For now, we do not take into account any obstacle for the light. We simply draw a square around the light.
 
-To be able, to take into account walls and have shadows, I use a more complex shape. I compute the the set of points that are visible for the light center, this set is called the [visibility polygon](https://en.wikipedia.org/wiki/Visibility_polygon).
+To be able, to take into account walls and have shadows, I use a more complex shape. I compute the set of points that are visible for the light center, this set is called the [visibility polygon](https://en.wikipedia.org/wiki/Visibility_polygon).
 
 There are some good resources on the web that describe algorithms to compute the visibility polygon from naive methods to more elaborate ones. Here are two articles that I found useful to gain some intuition: [here](https://www.redblobgames.com/articles/visibility/) and [there](https://ncase.me/sight-and-light/).
 
@@ -124,7 +124,7 @@ Here is another video in a cave but this time, I display all the walls in red, t
 
 That is all for this article on my light system. I may blur the lighting texture to have smoother transitions to shadows. I may also add other types of lights such as spot lights and area lights later.
 
-Next week, I will work on the physics system.
+Next week, I will work on the [physics system]({{ site.baseurl }}{% post_url 2019-08-04-quadtree-collision-detection %}).
 
 See you next week for more!
 
