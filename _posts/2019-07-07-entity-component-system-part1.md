@@ -838,4 +838,4 @@ In the [next part]({{ site.baseurl }}{% post_url 2019-07-08-entity-component-sys
 
 See you there!
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

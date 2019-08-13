@@ -122,10 +122,10 @@ Here is another video in a cave but this time, I display all the walls in red, t
 
 # Conclusion
 
-That is all for this article on my light system. I may blur the lighting texture to have smoother transitions to shadows. I may also add other types of lights such as spot lights and area lights later.
+That is all for this article on my light system. I may blur the lighting texture to have smoother transitions to shadows. I may also add other types of lights such as spotlights and area lights later.
 
 Next week, I will work on the [physics system]({{ site.baseurl }}{% post_url 2019-08-04-quadtree-collision-detection %}).
 
 See you next week for more!
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

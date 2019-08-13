@@ -23,7 +23,7 @@ The process of taking shapes and discretizing them in a 2D grid is called [raste
 
 This is also what we want to do: we have a map as input and we want a 2D grid of tiles as output. Thus we can leverage on the techniques of rasterization to generate the tiles.
 
-There are two main primitives in rasterization: drawing a line and drawing a triangle. Fortunately, there are very efficient algorithms for doing that. I have put some useful resources in the last section of this article if you are interested by the theory of rasterization.
+There are two main primitives in rasterization: drawing a line and drawing a triangle. Fortunately, there are very efficient algorithms for doing that. I have put some useful resources in the last section of this article if you are interested in the theory of rasterization.
 
 In the [first article]({{ site.baseurl }}{% post_url 2019-05-12-vagabond-map-generation %}) of this series, I said that I wanted my map generator to output a data structure easy to manipulate. Thus I chose to generate a polygonal map using a Voronoi diagram. Now, it proves useful as polygons are quite easy to rasterize.
 
@@ -79,4 +79,4 @@ See you [next week]({{ site.baseurl }}{% post_url 2019-06-02-vagabond-rasterizin
 * [Tiny Renderer](https://github.com/ssloy/tinyrenderer/wiki/Lesson-1:-Bresenham%E2%80%99s-Line-Drawing-Algorithm) by Dmitry V. Sokolov
 * [Software Rasterization Algorithms for Filling Triangles](http://www.sunshine2k.de/coding/java/TriangleRasterization/TriangleRasterization.html) by Bastian Molkenthin
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

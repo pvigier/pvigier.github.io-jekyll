@@ -131,4 +131,4 @@ Before finishing this article, I must cite some other map generators that inspir
 
 The next steps are to generate the rivers, the regions and placing some cities. See you [next week]({{ site.baseurl }}{% post_url 2019-05-19-vagabond-borders-rivers-cities-roads %}) for more!
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

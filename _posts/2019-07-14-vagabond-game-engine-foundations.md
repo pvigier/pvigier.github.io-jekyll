@@ -53,4 +53,4 @@ That is all for this week. I did not code a lot, I essentially designed the engi
 
 See you next week for more!
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

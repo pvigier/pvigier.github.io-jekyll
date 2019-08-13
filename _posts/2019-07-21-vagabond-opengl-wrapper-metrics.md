@@ -57,4 +57,4 @@ Next, I will continue to work on the graphics engine and in particular on the [l
 
 See you next week for more!
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

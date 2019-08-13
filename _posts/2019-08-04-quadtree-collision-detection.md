@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Quadtree and collision detection"
-date: 2019-07-28
+date: 2019-08-04
 author: pierre
 tab: blog
 tags: vagabond game-engine cpp
@@ -207,11 +207,11 @@ The template parameters are:
 
 At the beginning of the class definition, there are three static assertions to check that the given template parameters are valid.
 
-Let us have a look the node definition. A node just contains pointers to its four children and a list of values it contains. We do not store its bounding box or its depth. We will compute that on the fly.
+Let us have a look at the node definition. A node just contains pointers to its four children and a list of values it contains. We do not store its bounding box or its depth. We will compute that on the fly.
 
 I have benchmarked both approaches (storing the box and depth or not) and there is no performance penalty in computing them on the fly. Moreover, we are saving some memory.
 
-To be able to distinct an interior node from a leaf, there is the method `isLeaf`. It just checks that the first child is not null. As all children are null or none are, it is sufficient to check the first one.
+To be able to distinguish an interior node from a leaf, there is the method `isLeaf`. It just checks that the first child is not null. As all children are null or none are, it is sufficient to check the first one.
 
 Now, we can look at the member variables of `Quadtree`:
 
@@ -224,7 +224,7 @@ The constructor simply sets `mBox`, `mGetBox` and `mEqual`, and creates the root
 
 The last two parameters, we have not discussed yet, are `Threshold` and `MaxDepth`. `Threshold` is the maximum number of values a node can contain before we try to split it. `MaxDepth` is the maximum depth of a node, we stop trying to split nodes which are at `MaxDepth` because it can hurt performance if we subdivide too much. I have set up these constants to some sane values that should work for most of the cases. You can try to optimize them for some specific configuration.
 
-Now, we are ready to dive in the more interesting operations.
+Now, we are ready to dive in more interesting operations.
 
 # Insertion and removal
 
@@ -237,7 +237,7 @@ If all the bounding boxes are small and roughly the same size, the first strateg
 
 Moreover, with the first strategy, insertion and removal are a bit slower as we have to insert to (or remove from) all nodes that intersect the value.
 
-Thus, I will use the second strategy where there is no degenerate case. As I plan to use the quadtree in many contexts, it will be more convenient. Moreover, it is more suitable for dynamic context where we will do a lot of insertions and removals to update the values such as in a physics engine where entities are moving.
+Thus, I will use the second strategy where there is no degenerate case. As I plan to use the quadtree in many contexts, it will be more convenient. Moreover, it is more suitable for dynamic contexts where we will do a lot of insertions and removals to update the values such as in a physics engine where entities are moving.
 
 To find in which node, we will insert or remove a value, we will rely on two utility functions.
 
@@ -519,7 +519,7 @@ Firstly, we add all the values stored in the current node that intersect with th
 
 ## All pairwise intersections
 
-The second use case that is supported is finding all the pairs of values stored in the quadtree that intersect. It is particularly useful for doing a physics engine. It is possible to achieve that with the `query` method. Indeed, we can call `query` for the bounding box of all values. However, it is possible to do that a bit more efficiently by adding the intersection only once for a pair (while, we would find it twice by using `query`).
+The second use case that is supported is finding all the pairs of values stored in the quadtree that intersect. It is particularly useful for doing a physics engine. It is possible to achieve that with the `query` method. Indeed, we can call `query` for the bounding box of all values. However, it is possible to do that a bit more efficiently by adding the intersection only once for a pair (while we would find it twice by using `query`).
 
 To be able to do that, we need to notice that an intersection can only occur:
 
@@ -606,12 +606,12 @@ That's all! Again, you can retrieve all the code from [GitHub](https://github.co
 
 # Useful resources
 
-If you want to know more about collision detection and space partitioning data structure, I advise you to read [Real-Time Collision Detection](http://realtimecollisiondetection.net/) by Christer Ericson. It covers a lot of topics in depth but it is very understandable. Moreover, it is possible to read chapters independently. It is really a good reference.
+If you want to know more about collision detection and space partitioning data structure, I advise you to read [Real-Time Collision Detection](http://realtimecollisiondetection.net/) by Christer Ericson. It covers a lot of topics in-depth but it is very understandable. Moreover, it is possible to read chapters independently. It is really a good reference.
 
 # Conclusion
 
-That is all for collision detection. However, collision detection is only half of a physics engine. The other half is collision resolution. Next week, I will work on that and I hope I will have more nice pictures to share with you.
+That is all for collision detection. However, collision detection is only half of a physics engine. The other half is [collision resolution]({{ site.baseurl }}{% post_url 2019-08-11-vagabond-2d-physics-engine %}). Next week, I will work on that and I hope I will have more nice pictures to share with you.
 
 See you next week for more!
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

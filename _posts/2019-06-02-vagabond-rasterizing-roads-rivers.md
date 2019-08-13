@@ -91,4 +91,4 @@ See you [next week]({{ site.baseurl }}{% post_url 2019-06-09-vagabond-forest-gen
 * [Poisson Disk Sampling](https://web.archive.org/web/20150817064406/http://devmag.org.za/2009/05/03/poisson-disk-sampling/) by Herman Tulleken
 * [Fast Poisson Disk Sampling in Arbitrary Dimensions](https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf) by Robert Bridson
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

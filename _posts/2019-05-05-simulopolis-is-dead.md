@@ -17,4 +17,4 @@ The bad news is, as you have guessed with the title, that I am not going to resu
 
 <!--more-->
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

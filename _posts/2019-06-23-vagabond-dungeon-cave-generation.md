@@ -93,4 +93,4 @@ The next step is to [generate tiles]({{ site.baseurl }}{% post_url 2019-06-30-va
 
 See you next week for more!
 
-*If you are interested by my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
+*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
