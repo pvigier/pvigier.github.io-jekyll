@@ -7,7 +7,7 @@ tab: blog
 tags: vagabond game-engine
 ---
 
-This week, I worked on the physics engine. It was the first time, I wrote a physics engine thus it takes me a lot of time to design an algorithm that works well. In this article, I will try to share with you the issues I faced and then my current design of the physics engine.
+This week, I worked on the physics engine. It was the first time, I wrote a physics engine thus it took me a lot of time to design an algorithm that works well. In this article, I will try to share with you the issues I faced and then my current design of the physics engine.
 
 <video controls width="256">
     <source src="/media/video/vagabond-2d-physics-engine/physics_engine_demo.mp4" type="video/mp4">

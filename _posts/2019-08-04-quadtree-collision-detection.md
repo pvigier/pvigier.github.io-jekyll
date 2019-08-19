@@ -5,6 +5,8 @@ date: 2019-08-04
 author: pierre
 tab: blog
 tags: vagabond game-engine cpp
+redirect_from:
+  - /2019/07/28/quadtree-collision-detection.html
 ---
 This week was short as I was still working on the [2D light system]({{ site.baseurl }}{% post_url 2019-07-28-vagabond-2d-light-system %}) on Monday and Tuesday. I spent the rest of my time working on a [quadtree](https://en.wikipedia.org/wiki/Quadtree) implementation.
 
