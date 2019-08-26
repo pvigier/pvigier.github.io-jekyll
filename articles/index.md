@@ -63,3 +63,4 @@ tab: articles
 * [Quadtree and collision detection]({{ site.baseurl }}{% post_url 2019-08-04-quadtree-collision-detection %})
 * [Vagabond &#8211; 2D Physics Engine]({{ site.baseurl }}{% post_url 2019-08-11-vagabond-2d-physics-engine %})
 * [Vagabond &#8211; Audio Engine]({{ site.baseurl }}{% post_url 2019-08-18-vagabond-audio-engine %})
+* [Vagabond &#8211; Choosing a GUI library]({{ site.baseurl }}{% post_url 2019-08-25-vagabond-choosing-gui-library %})
