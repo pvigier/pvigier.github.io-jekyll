@@ -7,7 +7,7 @@ tab: blog
 tags: vagabond game-engine
 ---
 
-The goal of this week was to find a GUI library for the in-game interface. While making some custom widgets may seem easy, writing a general, production-ready, full-fledged GUI library is notoriously difficult. Thus there are few open-source and well-maintained GUI library that works with OpenGL or SFML.
+The goal of this week was to find a GUI library for the in-game interface. While making some custom widgets may seem easy, writing a general, production-ready, full-fledged GUI library is notoriously difficult. Thus there are few open-source and well-maintained GUI libraries that work with OpenGL or SFML.
 
 In this article, I will enumerate the alternatives I considered and give some details about them. Finally, I will select one and explain my choice.
 
@@ -23,7 +23,7 @@ The first alternative is not using an external library but writing my own. I did
 
 I developed a certain number of widgets. But it was exhausting and took me a lot of time. Thus, I would prefer to use an external library to save some time and have something of better quality.
 
-Especially because I think that a bad interface can make a game shitty but a great interface rarely makes a game great. In other words, a good interface is something expected by players and it is not there that a game can make differences. So I would prefer to spend my time on other parts.
+Especially because I think that a bad interface can make a game shitty but a great interface rarely makes a game great. In other words, a good interface is something expected by players and it is not where a game can make differences. So I would prefer to spend my time on other parts.
 
 # SFML libraries
 
@@ -43,7 +43,7 @@ The other one, TGUI, is as easy to build and to link. It also provides a lot of 
 
 ![](/media/img/vagabond-choosing-gui-library/TGUI.png){: width="400" .center-image .modal-image }
 
-Contrary to SFGUI, TGUI is skinnable so it is more suitable for in-game interfaces. I also prefer TGUI API, I find it is more modern. However, the default theme of SFGUI is cleaner.
+Contrary to SFGUI, TGUI is skinnable so it is more suitable for in-game interfaces. I also prefer TGUI API, I find it more modern. However, the default theme of SFGUI is cleaner.
 
 Overall, both libraries are easy to build, install and use. But I think they are not as developed as the next libraries I am going to present, yet. Moreover, they are actively maintained thus they may become suitable for production very soon.
 

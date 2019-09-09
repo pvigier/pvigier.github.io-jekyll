@@ -126,7 +126,7 @@ In my implementation, an entity is just an id, nothing more:
 using Entity = uint32_t;
 ```
 
-Moreover, in [Entity.h](), we will also define an alias `Index` that will be useful later:
+Moreover, in [Entity.h](https://github.com/pvigier/ecs/blob/master/include/ecs/Entity.h), we will also define an alias `Index` that will be useful later:
 
 ```cpp
 using Index = uint32_t;
