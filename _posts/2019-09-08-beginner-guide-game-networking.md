@@ -74,7 +74,7 @@ If you need something more efficient than TCP but do not want to bother implemen
 
 I have not tried them all but my preference goes to ENet as it is simple to use and robust. Moreover, it has clear documentation and a tutorial to get started.
 
-## Conclusion
+## Transport protocol -- Conclusion
 
 To sum up, there exists two base transport protocols: TCP and UDP. TCP has a lot of useful features: reliability, preserving packet order, error detection, while UDP does not but due to its design TCP has higher latency which may be inadequate for certain games. Thus, to have lower latency, it is possible to create a custom transport protocol using UDP or to use a library that provides a transport protocol based on UDP adapted for multiplayer video games.
 
@@ -85,7 +85,7 @@ I have two pieces of advice:
 * Abstract your transport protocol as much as possible from the rest of the application. So that you can easily change it without rewriting everything.
 * Do not optimize prematurely. If you are not a networking expert and you are not sure if you really need a custom transport protocol build on UDP, you may start using TCP or a library that provides reliability and, test and measure. If there are issues and you are sure it comes from the transport protocol, then it may be the time to create your own transport protocol.
 
-To finish, this part, I advise you to read [*Introduction to Multiplayer Game Programming*](http://trac.bookofhook.com/bookofhook/trac.cgi/wiki/IntroductionToMultiplayerGameProgramming) by Brian Hook which covers a lot of topics we have discussed here.
+To finish, this part, I advise you to read [*Introduction to Multiplayer Game Programming*](https://web.archive.org/web/20190519135537/http://trac.bookofhook.com/bookofhook/trac.cgi/wiki/IntroductionToMultiplayerGameProgramming) by Brian Hook which covers a lot of topics we have discussed here.
 
 
 # Application protocol
@@ -150,7 +150,7 @@ In my opinion, the three more interesting algorithms to know are:
 The last compression technique is delta compression. It consists in sending only the differences between the current game state and the last state received by a client.
 
 It was first used in Quake3 network engine, here are two articles explaining how it was used:
-* [*The Quake3 Networking Model*](http://trac.bookofhook.com/bookofhook/trac.cgi/wiki/Quake3Networking) by Brian Hook
+* [*The Quake3 Networking Model*](https://web.archive.org/web/20190628180906/http://trac.bookofhook.com/bookofhook/trac.cgi/wiki/Quake3Networking) by Brian Hook
 * [*Quake 3 Source Code Review: Network Model*](http://fabiensanglard.net/quake3/network.php) by Fabien Sanglard
 
 Glenn Fiedler also used it in the second part of his article [*Snapshot Compression*](https://web.archive.org/web/20180823021121/https://gafferongames.com/post/snapshot_compression/).
@@ -165,7 +165,7 @@ Finally, you may want to encrypt the communication between clients and the serve
 
 I strongly advise you to use a library to help you. I suggest [libsodium](https://download.libsodium.org/doc/) as it is particularly simple to use and it provides great tutorials. You will be in particular interested by the [key exchange](https://download.libsodium.org/doc/key_exchange) tutorial to generate new keys for each new connection.
 
-## Conclusion
+## Application protocol -- Conclusion
 
 That is all for this part. I think that compression is totally optional and it depends on your game and how much bandwidth is needed. Encryption is, in my opinion, not optional but it may be skipped in a first prototype.
 
@@ -181,11 +181,11 @@ There are several techniques to mitigate these issues that I will present in the
 
 All the techniques presented in this section are presented in-depth in [*Fast-Paced Multiplayer*](https://www.gabrielgambetta.com/client-server-game-architecture.html) by Gabriel Gambetta. I strongly advise you to read this series of articles which is great. There is also a live demo to see how these techniques work in practice.
 
-The first technique is to apply the result of an input directly without waiting for the response from the server. It is called *client prediction*. However, when the client receives an update from the server, it has to check that its prediction was correct, otherwise, it must modify its state according to what it has received from the server as the server is the authority. This technique was first used in Quake, you can read more in the [*Quake Engine code review*](http://fabiensanglard.net/quakeSource/index.php) by Fabien Sanglard.
+The first technique is to apply the result of an input directly without waiting for the response from the server. It is called *client-side prediction*. However, when the client receives an update from the server, it has to check that its prediction was correct, otherwise, it must modify its state according to what it has received from the server as the server is the authority. This technique was first used in Quake, you can read more in the [*Quake Engine code review*](http://fabiensanglard.net/quakeSource/index.php) by Fabien Sanglard.
 
 The second set of techniques is for smoothing the movement of other entities between two state updates. There are two ways to achieve this: by doing interpolation or extrapolation. Interpolation is using the two last states and showing the transition from one to another. Its drawback is that it induces a bit of latency because the client always shows what happens in the past. Extrapolation consists in predicting where the entities would be now according to the last state the client received. Its drawback is that if an entity completely changes its direction, there would be a large error between the prediction and the real position.
 
-The last technique which is most advanced and only useful in FPS is lag compensation. With lag compensation, the server takes into account the latency of the client when they are shooting at a target. For instance, if the player did a headshot on its screen but in reality, its target is elsewhere due to latency, it would be unfair to the player to refuse him his kill due to latency. So the server will rewind in time, at the time the player shot to simulate what the player saw on its screen and check the collision between his shot and the target.
+The last technique which is most advanced and only useful in FPS is *lag compensation*. With lag compensation, the server takes into account the latency of the client when they are shooting at a target. For instance, if the player did a headshot on its screen but in reality, its target is elsewhere due to latency, it would be unfair to the player to refuse him his kill due to latency. So the server will rewind in time, at the time the player shot to simulate what the player saw on its screen and check the collision between his shot and the target.
 
 Glenn Fiedler (always!) wrote [*Network Physics (2004)*](https://web.archive.org/web/20180823005028/https://gafferongames.com/post/networked_physics_2004/) in 2004 where he laid the foundations of synchronizing a physics simulation between a server and a client. In 2014, he wrote a new series of articles, [*Networking Physics*](https://web.archive.org/web/20180823004853/https://gafferongames.com/categories/networked-physics), where he showed more techniques to synchronize a physics simulation.
 
@@ -199,7 +199,7 @@ The first one is to make hard for cheaters to send malicious packets. As we expl
 
 The second technique is by having an authoritative server that only receives commands/inputs/actions. The client should never be able to modify the server state by another way than sending inputs. Then each time, the server receives an input, it should check that this input is valid before to apply it.
 
-## Conclusion
+## Application logic -- Conclusion
 
 I advise you to implement a way to simulate high latency and low refresh rates in your game to be able to test your game in bad conditions even if both the client and the server are running on your computer. It will simplify greatly the implementation of latency mitigation techniques.
 
