@@ -4,7 +4,7 @@ title: "Vagabond &#8211; Choosing a GUI library"
 date: 2019-08-25
 author: pierre
 tab: blog
-tags: vagabond game-engine
+tags: vagabond game-engine cpp
 ---
 
 The goal of this week was to find a GUI library for the in-game interface. While making some custom widgets may seem easy, writing a general, production-ready, full-fledged GUI library is notoriously difficult. Thus there are few open-source and well-maintained GUI libraries that work with OpenGL or SFML.
