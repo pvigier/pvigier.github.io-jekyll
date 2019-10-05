@@ -93,7 +93,7 @@ The second idea is to sort the commits by committer date. This is appealing as l
 
 However, nothing guarantees that all operations in git will satisfy this property. For instance, if commits of a repository are created on two different computers with non-synchronized clocks, problems may happen. In addition, it is possible to manually set the author date and the committer date of a commit. Thus, it is possible to attribute an older committer date to a commit than the ones of its parents. In this case, the order given by committer date will not satisfy the topological condition.
 
-As a matter of fact, there exist repositories where the order according to committer dates is not a topological order. I suspect that GitKraken sorts the commits using committer date as it fails to draw correctly the graph on one of my [repository](https://github.com/pvigier/MyGAL) as you can see in the figure below. The picture on the left shows the same repository displayed by a version of gitk modified to show the committer date in the right column instead of the author date. We can see that the commit with message "Remove useless cpp" has a committer date older than its parent. 
+As a matter of fact, there exist repositories where the order according to committer dates is not a topological order. I suspect that GitKraken sorts the commits using committer date as it fails to draw correctly the graph on one of my [repository](https://github.com/pvigier/MyGAL) as you can see in the figure below. The picture on the left shows the same repository displayed by a version of gitk modified to show the committer date in the right column instead of the author date. We can see that the commit with message "Remove useless cpp" has a committer date older than its parent.
 
 ![gitk](/media/img/commit-graph/mygal/gitk.png){: width="250px" .modal-image } | ![GitKraken](/media/img/commit-graph/mygal/GitKraken.png){: width="250px" .modal-image }
 :---:|:---:
@@ -114,7 +114,7 @@ procedure topological_sort(C)
                 dfs(d)
             c.i = i
             i = i + 1
-    
+
     i = 0
     for c in C
         dfs(c)
@@ -139,7 +139,7 @@ procedure temporal_topological_sort(C)
                 dfs(d)
             c.i = i
             i = i + 1
-    
+
     i = 0
     for c in C sorted from newest committer date to oldest
         dfs(c)
@@ -151,7 +151,7 @@ I would like to highlight the good properties of this algorithm:
 
 * It outputs a topological order of the commits.
 * The output is guaranteed to always be the same regardless of the order of commits in $$\mathcal{C}$$.
-* If there are no anomaly on committer dates, that is if the order induced by committer dates is already a valid topological order then the algorithm will return this order. 
+* If there are no anomaly on committer dates, that is if the order induced by committer dates is already a valid topological order then the algorithm will return this order.
 * It is blazing fast: its time complexity is $$O(n\log(n) + m)$$ where $$n$$ is the number of commits and $$m$$ the number of edges.
 
 # Placing commits
@@ -251,7 +251,7 @@ Previously, in algorithm `curved_branches`, we could remove a branch from the li
 
 ### Forbidden indices
 
-We will now see how to determine and compute the set of forbidden indices $$J(c)$$ for a commit $$c$$. To do that, we will take a look at the example below. 
+We will now see how to determine and compute the set of forbidden indices $$J(c)$$ for a commit $$c$$. To do that, we will take a look at the example below.
 
 ![Before processing g](/media/img/commit-graph/constraints/constraints_before.svg){: .center-image .modal-image }
 
@@ -267,7 +267,7 @@ Thus the right choice is to append $$g$$ to $$B$$, this results in the graph sho
 
 ![After processing g](/media/img/commit-graph/constraints/constraints_after.svg){: .center-image .modal-image }
 
-We have shown that we must be careful when we process a commit that has merge children. In particular, we must be sure that there is no obstacle that prevents from linking the commit to one of its merge children. 
+We have shown that we must be careful when we process a commit that has merge children. In particular, we must be sure that there is no obstacle that prevents from linking the commit to one of its merge children.
 
 For a branch child, there is no such problem because the edge follows the same column as the one on which the child is. And there is no obstacle in this case since the child is present in the list of active branches and prevent other commits or edges from occupying this column.
 
@@ -281,7 +281,7 @@ In layman terms, $$J(c)$$ is the set of indices of columns where if $$c$$ would 
 
 We can simplify the expression of $$J(c)$$ thanks to the following lemma.
 
-*Lemma*: 
+*Lemma*:
 $$
 J(c) = \{j \text{ s.t. the column j is non-empty between rows }\underset{d \in c.mergeChildren}{\min}{d.i}\text{ and }c.i\}
 $$
@@ -334,13 +334,13 @@ The first naive implementation allocates a canvas sufficiently large to draw the
 
 Thus, the next step was to only allocate a canvas as large as the visible area. This method does not suffer from the problem described previously. However, we need to redraw each time the user scrolls or resizes the windows as the visible part of the graph changes.
 
-To speed up the rendering, we need to render only what is actually visible. Finding the nodes that are visible is easy and can be done in constant time. We just have to find the first and the last commits visible by doing integer divisions of the top and bottom coordinates of the visible area by the height of a row. 
+To speed up the rendering, we need to render only what is actually visible. Finding the nodes that are visible is easy and can be done in constant time. We just have to find the first and the last commits visible by doing integer divisions of the top and bottom coordinates of the visible area by the height of a row.
 
-However, determining the edges that are visible is more difficult. Indeed, edges that are linked to a visible commit are visible, but there may be edges that connect commits on both sides of the visible area as depicted in the figure below. 
+However, determining the edges that are visible is more difficult. Indeed, edges that are linked to a visible commit are visible, but there may be edges that connect commits on both sides of the visible area as depicted in the figure below.
 
 ![Edges visible](/media/img/commit-graph/edges_visible/edges_visible.svg){: .center-image .modal-image }
 
-To find them quickly, we must recognize that this is a problem of finding intersecting intervals again. Indeed, we can represent all the edges by intervals of rows and the visible area is also an interval of rows. An edge is visible if and only if its interval overlaps with the interval of the visible area. So we can use an interval tree to find all the visible edges in $$O(m\log{k})$$ where $$m$$ is the number edges and $$k$$ the number of edges that are visible.
+To find them quickly, we must recognize that this is a problem of finding intersecting intervals again. Indeed, we can represent all the edges by intervals of rows and the visible area is also an interval of rows. An edge is visible if and only if its interval overlaps with the interval of the visible area. So we can use an interval tree to find all the visible edges in $$O(k\log{m})$$ where $$m$$ is the number edges and $$k$$ the number of edges that are visible.
 
 In the table below, we can observe the time it takes to render the visible part of a large commit graph with and without the different optimizations we talked about:
 
