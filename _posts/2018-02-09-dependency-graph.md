@@ -74,15 +74,15 @@ I will list several reasons against circular dependencies:
 * Harder to reuse the code: as many files are dependent on each other, if you want to reuse a file in another project, you must also take the other ones.
 * Harder to debug: as many pieces of codes are coupled, you will have to look at a lot of files if you want to trace back a bug.
 
-There are many ways to avoid circular dependencies. The most obvious one is to design well the project with independent modules or even to break a big project in smaller libraries.
+There are many ways to avoid circular dependencies. The most obvious one is to design well the project with independent modules or even to break a big project in smaller libraries. Moreover, it may be okay to have a small circular dependency inside a small module/library but not through the whole project.
 
-Design patterns like [Observer](http://gameprogrammingpatterns.com/observer.html) or [Event Queue](http://gameprogrammingpatterns.com/event-queue.html) can also be of great help. By the way, I recommend you to have a look at [Game Programming Patterns](http://gameprogrammingpatterns.com/) by Robert Nystrom if you do not know this book already.
+Design patterns like [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), [Observer](http://gameprogrammingpatterns.com/observer.html) or [Event Queue](http://gameprogrammingpatterns.com/event-queue.html) can also be of great help. By the way, I recommend you to have a look at [Game Programming Patterns](http://gameprogrammingpatterns.com/) by Robert Nystrom if you do not know this book already.
 
 Finally, you could use my little script to monitor the architecture of your project.
 
 # Some details on the code
 
-The script is pretty simple. I use the `re` module of Python to find the `#include`'s in source files. 
+The script is pretty simple. I use the `re` module of Python to find the `#include`'s in source files.
 
 Then the scripts creates a graph and uses a port to Python of [graphviz](https://www.graphviz.org/) to draw the graph. Graphviz creates very beautiful, this amazing tool is also used, for instance, by Doxygen to generate its diagram.
 
