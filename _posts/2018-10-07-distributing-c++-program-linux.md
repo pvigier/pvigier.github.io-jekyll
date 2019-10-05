@@ -7,7 +7,7 @@ tab: blog
 tags: cpp linux simulopolis
 ---
 
-Hi! 
+Hi!
 
 Today I will tackle a problem I faced when I wanted to distribute the alpha version of Simulopolis two weeks ago: distributing a C++ binary on different Linux distributions.
 
@@ -49,7 +49,13 @@ We can check that the rpath is correctly set by using the command:
 readelf -d <executable>
 ```
 
-It reads the information written in the binary (see [ELF](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)). For Simulopolis, it outputs:
+An alternative command that will output the same information is:
+
+```
+objdump -p <executable>
+```
+
+They read the information written in the binary (see [ELF](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)). For Simulopolis, it outputs:
 
 ```
 0x000000000000001d (RUNPATH)            Library runpath: [lib]
@@ -68,13 +74,23 @@ Now you must add your dependencies in the `lib/` folder. But how to know which f
 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
-``` 
+```
 
 Then if you installed the libraries using your package manager you can use `locate <library>` to quickly find where the libraries are. Be careful to copy the shared library and not a link to the shared library! You may need to rename the library so that it matches exactly the name written in the binary.
 
 I decided not to put the last four because there are standard libraries of C and C++ and they should be present in all modern Linux distribution.
 
-If needed, you can set the rpath of a binary after its creation using the command `chrpath`.
+If needed, you can set the rpath of a binary after its creation using the command `chrpath`:
+
+```
+chrpath -r <new rpath> <executable>
+```
+
+Another command that may be useful is `ldd`, it will print all the libraries required by an executable and where the linker finds them:
+
+```
+ldd <executable>
+```
 
 Finally, my brother can play to Simulopolis!
 
