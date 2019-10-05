@@ -20,18 +20,18 @@ Let us take a very simple example with a class that does dynamic allocation to e
 class A
 {
 public:
-	A() : mPointer(new int(0))
-	{
+    A() : mPointer(new int(0))
+    {
 
-	}
+    }
 
-	~A()
-	{
-		delete mPointer;
-	}
+    ~A()
+    {
+        delete mPointer;
+    }
 
 private:
-	int* mPointer;
+    int* mPointer;
 }
 ```
 
@@ -42,14 +42,14 @@ For instance, if we do this:
 ```cpp
 int main()
 {
-	A a;
-	A anotherA(a);
+    A a;
+    A anotherA(a);
 
-	return 0;
+    return 0;
 }
 ```
 
-A `Segmentation fault` will occur.
+A [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) will occur.
 
 Why?
 
@@ -79,23 +79,23 @@ So for our previous class `A`, we would do the following:
 class A
 {
 public:
-	A() : mPointer(new int(0))
-	{
-
-	}
-
-	// Copy constructor
-    A (const A& other) : mPointer(new int(other.mPointer))
+    A() : mPointer(new int(0))
     {
-        
+
     }
 
-	~A()
-	{
-		delete mPointer;
-	}
+    // Copy constructor
+    A (const A& other) : mPointer(new int(other.mPointer))
+    {
 
-	// Copy assignment operator
+    }
+
+    ~A()
+    {
+        delete mPointer;
+    }
+
+    // Copy assignment operator
     A& operator=(const A& other)
     {
         delete mPointer;
@@ -104,7 +104,7 @@ public:
     }
 
 private:
-	int* mPointer;
+    int* mPointer;
 }
 ```
 
@@ -112,11 +112,11 @@ With this definition of A, there is no problem anymore with our previous `main`.
 
 With C++11 the rule of three becomes the rule of five as we should also define the move constructor and the move assignment operator but I omit that for the sake of simplicity and brevity.
 
-The main disadvantage of this method is that we have to write a lot of code to obtain the correct behavior.
+The main disadvantage of this method is that we have to write a lot of code to obtain the correct behavior. But this is the idiomatic way to encapsulate a low-level resource and follow [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization).
 
 # Second solution: RAII
 
-Another solution is to ensure the destructor is empty by, for instance, using only attributes that follows [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization).
+Another solution is to ensure the destructor is empty by, for instance, using only attributes that follows RAII (standard containers, `std::string`s, smart pointers, a file stream, etc.).
 
 In our case, for `A`, we could use a smart pointer instead of a plain one:
 
@@ -126,19 +126,19 @@ In our case, for `A`, we could use a smart pointer instead of a plain one:
 class A
 {
 public:
-	A() : mPointer(new int(0))
-	{
+    A() : mPointer(new int(0))
+    {
 
-	}
+    }
 
 private:
-	std::unique_ptr<int> mPointer;
+    std::unique_ptr<int> mPointer;
 }
 ```
 
 The code is simpler, we have not to worry about the memory and the previous `main` executes successfully.
 
-If adequate, I think that this solution should be chosen.
+If adequate, this is the solution that should be chosen.
 
 # Third solution: forbid copy and move
 
@@ -166,28 +166,28 @@ public:
 };
 ```
 
-As copy and move are not sure for A, I would make A inherit from both:
+As copy and move are not safe for A, I would make A inherit from both:
 
 ```cpp
 class A : public NonCopyable, public NonMovable
 {
 public:
-	A() : mPointer(new int(0))
-	{
+    A() : mPointer(new int(0))
+    {
 
-	}
+    }
 
-	~A()
-	{
-		delete mPointer;
-	}
+    ~A()
+    {
+        delete mPointer;
+    }
 
 private:
-	int* mPointer;
+    int* mPointer;
 }
 ```
 
-This time, if we try to compile the previous `main`, we would obtain a compile-time error. But if the program compile, we are ensured that no wild `Segmentation Fault` will occur during execution because of a copy or a move.
+This time, if we try to compile the previous `main`, we would obtain a compile-time error. But if the program compile, we are ensured that no wild segmentation fault will occur during execution because of a copy or a move.
 
 This solution has the benefit of being very fast to implement.
 
@@ -201,29 +201,29 @@ In our example, we could use a method `setUp` to allocate the memory and `tearDo
 class A
 {
 public:
-	A() : mPointer(nullptr)
-	{
+    A() : mPointer(nullptr)
+    {
 
-	}
+    }
 
-	~A()
-	{
-		
-	}
+    ~A()
+    {
 
-	void setUp()
-	{
-		mPointer = new int(0)
-	}
+    }
 
-	void tearDown()
-	{
-		delete mPointer;
-		mPointer = nullptr;
-	}
+    void setUp()
+    {
+        mPointer = new int(0)
+    }
+
+    void tearDown()
+    {
+        delete mPointer;
+        mPointer = nullptr;
+    }
 
 private:
-	int* mPointer;
+    int* mPointer;
 }
 ```
 
@@ -232,15 +232,15 @@ Then we can transform the previous `main` to obtain the correct behavior:
 ```cpp
 int main()
 {
-	A a;
-	a.setUp();
-	A anotherA(a);
-	a.tearDown();
+    A a;
+    a.setUp();
+    A anotherA(a);
+    a.tearDown();
 
-	return 0;
+    return 0;
 }
 ```
 
-This solution works well but requires from the user of the class to be more careful and to manage himself the memory.
+This solution works well but requires from the user of the class to be more careful and to manage himself the memory. Moreover, this is non-idiomatic and bad C++. It is better to follow the rule of three/five to encapsulate the resource.
 
 That's all for this post, I hope you find it useful.
