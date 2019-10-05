@@ -92,5 +92,3 @@ This is the first leg of the long journey of building an interesting dungeon gen
 The next step is to [generate tiles]({{ site.baseurl }}{% post_url 2019-06-30-vagabond-dungeon-cave-generation-part2 %}) from the output of this generator to have much more appealing dungeons.
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

@@ -60,5 +60,3 @@ Here are the links to all the tilesets I used in this article:
 * [[LPC] Trees](https://opengameart.org/content/lpc-trees)
 * [[LPC] Flowers / Plants / Fungi / Wood](https://opengameart.org/content/lpc-flowers-plants-fungi-wood)
 * [Liberated Pixel Cup (LPC) Base Assets (sprites & map tiles)](https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles)
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

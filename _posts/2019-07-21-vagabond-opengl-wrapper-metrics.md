@@ -56,5 +56,3 @@ That is all for this week. I am happy that I can finally display the world and m
 Next, I will continue to work on the graphics engine and in particular on the [lighting system]({{ site.baseurl }}{% post_url 2019-07-28-vagabond-2d-light-system %}).
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

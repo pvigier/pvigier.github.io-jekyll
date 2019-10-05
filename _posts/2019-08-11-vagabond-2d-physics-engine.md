@@ -203,5 +203,3 @@ I hope this article give you some ideas on how to start writing your own physics
 Next week, I may polish this a bit and start working on the audio engine.
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

@@ -125,5 +125,3 @@ I try to keep things as simple as possible in order to have a solid base on whic
 Moreover, the generator is really fast: it takes less than 20ms to generate one of the map on my (cheap) laptop. Thus, I have some freedom to add complexity later.
 
 The next step is to transform this symbolic map into a world where players would be able to move and interact. See you [next week]({{ site.baseurl }}{% post_url 2019-05-26-vagabond-generating-tiles %}) for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

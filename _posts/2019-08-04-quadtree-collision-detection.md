@@ -615,5 +615,3 @@ If you want to know more about collision detection and space partitioning data s
 That is all for collision detection. However, collision detection is only half of a physics engine. The other half is [collision resolution]({{ site.baseurl }}{% post_url 2019-08-11-vagabond-2d-physics-engine %}). Next week, I will work on that and I hope I will have more nice pictures to share with you.
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

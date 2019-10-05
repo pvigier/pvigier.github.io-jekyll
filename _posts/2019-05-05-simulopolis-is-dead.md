@@ -16,5 +16,3 @@ My oral defense was in April so I did not work on Simulopolis for five months. T
 The bad news is, as you have guessed with the title, that I am not going to resume the development of Simulopolis. But the good news is that I have already started to work on a new project. It is called *Vagabond* (the name can still change). I will try to blog as much as possible about it so stay tuned! :)
 
 <!--more-->
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

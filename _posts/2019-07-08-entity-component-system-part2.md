@@ -180,5 +180,3 @@ Here are some useful resources to dive deeper in entity-component-systems:
 
 * Michele Caini, the creator of [entt](https://github.com/skypjack/entt), is writing a very interesting series of articles on entity-component-system called [ECS back and forth](https://skypjack.github.io/2019-02-14-ecs-baf-part-1/).
 * The [Entity Systems Wiki](http://entity-systems.wikidot.com/) also contains very useful information and links.
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

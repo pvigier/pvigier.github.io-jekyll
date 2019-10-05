@@ -52,5 +52,3 @@ I made a small window with some metrics to get started with ImGui:
 That is all for this week. I did not code a lot, I essentially designed the engine. Next week, I will add [more features to the graphics engine]({{ site.baseurl }}{% post_url 2019-07-21-vagabond-opengl-wrapper-metrics %}) and maybe start to work on the networking part.
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

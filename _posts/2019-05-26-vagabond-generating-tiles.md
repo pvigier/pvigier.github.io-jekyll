@@ -78,5 +78,3 @@ See you [next week]({{ site.baseurl }}{% post_url 2019-06-02-vagabond-rasterizin
 
 * [Tiny Renderer](https://github.com/ssloy/tinyrenderer/wiki/Lesson-1:-Bresenham%E2%80%99s-Line-Drawing-Algorithm) by Dmitry V. Sokolov
 * [Software Rasterization Algorithms for Filling Triangles](http://www.sunshine2k.de/coding/java/TriangleRasterization/TriangleRasterization.html) by Bastian Molkenthin
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

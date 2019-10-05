@@ -837,5 +837,3 @@ It is the end of the first part of this series. We have built a simple but alrea
 In the [next part]({{ site.baseurl }}{% post_url 2019-07-08-entity-component-system-part2 %}), we will show how to improve the performance by replacing the `std::unordered_map`s by `std::vector`s. In addition, we will show how to automatically assign a type id to components.
 
 See you there!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

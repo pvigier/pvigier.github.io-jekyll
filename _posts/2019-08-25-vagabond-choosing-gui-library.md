@@ -88,5 +88,3 @@ I am very glad to have found a library that suits my needs and to have made a ba
 The next and last step for the game engine is networking. It will be a big part so it may take me more than one week to work on that. But after that, I will work more directly on the game and I am really excited to be there.
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

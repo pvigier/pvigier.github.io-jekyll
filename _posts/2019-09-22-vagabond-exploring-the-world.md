@@ -43,5 +43,3 @@ Here is a small screencast of a second player joining the server opened by anoth
 The next goal is to be able to add pieces of equipment to the characters so that they are not naked anymore!
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

@@ -61,5 +61,3 @@ That is all for my audio engine, it is simple but robust and easy to use. I am h
 The next goals are choosing a GUI library and starting to work on the networking part.
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

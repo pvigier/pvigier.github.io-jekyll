@@ -60,5 +60,3 @@ See you next week for more!
 # Credits
 
 * [[LPC] Mountains](https://opengameart.org/content/lpc-mountains)
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

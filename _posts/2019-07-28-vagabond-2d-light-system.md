@@ -127,5 +127,3 @@ That is all for this article on my light system. I may blur the lighting texture
 Next week, I will work on the [physics system]({{ site.baseurl }}{% post_url 2019-08-04-quadtree-collision-detection %}).
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*

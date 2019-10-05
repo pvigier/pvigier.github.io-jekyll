@@ -215,5 +215,3 @@ If you are looking for more networking resources, you can find them there:
 That is all for this guide. I hope you learned a few things and find interesting articles. Good luck with the creation of your network engine!
 
 See you next week for more!
-
-*If you are interested in my adventures during the development of Vagabond, you can follow me on [Twitter](https://twitter.com/PierreVigier).*
