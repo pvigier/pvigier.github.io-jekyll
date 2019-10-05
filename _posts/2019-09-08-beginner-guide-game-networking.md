@@ -136,6 +136,8 @@ Bit packing works particularly well with quantization which is the next topic.
 
 Glenn Fiedler (again!) shows how to use quantization in practice in his article [Snapshot Compression](https://web.archive.org/web/20180823021121/https://gafferongames.com/post/snapshot_compression/).
 
+Shawn Hargreaves also has some interesting articles on compression including quantization, you can find them all [here](http://www.shawnhargreaves.com/blogindex.html#networking).
+
 ### Compression algorithms
 
 The next technique is using lossless compression algorithms.
@@ -143,7 +145,9 @@ The next technique is using lossless compression algorithms.
 In my opinion, the three more interesting algorithms to know are:
 * [Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding) with a precomputed code which is extremely fast and can give good results. It was used to compress the packets in the Quake3 network engine.
 * Using [zlib](http://www.zlib.net/) which is a general-purpose compression algorithm and it never expands the data. It is used in numerous applications as you can see [here](https://en.wikipedia.org/wiki/Zlib). It may be overkill for state updates. But it may be interesting if you have to send assets, long texts or terrains from the server to clients.
-* [Run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding) is maybe the simplest compression algorithm but it is very efficient for certain types of data and can be used as a preprocessing step before to use zlib. It is specifically suitable for compressing terrains made of tiles or voxels where many adjacent elements are similar.
+* [Run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding) is maybe the simplest compression algorithm but it is very efficient for certain types of data. It is specifically suitable for compressing terrains made of tiles or voxels where many adjacent elements are similar.
+
+There is also a paid library by Rad Game Tools called [Oodle Network Compression](http://www.radgametools.com/oodlenetwork.htm). On the page, they show an interesting graph where they compared the compression ratio of Huffman coding, zlib and their solution, very instructive.
 
 ### Delta compression
 
@@ -193,11 +197,15 @@ There are also two articles on Valve's wiki, [*Source Multiplayer Networking*](h
 
 ## Cheating prevention
 
-There are two main techniques for preventing cheating.
+There are mainly two ways to cheat in a mutliplayer game: by sending malicious packets to the server or by reading data coming from the server that give an unfair advantage to the cheater.
 
-The first one is to make hard for cheaters to send malicious packets. As we explained before, encryption is a good way to achieve that.
+A first technique is to make hard for cheaters to craft malicious packets and to read incoming packets. As we explained before, encryption is a good way to achieve that as it will [obfuscate](https://en.wikipedia.org/wiki/Obfuscation) the incoming packets and the cheaters will have to get the keys and reproduce the encryption scheme to craft malicious packets.
 
-The second technique is by having an authoritative server that only receives commands/inputs/actions. The client should never be able to modify the server state by another way than sending inputs. Then each time, the server receives an input, it should check that this input is valid before to apply it.
+The second technique is to have an authoritative server that only receives commands/inputs/actions. The client should never be able to modify the server state by another way than sending inputs. Then, each time the server receives an input, it should check that this input is valid before to apply it.
+
+The best technique to prevent cheaters from accessing data they should not know about is simply by making sure the server does not send it in the first place. For instance, the server should not send to the players the position of opponents or monsters that are far from them. Otherwise, even if they are not visible in the game, the players can read the incoming packets and know exactly where to go to kill their targets. This kind of cheating is called *map hack* or *world hack*.
+
+If you want to know more about cheating you can read the article [Cheating in online games](https://en.wikipedia.org/wiki/Cheating_in_online_games) on Wikipedia which contains a list of possible ways of cheating and solutions to detect and prevent them.
 
 ## Application logic -- Conclusion
 
@@ -215,3 +223,5 @@ If you are looking for more networking resources, you can find them there:
 That is all for this guide. I hope you learned a few things and find interesting articles. Good luck with the creation of your network engine!
 
 See you next week for more!
+
+Edit: Thanks to the redditors for the [feedback](https://www.reddit.com/r/gamedev/comments/d1oz18/beginners_guide_to_game_networking/). I tried to take it into account.
