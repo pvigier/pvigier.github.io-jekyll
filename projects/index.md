@@ -5,7 +5,7 @@ tab: projects
 ---
 # Projects
 
-I am currently working on Vagabond, a procedural roguelike 2D RPG. You can find all my devlogs [here](/tag/vagabond). You can find more screenshots and updates on my [Twitter account](https://twitter.com/PierreVigier).
+I am currently working on Vagabond, a procedural roguelite 2D RPG. You can find all my devlogs [here](/tag/vagabond). You can find more screenshots and updates on my [Twitter account](https://twitter.com/PierreVigier).
 
 The libraries I maintain:
 

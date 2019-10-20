@@ -60,4 +60,5 @@ tab: articles
 * [Vagabond &#8211; Choosing a GUI library]({{ site.baseurl }}{% post_url 2019-08-25-vagabond-choosing-gui-library %})
 * [Beginner's Guide to Game Networking]({{ site.baseurl }}{% post_url 2019-09-08-beginner-guide-game-networking %})
 * [Vagabond &#8211; Exploring the world]({{ site.baseurl }}{% post_url 2019-09-22-vagabond-exploring-the-world %})
+* [Palette Swapping with Shaders]({{ site.baseurl }}{% post_url 2019-10-06-palette-swapping-with-shaders %})
 
