@@ -15,6 +15,8 @@ Last two weeks, I was working on teleporting the players from one map to another
     Sorry, your browser doesn't support embedded videos.
 </video>
 
+<!--more-->
+
 # A multilayer world
 
 In a 2D top-down game, it is hard to make an open-world with only one map like Minecraft. It would mean it is not possible to go underground or upstairs in buildings. Thus, I need to be able to display several maps and to go from one map to another using *doors*.

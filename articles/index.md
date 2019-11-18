@@ -62,4 +62,5 @@ tab: articles
 * [Vagabond &#8211; Exploring the world]({{ site.baseurl }}{% post_url 2019-09-22-vagabond-exploring-the-world %})
 * [Palette Swapping with Shaders]({{ site.baseurl }}{% post_url 2019-10-06-palette-swapping-with-shaders %})
 * [Vagabond &#8211; Teleporting into Dungeons]({{ site.baseurl }}{% post_url 2019-10-20-vagabond-teleporting-into-dungeons %})
+* [Vagabond &#8211; Let's Fight]({{ site.baseurl }}{% post_url 2019-11-18-vagabond-let-s-fight %})
 
