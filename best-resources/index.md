@@ -1,5 +1,5 @@
 ---
-layout: common
+layout: default
 title: Best Resources
 tab: best resources
 sitemap: false
@@ -20,7 +20,7 @@ sitemap: false
 
 ## OpenGL
 
-## PCG 
+## PCG
 
 * [The Algorithmic Beauty of Plants](http://algorithmicbotany.org/papers/#abop) <span class="glyphicon glyphicon-book"></span>
 * <span class="glyphicon glyphicon-book"></span> [Procedural Content Generation in Games](http://pcgbook.com/)

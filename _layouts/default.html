@@ -32,7 +32,10 @@
                 <p class="lead blog-description">computer science, programming and other ideas</p>
             </div>
             <div class="row">
-            {{ content }}
+                <div class="col-sm-8 blog-main">
+                {{ content }}
+                </div>
+                {% include sidebar.html %}
             </div><!-- /.row -->
         </div><!-- /.container -->
 
