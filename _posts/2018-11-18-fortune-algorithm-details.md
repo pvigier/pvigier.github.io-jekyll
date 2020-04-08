@@ -13,7 +13,7 @@ The last few weeks, I worked on an implementation of the [Fortune's algorithm](h
 
 For each input point, which is called a site, we want to find the set of points which are nearer to this site than to any other site. These sets of points form cells as you can see on the image above.
 
-What is remarkable about the Fortune's algorithm is that it constructs such diagrams in $$O(n\log n)$$ time (which is optimal for an algorithm which uses comparisons) where $$n$$ is the number of sites. 
+What is remarkable about the Fortune's algorithm is that it constructs such diagrams in $$O(n\log n)$$ time (which is optimal for an algorithm which uses comparisons) where $$n$$ is the number of sites.
 
 I am writing this article because I find it very hard to implement this algorithm. Until now, it is surely the hardest algorithm I have ever implemented. Thus, I want to share with you the issues I faced and how I solved them.
 
@@ -31,7 +31,7 @@ I just put a pseudo-code of the algorithm so that we all agree on the global str
 
 ```
 add a site event in the event queue for each site
-while the event queue is not empty 
+while the event queue is not empty
     pop the top event
     if the event is a site event
         insert a new arc in the beachline
@@ -162,7 +162,7 @@ struct Arc
 
 The first three fields are for the tree structure. The `leftHalfEdge` field points to the half-edge drawn by the left extremity of the arc. And `rightHalfEdge` to the half-edge drawn by the right extremity. The two pointers `prev` and `next` are useful to have a direct access to the previous and next arcs in the beachline. They also allow to traverse the beachline like a doubly linked list. Finally, every arc has a color which is used to balance the beachline.
 
-I choose to use the [red-black scheme](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) to balance the beachline. My code is directly inspired from [CLRS](https://en.wikipedia.org/wiki/Introduction_to_Algorithms). The two interesting algorithms described in the chapter 13 of the book are `insertFixup` and `deleteFixup` which balance the tree after insertion/deletion. 
+I choose to use the [red-black scheme](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) to balance the beachline. My code is directly inspired from [CLRS](https://en.wikipedia.org/wiki/Introduction_to_Algorithms). The two interesting algorithms described in the chapter 13 of the book are `insertFixup` and `deleteFixup` which balance the tree after insertion/deletion.
 
 However, we cannot reuse the `insert` method of the book because it uses keys to find the correct place where to insert a node. In Fortune's algorithm we have no key, we only know that we want to insert an arc before or after another in the beachline. To do that, I create methods `insertBefore` and `insertAfter`:
 
@@ -187,7 +187,7 @@ void Beachline::insertBefore(Arc* x, Arc* y)
     y->next = x;
     x->prev = y;
     // Balance the tree
-    insertFixup(y);    
+    insertFixup(y);
 }
 ```
 
@@ -195,7 +195,7 @@ The insertion of `y` before `x` is made in three steps:
 
 1. Find the place to insert the new node. To do that I use the following observation: either the left child of `x` is `Nil` or it is the right child of `x->prev`, and the one that is `Nil` is before `x` and after`x->prev`.
 2. We maintain a structure of doubly linked list inside the beachline so we must update the `prev` and `next` pointers of `x->prev`, `y` and `x` accordingly.
-3. Finally, we just call the `insertFixup` method described in the book to balance the tree. 
+3. Finally, we just call the `insertFixup` method described in the book to balance the tree.
 
 `insertAfter` is implemented analogously.
 
@@ -207,7 +207,7 @@ Here is the output of the Fortune's algorithm described above:
 
 ![Voronoi diagram](/media/img/fortune/voronoi.png)
 
-There is a little problem with some edges for cells on the border of the image: they are not drawn. That is because they are infinite. 
+There is a little problem with some edges for cells on the border of the image: they are not drawn. That is because they are infinite.
 
 Worse, a cell might not be in one piece. For instance, if we take three points aligned, the middle point will have two infinite half-edges not linked together. It is not very satisfactory because that means we cannot access to one of the half-edges as a cell is a linked list of edges.
 
@@ -251,13 +251,13 @@ The idea is the following: for each cell we traverse its half-edges and we check
 2. The half-edge is completely outside the box: we discard this half-edge
 3. The half-edge is going outside the box: we clip the half-edge and we store it as the *last half-edge that went outside*.
 4. The half-edge is going inside the box: we clip the half-edge and we add half-edges to link it with the *last half-edge that went outside* (we store it at case 3 or 5)
-5. The half-edge crosses the box twice: we clip the half-edge, we add half-edges to link it with the *last half-edge that went outside*, and we store it as the new *last half-edge that went outside*. 
+5. The half-edge crosses the box twice: we clip the half-edge, we add half-edges to link it with the *last half-edge that went outside*, and we store it as the new *last half-edge that went outside*.
 
-Uh, that's a lot of cases. I made a picture to visualize them: 
+Uh, that's a lot of cases. I made a picture to visualize them:
 
 ![Intersection algorithm](/media/img/fortune/intersection.svg){: .center-image .modal-image }
 
-The orange polygon is the original cell while the red one is the clipped cell. The clipped half-edges are depicted in red. The green ones are the ones added to link the half-edges that are going inside the box with the ones that are going outside. 
+The orange polygon is the original cell while the red one is the clipped cell. The clipped half-edges are depicted in red. The green ones are the ones added to link the half-edges that are going inside the box with the ones that are going outside.
 
 After we applied this algorithm to the bounded diagram, we have the expected result:
 

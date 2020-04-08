@@ -11,7 +11,7 @@ The libraries I maintain:
 
 * [MyGAL](https://github.com/pvigier/MyGAL) ([documentation](/docs/mygal/)): a computational geometry algorithms library.
 * [noisette](https://github.com/pvigier/noisette): a noise-generating library.
-* [ecs](https://github.com/pvigier/ecs): a entity-componet-system library.
+* [ecs](https://github.com/pvigier/ecs): an entity-component-system library.
 
 The games I developed:
 

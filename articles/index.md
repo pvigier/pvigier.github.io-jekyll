@@ -63,4 +63,6 @@ tab: articles
 * [Palette Swapping with Shaders]({{ site.baseurl }}{% post_url 2019-10-06-palette-swapping-with-shaders %})
 * [Vagabond &#8211; Teleporting into Dungeons]({{ site.baseurl }}{% post_url 2019-10-20-vagabond-teleporting-into-dungeons %})
 * [Vagabond &#8211; Let's Fight]({{ site.baseurl }}{% post_url 2019-11-18-vagabond-let-s-fight %})
+* [Vagabond &#8211; Building Generation]({{ site.baseurl }}{% post_url 2020-02-09-vagabond-building-generation %})
+* [Vagabond &#8211; City Generation]({{ site.baseurl }}{% post_url 2020-03-15-vagabond-city-generation %})
 
