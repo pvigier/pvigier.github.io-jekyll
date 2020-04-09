@@ -1,16 +1,18 @@
-name: Pierre Vigier
+title: pvigier's blog
+author: Pierre Vigier
 markdown: kramdown
 excerpt_separator: <!--more-->
 future: true
-url: "https://pvigier.github.io"
+url: https://pvigier.github.io
 plugins:
   - jekyll-paginate
   - jekyll-archives
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-seo-tag
+  - jekyll-feed
 paginate: 5
-paginate_path: "/:num/"
+paginate_path: '/:num/'
 jekyll-archives:
   enabled:
     - 'month'
