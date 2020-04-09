@@ -21,3 +21,5 @@ jekyll-archives:
   permalinks:
     month: '/:year/:month/'
     tag: '/tag/:name/'
+feed:
+  path: rss.xml
