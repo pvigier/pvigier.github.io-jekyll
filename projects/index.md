@@ -5,13 +5,9 @@ tab: projects
 ---
 # Projects
 
-I am currently working on Vagabond, a roguelite 2D RPG. You can find all my devlogs [here](/tag/vagabond). You can find more screenshots and updates on my [Twitter account](https://twitter.com/PierreVigier).
+I am currently working on [Vagabond](https://www.vagabondgame.com/), a 2D RPG with living procedurally generated open worlds. The game is currently in alpha on [itch.io](https://pvigier.itch.io/vagabond). You can find all my devlogs [here](/tag/vagabond). You can find more screenshots and updates on my [Twitter account](https://twitter.com/PierreVigier).
 
-The libraries I maintain:
-
-* [MyGAL](https://github.com/pvigier/MyGAL) ([documentation](/docs/mygal/)): a computational geometry algorithms library.
-* [noisette](https://github.com/pvigier/noisette): a noise-generating library.
-* [ecs](https://github.com/pvigier/ecs): an entity-component-system library.
+You can find my scripts and libraries on my [GitHub account](https://github.com/pvigier/).
 
 The games I developed:
 
