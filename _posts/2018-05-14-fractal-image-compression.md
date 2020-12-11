@@ -27,7 +27,7 @@ $$
 \forall x, y \in E, d(f(x), f(y)) \leq sd(x, y)
 $$
 
-From here, $$f$$ will denote a contraction with contractivity factor $$s$$. 
+From here, $$f$$ will denote a contraction with contractivity factor $$s$$.
 
 There are two important theorems on contractions: the [Contraction Mapping Theorem](https://en.wikipedia.org/wiki/Banach_fixed-point_theorem) and the [Collage Theorem](https://en.wikipedia.org/wiki/Collage_theorem).
 
@@ -73,7 +73,7 @@ From here, $$x_0$$ will denote the fixed point of $$f$$.
 <div id="proof2" class="collapse">
 <p>We showed in the previous proof that \(d(u_m, u_n) \leq \frac{s^m}{1 - s}d(x, f(x)) = \frac{s^m}{1 - s}\epsilon\).</p>
 
-<p>If we fix \(m\) to \(0\) then we have that \(d(x, u_n) \leq \frac{\epsilon}{1 - s}\).</p> 
+<p>If we fix \(m\) to \(0\) then we have that \(d(x, u_n) \leq \frac{\epsilon}{1 - s}\).</p>
 
 <p>Finally we let \(n\) tend to infinity to obtain the desired result.</p>
 
@@ -132,7 +132,7 @@ $$
 
 It remains one question to answer to: How to choose $$D_{k_l}$$ and $$f_l$$?
 
-The Collage Theorem suggests us a way to choose them: if $$x_{R_l}$$ is near to $$f(x_{D_{k_l}})$$ for all $$l$$ then $$x$$ is near to $$f(x)$$ and according to the Collage Theorem $$x$$ and $$x_0$$ will be near too. 
+The Collage Theorem suggests us a way to choose them: if $$x_{R_l}$$ is near to $$f(x_{D_{k_l}})$$ for all $$l$$ then $$x$$ is near to $$f(x)$$ and according to the Collage Theorem $$x$$ and $$x_0$$ will be near too.
 
 Thus, we will, independently for each $$l$$, construct lots of contractions from each $$D_{k}$$ to $$R_l$$ and select the best one. We will show all the nitty-gritty details in the next section.
 
@@ -152,7 +152,7 @@ There exist more advanced schemes for segmentation. For instance, we can use a q
 
 In this section, we will show how to construct the contractions from $$D_{k}$$ to $$R_l$$.
 
-Remember that we want to generate a mapping $$f_l$$ such that $$f(x_{D_k})$$ is near to $$x_{R_l}$$. So, the more mappings we generate, the more likely we are to find a good one. 
+Remember that we want to generate a mapping $$f_l$$ such that $$f(x_{D_k})$$ is near to $$x_{R_l}$$. So, the more mappings we generate, the more likely we are to find a good one.
 
 However, the quality of the compression depends on the number of bits necessary to save $$f_l$$. So if we have a set of functions that is too large, the compression will be bad. There is a tradeoff to find.
 
@@ -161,7 +161,7 @@ $$
 f_l(x_{D_k}) = s \times rotate_{\theta}(flip_d(reduce(x_{D_k}))) + b
 $$
 
-where $$reduce$$ is a function to go from 8 by 8 blocks to 4 by 4 blocks, $$flip$$ and $$rotate$$ are affine transformations, $$s$$ changes the contrast and $$b$$ the brightness. 
+where $$reduce$$ is a function to go from 8 by 8 blocks to 4 by 4 blocks, $$flip$$ and $$rotate$$ are affine transformations, $$s$$ changes the contrast and $$b$$ the brightness.
 
 The function `reduce` reduces the size of an image by averaging neighborhoods:
 
@@ -197,7 +197,7 @@ def apply_transformation(img, direction, angle, contrast=1.0, brightness=0.0):
     return contrast*rotate(flip(img, direction), angle) + brightness
 ```
 
-We need 1 bit to remember if we flip or not and 2 bits for the angle of rotation. Moreover, if we save $$s$$ and $$b$$ using 8 bits each then we need only 11 bits in total to save the transformation.
+We need 1 bit to remember if we flip or not and 2 bits for the angle of rotation. Moreover, if we save $$s$$ and $$b$$ using 8 bits each then we need only 19 bits in total to save the transformation.
 
 Moreover, we should check that these functions are contractions. The proof is a bit tedious and we do not care much. Maybe I will add it in appendix later.
 
