@@ -9,7 +9,7 @@ tags: vagabond game-engine
 
 This week, I have continued to develop my game engine. I have laid the foundation for a certain number of engines and systems.
 
-As you may know, I am using SFML and C++ to create my game. However, building a game directly with SFML is a bit tough as SFML is a low-level library. Thus I have decided to build a small game engine to help me later on. Nothing too fancy or general, just the necessary to be able to power Vagabond.
+As you may know, I am using SFML and C++ to create my game. However, building a game directly with SFML is a bit tough as SFML is a low-level library. Thus I have decided to build a small game engine to help me later on. Nothing too fancy or general, just the necessary to be able to power [Vagabond](https://www.vagabondgame.com).
 
 But, I did not do everything from scratch. I used the experience I acquired during the development of [Simulopolis](https://github.com/pvigier/Simulopolis). Moreover, when I finished developing Simulopolis, I read two books [SFML Game Development](https://www.packtpub.com/game-development/sfml-game-development) and [SFML Game Development By Example](https://www.packtpub.com/game-development/sfml-game-development-example) to compare their approaches and mine. It was really instructive.
 

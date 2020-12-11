@@ -5,7 +5,7 @@ layout: default
     <h2 class="blog-post-title">{{ page.title }}</h2>
     <p class="blog-post-meta">{{ page.date | date_to_string }} by <a href="/">{{ page.author }}</a></p>
     {{ content }}
-    <p><em>If you are interested in my adventures during the development of Vagabond, you can follow me on <a href="https://twitter.com/PierreVigier">Twitter</a>.</em></p>
+    <p><em>If you are interested in my adventures during the development of <a href="https://www.vagabondgame.com">Vagabond</a>, you can follow me on <a href="https://twitter.com/PierreVigier">Twitter</a>.</em></p>
     {% if page.tags.size > 0 %}
 	<p>Tags: {% for tag in page.tags %}<span class="label label-primary"><a href="/tag/{{ tag }}">{{ tag }}</a></span> {% endfor %}</p>
 	{% endif %}

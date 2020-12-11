@@ -13,7 +13,7 @@ redirect_from:
 
 This week, my goal was to generate the world in which the players will move from the symbolic map I worked on the [last weeks]({{ site.baseurl }}{% post_url 2019-05-19-vagabond-borders-rivers-cities-roads %}).
 
-The examples in this article are quite small (600x600 tiles) to be able to see the whole world at once. The worlds in Vagabond will be way larger.
+The examples in this article are quite small (600x600 tiles) to be able to see the whole world at once. The worlds in [Vagabond](https://www.vagabondgame.com) will be way larger.
 
 <!--more-->
 

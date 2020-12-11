@@ -8,7 +8,7 @@ tags: vagabond pcg
 ---
 Hi everyone!
 
-In this devlog, I will show you a technique that I love and that I will abuse in Vagabond: palette swapping.
+In this devlog, I will show you a technique that I love and that I will abuse in [Vagabond](https://www.vagabondgame.com): palette swapping.
 
 Palette swapping is simply changing the palette of a texture. Here, we will do that at runtime using shaders. It was a useful technique in the old days to add variety in the assets without using too much memory. Now, it is used in procedural generation to produce new assets, I will show many examples in later devlogs.
 

@@ -7,7 +7,7 @@ tab: blog
 tags: vagabond ecs cpp
 ---
 
-This week, I have started working on my game engine for my game Vagabond. I have worked on an implementation of the [entity-component-system](https://en.wikipedia.org/wiki/Entity_component_system) pattern.
+This week, I have started working on my game engine for my game [Vagabond](https://www.vagabondgame.com). I have worked on an implementation of the [entity-component-system](https://en.wikipedia.org/wiki/Entity_component_system) pattern.
 
 In this article, I want to share with you my implementation which is freely available on [GitHub](https://github.com/pvigier/ecs). But instead of just commenting the code, I want to explain how I designed it. Thus, I will start with the first implementation I coded, analyze its strengths and weaknesses and then show how I improved it. Finally, I will give a list of things that still could be improved.
 
