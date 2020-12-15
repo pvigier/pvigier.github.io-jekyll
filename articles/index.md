@@ -66,4 +66,4 @@ tab: articles
 * [Vagabond &#8211; Building Generation]({{ site.baseurl }}{% post_url 2020-02-09-vagabond-building-generation %})
 * [Vagabond &#8211; City Generation]({{ site.baseurl }}{% post_url 2020-03-15-vagabond-city-generation %})
 * [Vagabond enters in alpha!]({{ site.baseurl }}{% post_url 2020-12-11-vagabond-enters-in-alpha %})
-
+* [Procedural Death Animation with Falling Sand Automata]({{ site.baseurl }}{% post_url 2020-12-12-procedural-death-animation-with-falling-sand-automata %})
