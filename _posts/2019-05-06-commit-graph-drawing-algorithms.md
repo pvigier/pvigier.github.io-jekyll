@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Commit graph drawing algorithms"
+title: "Commit Graph Drawing Algorithms"
 date: 2019-05-06
 author: pierre
 tab: blog
@@ -19,7 +19,7 @@ We will first study the different types of graph drawing algorithms used in othe
 
 <!--more-->
 
-# Types of commit graph drawing algorithms
+# Types of Commit Graph Drawing Algorithms
 
 To start the study of commit graph drawing, we will look at how it is done by the other git clients. The figure below shows the same portion of a [commit graph](https://github.com/electron/electron-api-demos) displayed by different git clients. This part was chosen because there are a lot of merges and we can clearly observe the differences between the graph drawing algorithms used by all the clients.
 
@@ -53,7 +53,7 @@ SourceTree | Yes | No
 
 In gitamine, we will use an algorithm that draws only one commit by row to be able to show the commit graph and the commit history side-by-side as other git clients. Whether to draw straight or curved branches is a matter of taste. Personally, I found straight branches much more readable. Unfortunately, the only git clients that draw straight or almost straight branches, GitKraken and SourceTree, are not open-source, thus we will have to design our own algorithm.
 
-# Sorting commits
+# Sorting Commits
 
 In the two next sections, we will describe how to choose the position of the nodes so that the commit graph is drawable and readable. To simplify the problem, we will place the node on a 2D grid. We do not lose much in doing so because it is more pleasant to the human eye if the nodes are aligned.
 
@@ -74,7 +74,7 @@ $$
 
 An order of commits that fulfills this condition is said to be topological.
 
-## Sorting by date
+## Sorting by Date
 
 The snippet below shows the content of a commit. We can observe that it contains two different timestamps respectively `1543445903 +0100` and `1543522724 +0100`. The first one is the author date i.e. the date when the commit was created. The second is the committer date, it corresponds to the date when the commit was last modified.
 
@@ -99,7 +99,7 @@ As a matter of fact, there exist repositories where the order according to commi
 :---:|:---:
 gitk | GitKraken
 
-## Topological sorting
+## Topological Sorting
 
 The standard way to obtain an ordering of nodes of a directed acyclic graph that respects the condition given above is to do a [topological sort](https://en.wikipedia.org/wiki/Topological_sorting).
 
@@ -126,7 +126,7 @@ If we use a topological sort to order the commits, we are guaranteed that the gr
 
 Moreover, there may be many valid topological orders for a commit graph and the algorithm above will output one. But as there is no assumption on the order on which the commits in $$\mathcal{C}$$ will be traversed there is no guarantee that the algorithm will always output the same topological order.
 
-## Temporal topological sorting
+## Temporal Topological Sorting
 
 To solve the issues raised in the previous section, I slightly modified the algorithm so that the commits of $$\mathcal{C}$$ are traversed according to their committer dates from newest to oldest:
 
@@ -154,7 +154,7 @@ I would like to highlight the good properties of this algorithm:
 * If there are no anomaly on committer dates, that is if the order induced by committer dates is already a valid topological order then the algorithm will return this order.
 * It is blazing fast: its time complexity is $$O(n\log(n) + m)$$ where $$n$$ is the number of commits and $$m$$ the number of edges.
 
-# Placing commits
+# Placing Commits
 
 In the previous section, we have seen how to determine the $$i$$-coordinate of a commit. In other words, we have shown how to compute an order of the commits so that the edges can be drawn upward. In this section, we will see strategies to determine the $$j$$-coordinate of a commit.
 
@@ -174,7 +174,7 @@ $$
 c.mergeChildren = \{d \in c.children\text{ s.t. }d.parents[0] \neq c\}
 $$
 
-## Curved branches
+## Curved Branches
 
 The first algorithm we will describe is a simplistic method that works well for graph drawn with curved branches.
 
@@ -206,11 +206,11 @@ The git clients that draw graphs with curved branches should use a very similar 
 
 We do not give more details for this version as we will do for the one with straight branches.
 
-## Straight branches
+## Straight Branches
 
 In this section, we will describe an algorithm to draw the commit graph with straight branches i.e. with all the commits of a same branch on the same column. The advantage of this design is that it is easier to visualize branches which are a core concept of git.
 
-### Types of edges
+### Types of Edges
 
 Firstly, let us make a distinction between two types of edges that will be represented differently as depicted in the figure below:
 
@@ -249,7 +249,7 @@ The algorithm looks quite similar to the one described in the previous section a
 
 Previously, in algorithm `curved_branches`, we could remove a branch from the list of active branches or insert one in the middle of it which would shift branches respectively to the left or to the right all the branches to the left of the removed branch. Now, we remove a branch by setting its index to `nil` and we can only append branches. These operations cause no shift of other branches and that is the reason why the branches are straight.
 
-### Forbidden indices
+### Forbidden Indices
 
 We will now see how to determine and compute the set of forbidden indices $$J(c)$$ for a commit $$c$$. To do that, we will take a look at the example below.
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pychain Part 1 - Computational graphs"
+title: "Pychain Part 1 - Computational Graphs"
 date: 2017-07-21
 author: pierre
 tab: blog
@@ -11,7 +11,7 @@ Welcome in this big tutorial on neural networks!
 
 Our goal is to write our own deep learning framework like TensorFlow or Torch. We are going to learn in-depth how neural networks work, all the mechanics behind them.
 
-We will get our hands dirty and code everything! In this tutorial, we will use Python3 and scipy but I hope that the code and the ideas are clear enough so that you can adapt the code to your favorite language. 
+We will get our hands dirty and code everything! In this tutorial, we will use Python3 and scipy but I hope that the code and the ideas are clear enough so that you can adapt the code to your favorite language.
 
 First, I show you the plan. In this part, we are going to quickly introduce neural networks and then, we will introduce computational graphs in order to model them. In the end of this part, we are going to use our implementation to learn some non-linear functions.
 
@@ -32,7 +32,7 @@ Is it all? Maybe not! Stay tuned!
 If you are ready, let’s go!
 <!--more-->
 
-# Neural networks
+# Neural Networks
 
 I am not going to make a long presentation on neural networks. Why? Because there are already a lot of good pages on the web about them.
 
@@ -46,7 +46,7 @@ Another reason why I do not present neural networks, is that we will adopt a mod
 
 # Machine Learning
 
-## The learning problem
+## The Learning Problem
 
 Let's speak a bit of machine learning, more precisely of supervised learning. In supervised learning, there is an unknown function $$g : \mathcal{X} \rightarrow \mathcal{Y}$$ and we have a dataset of examples $$D = ((x_1, y_1), ..., (x_N, y_N))$$ such that $$\forall (x, y) \in D, y = g(x)$$. The goal is to use the dataset $$D$$ to reconstruct $$g$$. In other words, we want to find a function $$f$$ such that:
 
@@ -74,7 +74,7 @@ $$\theta^* = \underset{\theta}{argmin}J(f_{\theta}, D))$$
 
 Such a problem is called an *optimization problem* and there exist good tools to tackle it.
 
-## Gradient descent
+## Gradient Descent
 
 I am going to quickly present an algorithm to find a good $$\theta$$. The algorithm is called *gradient descent*. It consists of choosing randomly an initial parameter $$\theta_0$$ and at each step of the algorithm we will optimize locally to improve the solution. The idea is to make small steps to diminish the cost. We have to decide in which direction we make these steps.
 
@@ -112,11 +112,11 @@ You can see gradient descent in action, in the animation below.
 
 ![Gradient descent in action](/media/img/part1/gradient_descent.gif){: .center-image .modal-image }
 
-You can get the code of these two simulations [here](https://github.com/pvigier/gradient-descent). 
+You can get the code of these two simulations [here](https://github.com/pvigier/gradient-descent).
 
 I stop there for the brief introduction to machine learning. We will now see how to model some parametric functions and how they relate to neural networks.
 
-# Computational graphs
+# Computational Graphs
 
 A *computational graph* is a graph which represents a computation.
 
@@ -154,7 +154,7 @@ Finally, we can model a broader class of parametric functions. We are not limite
 In the next sections, we will explain how to code a computational graph to model a parametric function and how to optimize them to fit your data.
 
 
-# Architecture of the library
+# Architecture of the Library
 
 First, I am going to present the architecture of the library. Then we are going to explain the code.
 
@@ -172,13 +172,13 @@ The UML diagram below gives a global view of the classes and their interactions.
 
 And before, I forget you can retrieve the full code for this chapter [here](https://github.com/pvigier/pychain-part1).
 
-# Node class
+# Node Class
 
 A node have several inputs and several outputs. During the propagation, a node uses its inputs to compute its ouputs as depicted below.
 
 ![Propagation in a node](/media/img/part1/node_propagation.svg){: .center-image .modal-image }
 
-The goal of the backpropagation is to compute the derivative of the cost with respect to the parameters to use the gradient descent algorithm. To do that, we are going to use the *chain rule*, a lot. Indeed, thanks to the chain rule, it is possible to express the derivative of the cost with respect to an input of a node with the derivatives of the cost with respect to the outputs of the same node. 
+The goal of the backpropagation is to compute the derivative of the cost with respect to the parameters to use the gradient descent algorithm. To do that, we are going to use the *chain rule*, a lot. Indeed, thanks to the chain rule, it is possible to express the derivative of the cost with respect to an input of a node with the derivatives of the cost with respect to the outputs of the same node.
 
 ![Backpropagation in a node](/media/img/part1/node_backpropagation.svg){: .center-image .modal-image }
 
@@ -196,7 +196,7 @@ An illustration with the neural networks shown before:
 
 ![Backpropagation in a graph](/media/img/part1/graph_backpropagation.svg){: .center-image .modal-image }
 
-## Base class
+## Base Class
 
 Most of the code is contained in the base class. We are going to divide the work in two stages. First, we are going to see the methods that are useful to create the computational graph. Then we are going to describe the methods used during the propagation and the backpropagation.
 
@@ -226,7 +226,7 @@ class Node:
         for i_input, (parent, i_parent_output) in enumerate(parents):
             self.parents.append((parent, i_parent_output))
             parent.add_child(self, i_input, i_parent_output)
-        
+
     def add_child(self, child, i_child_input, i_output):
         self.children[i_output].append((child, i_child_input))
 {% endhighlight %}
@@ -291,7 +291,7 @@ Finally, there is the method `reset_memoization` to set the flags to true.
 
 In the next subsections, we are going to see the specializations of this class.
 
-## Input nodes
+## Input Nodes
 
 The class `InputNode` has an attribute `value` that can be set. The function `get_output` is overloaded to directly return this value.
 
@@ -311,7 +311,7 @@ class InputNode(Node):
         return [self.dJdy[0]]
 {% endhighlight %}
 
-## Parameter nodes
+## Parameter Nodes
 
 The class `ParameterNode` has a new parameter `w`. We use the letter `w` to refer to the weights, like in neural networks.
 
@@ -334,7 +334,7 @@ This class is very simple. The only issue is that the constructor expects an ini
 
 You will see several examples of initialization later in the tutorial.
 
-## Operation nodes
+## Operation Nodes
 
 Then there are the operation nodes. There is a lot of implemented nodes, I am not going to describe the code for each of them.
 
@@ -355,7 +355,7 @@ To have decent performances in Python, it is very important to use numpy at most
 
 If you want to see all the formulas and how to derive the backpropagation formulas, you can go to the appendix on matrix derivations.
 
-## Gradient nodes
+## Gradient Nodes
 
 The last type of node is the `GradientNode`. I have never spoken about gradient node yet. There are very similar to input nodes but this time, it is the value of the gradient that can be set.
 
@@ -387,7 +387,7 @@ Consider the graph representing the neural networks described above. If we had a
 
 The yellow node at the end is a gradient node which always returns 1 as gradient.
 
-# Graph class
+# Graph Class
 
 The `Graph` class is very simple.
 
@@ -434,7 +434,7 @@ There are also two useful functions:
 
 Finally, the method `reset_memoization` resets the flags for all the nodes and `get_parameter_nodes` returns the parameter nodes. The latter method is useful to give to the optimization algorithm the nodes for which it has to optimize the weights.
 
-# Optimization algorithms
+# Optimization Algorithms
 
 The last class we have to write before we can test our library is the `OptimizationAlgorithm` class.
 
@@ -476,7 +476,7 @@ class GradientDescent(OptimizationAlgorithm):
         return grad
 {% endhighlight %}
 
-# Some examples
+# Some Examples
 
 Now we have a fully functional library. The last missing piece is to create a computational graph and try it!
 
@@ -559,7 +559,7 @@ for i_pass in range(nb_passes):
 
 Finally, you can use the `visualize` to compute the output of the graph for every $$x \in [-0.5, 1.5]^2$$ and see the frontier. You can see that the network models a nonlinear function.
 
-Below, you can see such generated images for two different activation functions for the hidden layers. We can note that $$\tanh$$ seems to create smooth frontiers while $$ReLU$$ creates sharper ones. 
+Below, you can see such generated images for two different activation functions for the hidden layers. We can note that $$\tanh$$ seems to create smooth frontiers while $$ReLU$$ creates sharper ones.
 
 With tanh             |  With ReLU
 :-------------------------:|:-------------------------:
@@ -577,7 +577,7 @@ With tanh             |  With ReLU
 :-------------------------:|:-------------------------:
 ![XOR with tanh as activation function](/media/img/part1/disk_4_4_1_tanh.png){: .center-image .modal-image } | ![XOR with ReLU as activation function](/media/img/part1/disk_4_4_1_relu.png){: .center-image .modal-image }
 
-# To go further
+# To Go Further
 
 Some problems to sharpen your understanding of neural networks:
 * What is the smallest number of layers and neurons necessary to perfectly learn the XOR function? Verify your answer by experience.

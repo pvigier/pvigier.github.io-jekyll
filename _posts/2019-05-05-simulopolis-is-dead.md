@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Simulopolis is dead"
+title: "Simulopolis Is Dead"
 date: 2019-05-05
 author: pierre
 tab: blog

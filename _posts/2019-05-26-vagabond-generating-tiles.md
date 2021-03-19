@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Generating tiles"
+title: "Vagabond &#8211; Generating Tiles"
 date: 2019-05-26
 author: pierre
 tab: blog
@@ -27,7 +27,7 @@ There are two main primitives in rasterization: drawing a line and drawing a tri
 
 In the [first article]({{ site.baseurl }}{% post_url 2019-05-12-vagabond-map-generation %}) of this series, I said that I wanted my map generator to output a data structure easy to manipulate. Thus I chose to generate a polygonal map using a Voronoi diagram. Now, it proves useful as polygons are quite easy to rasterize.
 
-# Rasterizing cells
+# Rasterizing Cells
 
 The first step in rasterizing a polygon is splitting it in triangles so that we can use the triangle drawing algorithm. As our cells come from a Voronoi diagram, we know that they are convex, so it is very easy to triangulate them. One way of doing it is just taking a point inside and linking it with the edges as depicted below.
 
@@ -41,7 +41,7 @@ Here is the result:
 
 By the way, I am using the awesome [LPC terrain tileset](https://opengameart.org/content/lpc-terrains).
 
-# Rasterizing borders
+# Rasterizing Borders
 
 The next step is taking care of borders between two cells. Indeed, a border belongs to the two (or more) adjacent cells. But, currently only one terrain is assigned to each tile.
 
@@ -74,7 +74,7 @@ I have already started to work on rasterizing roads and rivers but it is not fin
 
 See you [next week]({{ site.baseurl }}{% post_url 2019-06-02-vagabond-rasterizing-roads-rivers %}) for more!
 
-# Useful links
+# Useful Links
 
 * [Tiny Renderer](https://github.com/ssloy/tinyrenderer/wiki/Lesson-1:-Bresenham%E2%80%99s-Line-Drawing-Algorithm) by Dmitry V. Sokolov
 * [Software Rasterization Algorithms for Filling Triangles](http://www.sunshine2k.de/coding/java/TriangleRasterization/TriangleRasterization.html) by Bastian Molkenthin

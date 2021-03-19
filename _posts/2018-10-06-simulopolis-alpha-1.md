@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Simulopolis alpha is released"
+title: "Simulopolis Alpha Is Released"
 date: 2018-10-06
 author: pierre
 tab: blog
@@ -35,7 +35,7 @@ They are no precise goal in Simulopolis, it is a sandbox game. You can do whatev
 
 But my goal is that you can try several economic systems such that capitalism, socialism, a mixed of both or even a system without money.
 
-# Try it!
+# Try It!
 
 The game is available on [itch.io](https://pvigier.itch.io/simulopolis) on Windows and Linux and it is totally free!
 
@@ -45,7 +45,7 @@ However, I must warn you that the game is not finished. Many features are missin
 
 Finally, the game is open-source. It is licensed under the GPLv3. You can find the code on my [github account](https://github.com/pvigier/Simulopolis).
 
-# What's next?
+# What's Next?
 
 My goal is to make the game enjoyable before moving on. I hope to reach that point before the end of the year and I will try to release a new version of the game, with new features, every two weeks.
 

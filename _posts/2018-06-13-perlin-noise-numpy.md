@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Perlin noise with numpy"
+title: "Perlin Noise With Numpy"
 date: 2018-06-13
 author: pierre
 tab: blog
@@ -9,7 +9,7 @@ tags: pcg python
 
 Hi everyone, I have written an implementation of Perlin noise with numpy that is pretty fast, and I want to share it with you. The code is available [here](https://github.com/pvigier/perlin-numpy).
 
-# Perlin noise
+# Perlin Noise
 
 My code looks like the original implementation. The only difference is that I tried to use the vectorized operations of numpy as much as possible instead of `for` loops. Because as you may know, loops are really slow in Python.
 
@@ -19,7 +19,7 @@ Here is the code:
 def generate_perlin_noise_2d(shape, res):
     def f(t):
         return 6*t**5 - 15*t**4 + 10*t**3
-    
+
     delta = (res[0] / shape[0], res[1] / shape[1])
     d = (shape[0] // res[0], shape[1] // res[1])
     grid = np.mgrid[0:res[0]:delta[0],0:res[1]:delta[1]].transpose(1, 2, 0) % 1
@@ -52,7 +52,7 @@ I normalized the gradients so that the noise is always between -1 and 1.
 
 <!--more-->
 
-# Fractal noise
+# Fractal Noise
 
 Using the previous function, I wrote another that combines several octaves of Perlin noise to generate fractal noise:
 

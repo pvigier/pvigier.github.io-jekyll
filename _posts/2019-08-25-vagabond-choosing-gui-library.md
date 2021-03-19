@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Choosing a GUI library"
+title: "Vagabond &#8211; Choosing a GUI Library"
 date: 2019-08-25
 author: pierre
 tab: blog
@@ -15,7 +15,7 @@ In this article, I will enumerate the alternatives I considered and give some de
 
 <!--more-->
 
-# Writing my own library
+# Writing My Own Library
 
 The first alternative is not using an external library but writing my own. I did that for my last (unfinished) game Simulopolis.
 
@@ -25,7 +25,7 @@ I developed a certain number of widgets. But it was exhausting and took me a lot
 
 Especially because I think that a bad interface can make a game shitty but a great interface rarely makes a game great. In other words, a good interface is something expected by players and it is not where a game can make differences. So I would prefer to spend my time on other parts.
 
-# SFML libraries
+# SFML Libraries
 
 Two GUI libraries have been made specially to work with SFML: [SFGUI](https://github.com/TankOs/SFGUI) and [TGUI](https://github.com/texus/TGUI). Thus, it is very easy to integrate them in an SFML application as they natively support SFML events.
 
@@ -47,7 +47,7 @@ Contrary to SFGUI, TGUI is skinnable so it is more suitable for in-game interfac
 
 Overall, both libraries are easy to build, install and use. But I think they are not as developed as the next libraries I am going to present, yet. Moreover, they are actively maintained thus they may become suitable for production very soon.
 
-# OpenGL libraries
+# OpenGL Libraries
 
 In this section, I will present libraries that are available for several renderers and in particular with OpenGL. It is an ecosystem that has not changed very much for years. Most libraries are not maintained anymore.
 

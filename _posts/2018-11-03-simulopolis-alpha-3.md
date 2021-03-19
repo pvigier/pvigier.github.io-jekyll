@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Simulopolis alpha 3 is released"
+title: "Simulopolis Alpha 3 Is Released"
 date: 2018-11-03
 author: pierre
 tab: blog
@@ -19,7 +19,7 @@ On this screenshot, you can saw some minor changes on the interface and the main
 
 # Interface
 
-I worked a lot on the user interface. In alpha 1, the window's resolution was 800x600 and it was not possible to resize the window which makes the experience very painful on some screen. 
+I worked a lot on the user interface. In alpha 1, the window's resolution was 800x600 and it was not possible to resize the window which makes the experience very painful on some screen.
 
 Thus, in alpha 2, I made the window resizable and I improved the GUI code to make widgets resizable too. It was a lot of work, but I am very satisfied with the result. The GUI code starts to look like a small library and I am thinking about separating this code from the rest of the game to publish it as a library.
 

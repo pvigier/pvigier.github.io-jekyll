@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "3D Perlin noise with numpy"
+title: "3D Perlin Noise With Numpy"
 date: 2018-11-02
 author: pierre
 tab: blog
@@ -23,7 +23,7 @@ The only difficulty to generalize the 2D code to 3D is the increased number of c
 def generate_perlin_noise_3d(shape, res):
     def f(t):
         return 6*t**5 - 15*t**4 + 10*t**3
-    
+
     delta = (res[0] / shape[0], res[1] / shape[1], res[2] / shape[2])
     d = (shape[0] // res[0], shape[1] // res[1], shape[2] // res[2])
     grid = np.mgrid[0:res[0]:delta[0],0:res[1]:delta[1],0:res[2]:delta[2]]
@@ -75,7 +75,7 @@ def generate_fractal_noise_3d(shape, res, octaves=1, persistence=0.5):
     return noise
 ```
 
-# Some images
+# Some Images
 
 To finish this article, I put some gifs to visualize the generated 3D noise. I tweak a bit the code so that the noise is tileable along the x-axis, it makes the gif much more pleasant to watch.
 

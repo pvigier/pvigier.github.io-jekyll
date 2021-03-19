@@ -28,7 +28,7 @@ Firstly, I ingested several monsters, even if you will only see bats in this dev
     Sorry, your browser doesn't support embedded videos.
 </video>
 
-# Combat system
+# Combat System
 
 It was then time to kick their ass. I had to modify the physics engine to support hurtboxes and hitboxes.
 
@@ -58,7 +58,7 @@ Moreover, I change the inputs. Now, everything is done with the mouse. Thus, I c
 
 I also started to do preparatory work on a drag and drop system for the future inventory interface.
 
-# Cave generation update
+# Cave Generation Update
 
 Finally, I worked on the cave generator. I fixed pernicious bugs occurring during tile generation. Moreover, I added some cycles during maze generation. I am very happy with the results:
 

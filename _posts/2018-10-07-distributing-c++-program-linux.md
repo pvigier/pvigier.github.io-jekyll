@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Distributing a C++ program on Linux"
+title: "Distributing a C++ Program on Linux"
 date: 2018-10-07
 author: pierre
 tab: blog
@@ -27,7 +27,7 @@ We read the error message, it tells that a dependency I use to build the game is
 
 <!--more-->
 
-# Packaging vs static linking vs dynamic linking
+# Packaging vs Static Linking vs Dynamic Linking
 
 I search over the Internet to see how people usually tackle this problem. I mainly found three methods.
 
@@ -37,7 +37,7 @@ The second one is to use static linking i.e. to embed the dependencies in the bi
 
 The third one is to use dynamic linking and to distribute the dependencies with the binary. Exactly as we do on Windows when we distribute DLLs alongside the binary. The difference between Linux and Windows is that by default on Linux a binary only looks for libraries on the system's folder like `/usr/local/lib` while on Windows the executable looks first in the current folder. But there is a way to tell the executable to look for the dependencies in the current folder, this is called run-time search path (rpath).
 
-# Setting the rpath
+# Setting the Rpath
 
 I encourage you to read the [wikipedia page on rpath](https://en.wikipedia.org/wiki/Rpath) which is very instructive to understand how the [dynamic linker](https://en.wikipedia.org/wiki/Dynamic_linker) looks for shared libraries.
 

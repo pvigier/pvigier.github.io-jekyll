@@ -1,22 +1,22 @@
 ---
 layout: post
-title: "Terrain generation in Simulopolis"
+title: "Terrain Generation in Simulopolis"
 date: 2018-10-08
 author: pierre
 tab: blog
 tags: pcg simulopolis
 ---
 
-Hi! 
+Hi!
 
 Today I will describe the generator of terrains I made for Simulopolis.
 
-Here are some screenshots of terrains from the game. 
+Here are some screenshots of terrains from the game.
 
 
 ![Cover](/media/img/terrain-generation-simulopolis/terrain_pcg_gif.gif){: .center-image .modal-image }
 
-In this article, I will not describe the C++ code used in the game as it is verbose and unnecessarily complicated. Instead, I will use the Python code I used to design the generator. 
+In this article, I will not describe the C++ code used in the game as it is verbose and unnecessarily complicated. Instead, I will use the Python code I used to design the generator.
 
 Indeed, I found much more pleasant to use Python for prototyping as it is really fast to write something which works, there are good libraries and we do not have to wait for compilation every time we make a change. It is especially true for procedural content generation where we have to iterate a lot before obtaining something decent.
 
@@ -31,11 +31,11 @@ We will store the terrain in a 2D array. And we will map integers to the differe
 * 0: water
 * 1: grass
 * 2: trees
-* 3: dirt 
+* 3: dirt
 
 Let us define a 2D array of size 64x64 initialized to 1:
 
-```python 
+```python
 n = 64
 grid = np.ones((n, n), dtype=np.int32)
 ```
@@ -44,11 +44,11 @@ At this step, we just have a completely green and boring map:
 
 ![Grass](/media/img/terrain-generation-simulopolis/grass.png){: .center-image .modal-image }
 
-# Let there be noise
+# Let There Be Noise
 
 Then let us generate some fractal noise with six octaves using the function I made last time:
 
-```python 
+```python
 noise = generate_fractal_noise_2d((n, n), (1, 1), 6)
 noise = (noise - noise.min()) / (noise.max() - noise.min())
 ```
@@ -63,7 +63,7 @@ Here what it looks like:
 
 The rule to add water is very simple. If the noise is below a threshold then the tile becomes water otherwise it stays green:
 
-```python 
+```python
 threshold = 0.3
 grid[noise < threshold] = 0
 ```
@@ -92,7 +92,7 @@ Here is this potential for the current map:
 
 Finally, for each grass tile we generate a uniform random number. And if this number is smaller than the potential then the tile becomes a tree:
 
-```python 
+```python
 mask = (noise > threshold) * (np.random.rand(n, n) < potential)
 grid[mask] = 2
 ```
@@ -107,7 +107,7 @@ The map with trees:
 
 The last step is to add some dirt. The rule is very simple, I transform a grass tile into dirt with probability 0.05:
 
-```python 
+```python
 mask = (grid == 1) * (np.random.rand(n, n) < 0.05)
 grid[mask] = 3
 ```

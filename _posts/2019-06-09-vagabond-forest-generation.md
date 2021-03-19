@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Forest generation"
+title: "Vagabond &#8211; Forest Generation"
 date: 2019-06-09
 author: pierre
 tab: blog
@@ -13,7 +13,7 @@ This week, I have continued to work on the object placement system that I starte
 
 <!--more-->
 
-# Multi-class Poisson disk sampling
+# Multi-Class Poisson Disk Sampling
 
 Last week, I show an image of points sampled using Poisson disk sampling. Then I mapped these points to one of the decorations randomly.
 
@@ -31,7 +31,7 @@ Here is a picture with four classes that have different properties:
 
 ![](/media/img/vagabond-forest-generation/multiclass_poisson_disk_sampling.png){: width="400" .center-image .modal-image }
 
-# Filling the cells
+# Filling the Cells
 
 Now that we have an algorithm to place objects, it is time to effectively add objects. For now, I annotated each object with two distances (one for the minimal distance with objects of the same class and the minimal distance with objects of other classes). But I may change the system where a same class can represent several objects because I have many objects that have the same properties. For instance, all the variations of the same flower have the same properties.
 

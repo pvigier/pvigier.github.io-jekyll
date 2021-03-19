@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; OpenGL wrapper and metrics"
+title: "Vagabond &#8211; OpenGL Wrapper and Metrics"
 date: 2019-07-21
 author: pierre
 tab: blog
@@ -29,7 +29,7 @@ It is more interesting to maintain the minimum and the maximum in amortized cons
 
 If you want more details, you can read [this article](https://people.cs.uct.ac.za/~ksmith/articles/sliding_window_minimum.html).
 
-# OpenGL wrapper
+# OpenGL Wrapper
 
 SFML is a fantastic library but it uses the legacy OpenGL API to implement its graphics features. Thus, it does not give access to the more recent features such as [array textures](https://www.khronos.org/opengl/wiki/Array_Texture) or custom [vertex specification](https://www.khronos.org/opengl/wiki/Vertex_Specification) that I find really useful.
 

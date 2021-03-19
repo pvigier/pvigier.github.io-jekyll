@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fortune's algorithm, the details"
+title: "Fortune's Algorithm: The Details"
 date: 2018-11-18
 author: pierre
 tab: blog
@@ -21,7 +21,7 @@ The code is, as usual, available on [github](https://github.com/pvigier/FortuneA
 
 <!--more-->
 
-# Fortune's algorithm overview
+# Fortune's Algorithm Overview
 
 I will not explain how the algorithm works. Because other people have already done it well. I can recommend you these two blog articles: [here](http://blog.ivank.net/fortunes-algorithm-and-implementation.html) and [there](https://jacquesheunis.com/post/fortunes-algorithm/). The second one is really cool since its author made an interactive demo in Javascript which is useful to understand how the algorithm works. If you want a more formal approach and to see all the proofs, I advise you to read the chapter 7 of [*Computational Geometry, 3rd edition*](http://www.cs.uu.nl/geobook/).
 
@@ -43,7 +43,7 @@ while the event queue is not empty
         check for new circle events
 ```
 
-# Diagram's data structure
+# Diagram's Data Structure
 
 The first issue I faced is how to store the Voronoi diagram.
 
@@ -117,7 +117,7 @@ struct Face
 };
 ```
 
-# Event queue
+# Event Queue
 
 The standard way to implement the event queue is to use a priority queue. During the processing of site and circle events we may need to remove circle events from the queue because they are not valid anymore. But most of the standard implementations of priority queues do not allow to remove an element which is not the top one. In particular that is the case for `std::priority_queue`.
 
@@ -201,7 +201,7 @@ The insertion of `y` before `x` is made in three steps:
 
 Finally, the deletion method from the book can be implemented as it is.
 
-# Bounding the diagram
+# Bounding the Diagram
 
 Here is the output of the Fortune's algorithm described above:
 
@@ -237,7 +237,7 @@ We can see that all the edges are drawn now. And if we zoom out, we can check th
 
 ![Voronoi diagram bounded](/media/img/fortune/voronoi_bounded_zoomed_out.png)
 
-# Intersection with a box
+# Intersection with a Box
 
 Cool! But the first image at the top of the article is cooler, isn't it?
 

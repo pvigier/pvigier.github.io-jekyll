@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Circular dependencies in C++"
+title: "Circular Dependencies in C++"
 date: 2018-02-09
 author: pierre
 tab: blog
@@ -22,7 +22,7 @@ However, the true reason why I created this tool is not because I like to see be
 
 <!--more-->
 
-# Circular dependencies
+# Circular Dependencies
 
 Fistly, let us be clear about what is a circular dependency.
 
@@ -76,11 +76,11 @@ I will list several reasons against circular dependencies:
 
 There are many ways to avoid circular dependencies. The most obvious one is to design well the project with independent modules or even to break a big project in smaller libraries. Moreover, it may be okay to have a small circular dependency inside a small module/library but not through the whole project.
 
-Design patterns like [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), [Observer](http://gameprogrammingpatterns.com/observer.html) or [Event Queue](http://gameprogrammingpatterns.com/event-queue.html) can also be of great help. By the way, I recommend you to have a look at [Game Programming Patterns](http://gameprogrammingpatterns.com/) by Robert Nystrom if you do not know this book already.
+Design patterns like [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), [Observer](http://gameprogrammingpatterns.com/observer.html) or [Event Queue](http://gameprogrammingpatterns.com/event-queue.html) can also be of great help. By the way, I recommend you to have a look at [Game Programming Patterns](http://gameprogrammingpatterns.com/) by Robert Nystrom if you have not read this book already.
 
 Finally, you could use my little script to monitor the architecture of your project.
 
-# Some details on the code
+# Some Details on the Code
 
 The script is pretty simple. I use the `re` module of Python to find the `#include`'s in source files.
 

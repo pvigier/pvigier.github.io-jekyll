@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Palette Swapping with Shaders"
+title: "Palette Swapping With Shaders"
 date: 2019-10-06
 author: pierre
 tab: blog
@@ -16,7 +16,7 @@ Palette swapping is simply changing the palette of a texture. Here, we will do t
 
 <!--more-->
 
-# Preparing the images
+# Preparing the Images
 
 The first step is to prepare your images for palette swapping. In a [raster image](https://en.wikipedia.org/wiki/Raster_graphics), each pixel contains a color. What we would like instead is that each pixel contains the index of its color in a palette. This way, we decouple the structure of the image (the areas with the same color) with the real colors.
 

@@ -84,7 +84,7 @@ The second theorem tells us that if we find a contraction $$f$$ such that $$f(x)
 
 This result will be fundamental in the following. Indeed instead of saving an image, we will only save a contraction whose fixed point is near to the image.
 
-## Contractions for images
+## Contractions for Images
 
 In this part, we will show how to build a contraction such that its fixed point is near to a given image.
 
@@ -292,7 +292,7 @@ The function `test_greyscale` loads the image compresses it, decompresses and sh
 
 Not bad for this very simple implementation!
 
-## RGB images
+## RGB Images
 
 A very naive solution to compress RGB images is to compress the three channels separately:
 
@@ -322,7 +322,7 @@ If you would like to see it works, you can run the function `test_rgb`:
 
 There are some artifacts. This method is maybe too naive to give good results.
 
-# To go further
+# To Go Further
 
 If you would like to learn more about fractal image compression, I can suggest you to read [Fractal and Wavelet Image Compression Techniques](https://spie.org/publications/book/353798?print=2&SSO=1) by Stephen Welstead. It is easy to read and explains more advanced techniques.
 

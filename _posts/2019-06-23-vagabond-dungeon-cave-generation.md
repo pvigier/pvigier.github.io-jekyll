@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Dungeon and cave generation"
+title: "Vagabond &#8211; Dungeon and Cave Generation &#8211; Part 1"
 date: 2019-06-23
 author: pierre
 tab: blog
@@ -15,7 +15,7 @@ But, this week I started working on a new topic: dungeon and cave generation. I 
 
 <!--more-->
 
-# Space partitioning
+# Space Partitioning
 
 There are many ways ([random placement](https://gamedevelopment.tutsplus.com/tutorials/create-a-procedurally-generated-dungeon-cave-system--gamedev-10099), [agent based](http://pcgbook.com/wp-content/uploads/chapter03.pdf), using [separation steering behavior](https://www.reddit.com/r/roguelikes/comments/1dodsv/my_procedural_dungeon_generation_algorithm/) or [a physics engine](https://www.gamasutra.com/blogs/AAdonaac/20150903/252889/Procedural_Dungeon_Generation_Algorithm.php), etc.) to create rooms for a dungeon. But my favorite method is space partitioning because it is controllable and easily expandable.
 
@@ -35,7 +35,7 @@ A maximum ratio between 2.0 and 3.0 gives good results:
 
 ![](/media/img/vagabond-dungeon-cave-generation/bsp.gif){: width="400" .center-image .modal-image }
 
-# Room generation
+# Room Generation
 
 The next step is to generate a room inside each cell. There is no special issue here, I just set some constraints so that the rooms are not too small nor too close to the walls of the cells.
 
@@ -43,7 +43,7 @@ Here are the results:
 
 ![](/media/img/vagabond-dungeon-cave-generation/rooms.gif){: width="400" .center-image .modal-image }
 
-# Edge selection
+# Edge Selection
 
 Commonly in dungeon generators based on binary space partitioning, the binary tree used during space partitioning is used again for corridor generation. I did not do that because, in my opinion, it is quite limited.
 
@@ -57,7 +57,7 @@ For now, I simply use Kruskal algorithm with Manhattan distance to select the ed
 
 ![](/media/img/vagabond-dungeon-cave-generation/selected_edges.gif){: width="400" .center-image .modal-image }
 
-# Corridor generation
+# Corridor Generation
 
 The next step is the generation of corridors from the selected edges. This is maybe the trickiest part of the generator as we need to be careful that no corridor crosses another one.
 
@@ -65,7 +65,7 @@ Here are the results:
 
 ![](/media/img/vagabond-dungeon-cave-generation/corridors.gif){: width="400" .center-image .modal-image }
 
-# Cave generation
+# Cave Generation
 
 The previous results are fine for dungeons, crypts or other man-made structures but I would like a more organic aspect for caves or mines. The classic method to generate caves is to use a cellular automaton as described in [this article](http://www.roguebasin.com/index.php?title=Cellular_Automata_Method_for_Generating_Random_Cave-Like_Levels) on RogueBasin. The big issue with cellular automata is that the results are not really controllable.
 

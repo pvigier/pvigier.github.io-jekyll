@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Map generation"
+title: "Vagabond &#8211; Map Generation"
 date: 2019-05-12
 author: pierre
 tab: blog
@@ -20,7 +20,7 @@ Firstly, I will list some of the constraints that will influcence the design of 
 
 <!--more-->
 
-# Generating cells
+# Generating Cells
 
 The first step is to divide the world into cells. I like the idea popularized by [Amit Patel](http://www-cs-students.stanford.edu/~amitp/game-programming/polygon-map-generation/) of using Voronoi cells. Thus I randomly generate a bunch of points and compute the [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram) using my own implementation of [Fortune's algorithm](https://en.wikipedia.org/wiki/Fortune%27s_algorithm). I talked about it in this [article]({{ site.baseurl }}{% post_url 2018-11-18-fortune-algorithm-details %}) but I have revamped the code and fixed many edge cases to turn it into a library called [MyGAL](https://github.com/pvigier/MyGAL).
 
@@ -120,7 +120,7 @@ I assign each of them using a [Whittaker diagram](http://w3.marietta.edu/~biol/b
 :---:|:---:
 ![](/media/img/vagabond-map-generation/5/Biome.png){: width="250" .modal-image } | ![](/media/img/vagabond-map-generation/7/Biome.png){: width="250" .modal-image }
 
-# Useful links
+# Useful Links
 
 Before finishing this article, I must cite some other map generators that inspired me:
 

@@ -27,7 +27,7 @@ It is really important to understand the role of each part and its challenges.
 
 <!--more-->
 
-# Transport protocol
+# Transport Protocol
 
 The first part is choosing a protocol to transport the data between the server and the clients. There are two Internet protocols available for that: [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) and [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol). But you can also make your own custom transport protocol based on one of them or use a library that uses them.
 
@@ -53,7 +53,7 @@ If you decide to use TCP, ensure that [Nagle's algorithm](https://en.wikipedia.o
 
 To know more about the differences between UDP and TCP in a multiplayer game context, you can read the article [*UDP vs. TCP*](https://web.archive.org/web/20180823015049/https://gafferongames.com/post/udp_vs_tcp/) by Glenn Fiedler.
 
-## Custom protocol
+## Custom Protocol
 
 So you want to create your own transport protocol but you are not sure where to start? You are lucky because Glenn Fielder wrote two great series of articles explaining a way to do that. You will find plenty of smart ideas there.
 
@@ -63,7 +63,7 @@ Be aware that Glenn Fiedler is a strong advocate of using a custom UDP based pro
 
 But if you are new to networking, please do yourself a favor and use TCP or a library. You have surely many things to learn before being able to implement successfully a custom transport protocol.
 
-## Network libraries
+## Network Libraries
 
 If you need something more efficient than TCP but do not want to bother implementing a custom protocol and dive into many issues, you can use a networking library. There are plenty available:
 
@@ -74,7 +74,7 @@ If you need something more efficient than TCP but do not want to bother implemen
 
 I have not tried them all but my preference goes to ENet as it is simple to use and robust. Moreover, it has clear documentation and a tutorial to get started.
 
-## Transport protocol -- Conclusion
+## Transport Protocol -- Conclusion
 
 To sum up, there exists two base transport protocols: TCP and UDP. TCP has a lot of useful features: reliability, preserving packet order, error detection, while UDP does not but due to its design TCP has higher latency which may be inadequate for certain games. Thus, to have lower latency, it is possible to create a custom transport protocol using UDP or to use a library that provides a transport protocol based on UDP adapted for multiplayer video games.
 
@@ -88,7 +88,7 @@ I have two pieces of advice:
 To finish, this part, I advise you to read [*Introduction to Multiplayer Game Programming*](https://web.archive.org/web/20190519135537/http://trac.bookofhook.com/bookofhook/trac.cgi/wiki/IntroductionToMultiplayerGameProgramming) by Brian Hook which covers a lot of topics we have discussed here.
 
 
-# Application protocol
+# Application Protocol
 
 Now that you have a way to exchange data between clients and the server you must decide what data to exchange and with which format.
 
@@ -138,7 +138,7 @@ Glenn Fiedler (again!) shows how to use quantization in practice in his article 
 
 Shawn Hargreaves also has some interesting articles on compression including quantization, you can find them all [here](http://www.shawnhargreaves.com/blogindex.html#networking).
 
-### Compression algorithms
+### Compression Algorithms
 
 The next technique is using lossless compression algorithms.
 
@@ -149,7 +149,7 @@ In my opinion, the three more interesting algorithms to know are:
 
 There is also a paid library by Rad Game Tools called [Oodle Network Compression](http://www.radgametools.com/oodlenetwork.htm). On the page, they show an interesting graph where they compared the compression ratio of Huffman coding, zlib and their solution, very instructive.
 
-### Delta compression
+### Delta Compression
 
 The last compression technique is delta compression. It consists in sending only the differences between the current game state and the last state received by a client.
 
@@ -169,11 +169,11 @@ Finally, you may want to encrypt the communication between clients and the serve
 
 I strongly advise you to use a library to help you. I suggest [libsodium](https://download.libsodium.org/doc/) as it is particularly simple to use and it provides great tutorials. You will be in particular interested by the [key exchange](https://download.libsodium.org/doc/key_exchange) tutorial to generate new keys for each new connection.
 
-## Application protocol -- Conclusion
+## Application Protocol -- Conclusion
 
 That is all for this part. I think that compression is totally optional and it depends on your game and how much bandwidth is needed. Encryption is, in my opinion, not optional but it may be skipped in a first prototype.
 
-# Application logic
+# Application Logic
 
 You are now able to update the state in the client but you may experience latency issues. Indeed, you have to wait for a game state update from the server after having triggered an input to see its effect in the world.
 
@@ -181,7 +181,7 @@ Moreover, between two state updates, the world is completely static. Thus, movem
 
 There are several techniques to mitigate these issues that I will present in the next section.
 
-## Latency mitigation techniques
+## Latency Mitigation Techniques
 
 All the techniques presented in this section are presented in-depth in [*Fast-Paced Multiplayer*](https://www.gabrielgambetta.com/client-server-game-architecture.html) by Gabriel Gambetta. I strongly advise you to read this series of articles which is great. There is also a live demo to see how these techniques work in practice.
 
@@ -195,7 +195,7 @@ Glenn Fiedler (always!) wrote [*Network Physics (2004)*](https://web.archive.org
 
 There are also two articles on Valve's wiki, [*Source Multiplayer Networking*](https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking) and [*Latency Compensating Methods in Client/Server In-game Protocol Design and Optimization*](https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization), which deal with latency compensation.
 
-## Cheating prevention
+## Cheating Prevention
 
 There are mainly two ways to cheat in a mutliplayer game: by sending malicious packets to the server or by reading data coming from the server that give an unfair advantage to the cheater.
 
@@ -207,11 +207,11 @@ The best technique to prevent cheaters from accessing data they should not know 
 
 If you want to know more about cheating you can read the article [Cheating in online games](https://en.wikipedia.org/wiki/Cheating_in_online_games) on Wikipedia which contains a list of possible ways of cheating and solutions to detect and prevent them.
 
-## Application logic -- Conclusion
+## Application Logic -- Conclusion
 
 I advise you to implement a way to simulate high latency and low refresh rates in your game to be able to test your game in bad conditions even if both the client and the server are running on your computer. It will simplify greatly the implementation of latency mitigation techniques.
 
-# Other useful resources
+# Other Useful Resources
 
 If you are looking for more networking resources, you can find them there:
 * [Glenn Fielder's blog](https://web.archive.org/web/20190328001900/https://gafferongames.com/), you should read its entire blog, it contains lots of great articles. [Here](https://web.archive.org/web/20180823014743/https://gafferongames.com/tags/networking) are all its articles concerning networking.

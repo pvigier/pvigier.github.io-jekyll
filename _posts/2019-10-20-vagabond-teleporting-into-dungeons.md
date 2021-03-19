@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Teleporting into Dungeons"
+title: "Vagabond &#8211; Teleporting Into Dungeons"
 date: 2019-10-20
 author: pierre
 tab: blog
@@ -17,7 +17,7 @@ Last two weeks, I was working on teleporting the players from one map to another
 
 <!--more-->
 
-# A multilayer world
+# A Multilayer World
 
 In a 2D top-down game, it is hard to make an open-world with only one map like Minecraft. It would mean it is not possible to go underground or upstairs in buildings. Thus, I need to be able to display several maps and to go from one map to another using *doors*.
 
@@ -52,7 +52,7 @@ struct Position
 
 This little change in the `Position` data structure forced me to rework my physics engine and other systems.
 
-# Teleportation system
+# Teleportation System
 
 Once these architectural changes were done, I was ready to implement my teleportation system. As I use an entity-component-system, implementing this was just creating a new component and a new system.
 
@@ -74,7 +74,7 @@ And it works well, even in multilayer mode where there are two players on differ
     Sorry, your browser doesn't support embedded videos.
 </video>
 
-# Dungeon entrances
+# Dungeon Entrances
 
 Finally, I worked on a dungeon entrance generator. Nothing fancy but it works well and you can change the materials of the walls to match the one used in the dungeon:
 

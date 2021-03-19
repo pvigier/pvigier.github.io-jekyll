@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Entity-component-system &#8211; Part 2"
+title: "Entity-Component-System &#8211; Part 2"
 date: 2019-07-08
 author: pierre
 tab: blog
@@ -59,7 +59,7 @@ And the output with 100000 entities:
 
 We can observe that this version does approximately three times less references and four times less cache misses.
 
-# Automatic types
+# Automatic Types
 
 The last improvement I will present is the automatic generation of type ids for the components.
 
@@ -105,11 +105,11 @@ We can explain this slowdown by the fact that previously the compiler known the 
 
 It is a bit cumbersome and error-prone to have to specify the type ids of components manually. Thus, even if we lose a bit of performance it is still an improvement in the usability of our entity-component-system library.
 
-# Ideas for improvements
+# Ideas for Improvements
 
 Before finishing this article, I would like to share with you some ideas for improvements. I have not implemented them yet but I may do it in the future.
 
-## Dynamic number of components and systems
+## Dynamic Number of Components and Systems
 
 It is not convenient to have to specify in advance the maximum number of components and systems as template parameters. I think it would be possible to replace the `std::array`s in `EntityManager` by `std::vector`s without a big penalty in performance.
 
@@ -117,7 +117,7 @@ However, `std::bitset` requires to know its number of bits at compile time. Curr
 
 Another idea is to not use bit sets anymore and just rely on `mEntityToComponent` to determine if an entity has a component or not.
 
-## Easier iteration of components
+## Easier Iteration of Components
 
 For now, if a system wants to iterate the components of its managed entities, we have to do as follow:
 
@@ -144,13 +144,13 @@ Unfortunately, this is not ready yet. I could have used Eric Niebler's [range li
 
 The solution would be implement a class `EntityRangeView` that would take as template parameters the component types to retrieve and as constructor parameter a reference to a `std::vector` of entities. Then, we just have to implement `begin`, `end` and an iterator type to be able to obtain the desired behavior. It is not really difficult but a bit cumbersome to write.
 
-## Optimization of event dispatching
+## Optimization of Event Dispatching
 
 Currently, when we add or remove a component to an entity, we call the `onEntityUpdated` of all systems. It is a bit inefficient as many systems are not interested by the component type that just has been modified.
 
 To mitigate that, we can store pointers to systems interested by a given component type in a data structure like `std::array<std::vector<System<ComponentCount, SystemCount>>, ComponentCount>`. Then, when we add or remove a component, we just call the method `onEntityUpdated` of the systems that are interested by this component.
 
-## Subsets of entities managed by the entity manager instead of systems
+## Subsets of Entities Managed by the Entity Manager Instead of Systems
 
 My last idea induces more changes in the design of the library.
 
@@ -164,6 +164,7 @@ for (const auto& entity : mEntityManager.getEntitiesWith<Position, Velocity>())
     ...
 }
 ```
+
 # Conclusion
 
 It is the end, for now, of this series of article on my entity-component-system implementation. I may write new articles if I make some improvements in the future.
@@ -174,7 +175,7 @@ I hope you find these articles interesting or even useful for you.
 
 See you next week for more!
 
-# To go further
+# To Go Further
 
 Here are some useful resources to dive deeper in entity-component-systems:
 

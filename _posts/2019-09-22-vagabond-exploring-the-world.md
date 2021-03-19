@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Exploring the world"
+title: "Vagabond &#8211; Exploring the World"
 date: 2019-09-22
 author: pierre
 tab: blog
@@ -12,7 +12,7 @@ This is the first devlog since I stopped working on the game engine and really s
 
 <!--more-->
 
-# Moving in the world
+# Moving in the World
 
 The first goal was to be able to move a character in a generated world. To do that, I had to plug the [world generator]({{ site.baseurl }}{% post_url 2019-05-26-vagabond-generating-tiles %}) with the rest of the game engine. Then, displaying the world and the character was just creating some nodes in the scene graph.
 
@@ -25,7 +25,7 @@ Here is a small screencast of a (naked) character walking in the world:
     Sorry, your browser doesn't support embedded videos.
 </video>
 
-# Multiplayer mode is working
+# Multiplayer Mode Is Working
 
 I decided to directly create the multiplayer mode. In fact, the single-player mode just runs a local server which does not accept any external connection. I think that in the long term, starting with this design is easier than firstly creating the single-player game and then trying to add a multiplayer mode.
 

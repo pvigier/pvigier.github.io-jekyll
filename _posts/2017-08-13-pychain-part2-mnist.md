@@ -12,13 +12,13 @@ We are going to use a well-known database in the machine learning and deep learn
 
 Character recognition is an emblematic problem for two reasons. Firstly, it is one of the first successes and industrial applications of neural networks. It was used since the 90's to read checks. Secondly, computer vision has always been a leading application domain for neural networks.
 
-In this part, we are going to briefly discover the MNIST database. Then, we are going to train some networks on it and finally, we are going to explore a bit how a neural network works. 
+In this part, we are going to briefly discover the MNIST database. Then, we are going to train some networks on it and finally, we are going to explore a bit how a neural network works.
 
 <!--more-->
 
-# MNIST database
+# MNIST Database
 
-## Get the dataset
+## Get the Dataset
 
 Firstly, you should download the four files named "train-images-idx3-ubyte.gz", "train-labels-idx1-ubyte.gz", "t10k-images-idx3-ubyte.gz", "t10k-labels-idx1-ubyte.gz". Then create a folder examples/mnist/mnist and uncompress them in the latter. If you have not already a file archiver, I can advise you to use [7-zip](http://www.7-zip.org/) for Windows and [The Unarchiver](https://itunes.apple.com/fr/app/the-unarchiver/id425424353?mt=12) for MacOS. As for Linux users, you should already have one.
 
@@ -60,9 +60,9 @@ On the image below, you can see the effects of these three preprocessings. Notic
 
 ![Visualization of the preprocessings](/media/img/part2/preprocessings.png){: .center-image .modal-image }
 
-You might ask why it is useful to preprocess the data before training. I think there are at least two reasons. 
+You might ask why it is useful to preprocess the data before training. I think there are at least two reasons.
 
-The first one is as there is no dominant or privileged dimension in the data, it can speed up the training. I think it is not totally obvious to see how the shape of the dataset can modify the shape of the cost function and help the gradient descent algorithm. So, I made a little simulation. I created a very simple dataset where the inputs have only one dimension with a mean of 2 and a standard deviation of 3. The outputs are given by $$f : x \mapsto 3x + 1$$. Then I chose a very simple model, the linear regression, with only two parameters so that we can easily visualize the cost function. Finally, I chose the mean squared error as cost function. 
+The first one is as there is no dominant or privileged dimension in the data, it can speed up the training. I think it is not totally obvious to see how the shape of the dataset can modify the shape of the cost function and help the gradient descent algorithm. So, I made a little simulation. I created a very simple dataset where the inputs have only one dimension with a mean of 2 and a standard deviation of 3. The outputs are given by $$f : x \mapsto 3x + 1$$. Then I chose a very simple model, the linear regression, with only two parameters so that we can easily visualize the cost function. Finally, I chose the mean squared error as cost function.
 
 ![Effect of preprocessings on the cost function](/media/img/part2/cost_function.gif){: .center-image .modal-image }
 
@@ -195,13 +195,13 @@ Let's see the weights of the first layer of a multilayer network [64, 32, 16, 10
 
 ![Weights of the first layer for a multilayer network](/media/img/part2/weights_64_32_16_10.png){: .center-image .modal-image }
 
-It is way more difficult to see digits in the weights. However, we can see small areas which are really bright of dark. These small areas correspond to small shapes which are discriminating. 
+It is way more difficult to see digits in the weights. However, we can see small areas which are really bright of dark. These small areas correspond to small shapes which are discriminating.
 
 For example, on the image of the 5th row and 7th column we can see a bright area which is looking for the presence of black pixels there. This neuron will output a positive value for digits where these pixels are black. This is the case for 8 and 6. On the contrary, It will output negative values for a 3 or a 9. Consequently, it allows to discriminate the digits with a closed loop at the bottom and those which have not got one.
 
 The next layers will then combine these *basic features* to create more complex ones. And finally, the last layer will take these *deep features* created by the first layers as input to take the final decision.
 
-## Deep features
+## Deep Features
 
 Let's look a bit more at these deep features.
 
@@ -211,7 +211,7 @@ A multilayer neural network can be divided in two parts. The first layers which 
 
 The linear classifiers are really simple to analyze and understand. We will consequently study them in order to understand a bit more the deep features.
 
-### Linear classifiers
+### Linear Classifiers
 
 We will describe two types of linear classifier: the binary linear classifier and the multiclass linear classifier.
 
@@ -255,7 +255,7 @@ This is a point of view, now we can see another one. Multilayer neural networks 
 
 In the next parts, we will show several examples where neural networks are indeed able to create deep features that make classes linearly separable or almost.
 
-### Deep features in XOR and the disk
+### Deep Features in XOR and the Disk
 
 Do you remember the two examples of the previous part? They were very simple problems where the frontiers were non-linear. Hence, they are perfect candidates to see if the deep features are linearly separable.
 
@@ -280,7 +280,7 @@ def display_deep_features(graph, X, Y):
     plt.title('Deep features')
 {% endhighlight %}
 
-It computes the deep features for at most 1000 points. Note that we select the second output of the graph with `[1]` which is the output of the penultimate layer. 
+It computes the deep features for at most 1000 points. Note that we select the second output of the graph with `[1]` which is the output of the penultimate layer.
 
 Then it applies PCA to project the deep features into the 2D space. The deep features space could have a high dimension so we must project them in 2D to be able to visualize them. Recall that PCA finds a good subspace in which to project to loss the minimum of information.
 
@@ -301,7 +301,7 @@ These are great figures! In both cases, the deep features make the dataset linea
 
 On these simple problems, neural networks successfully transform the inputs to deep features where classes are linearly separable.
 
-### Deep features in MNIST
+### Deep Features in MNIST
 
 Let's do the same experiment on MNIST. I use the network [128, 64, 10] which gives very good accuracy and I obtain this result:
 
@@ -329,7 +329,7 @@ To conclude this part, I am going to sum up the different results we have seen:
 * A neural network can be divided in two parts: a part which create *deep features* and another part which is a linear classifier and uses the deep features to give an output.
 * During training, a neural network looks for a good transformation which makes the deep features of the dataset linearly separable.
 
-# To go further
+# To Go Further
 
 Some problems to have fun:
 * Try to find the best architecture and parameters to achieve the highest accuracy on the test set.
@@ -365,7 +365,7 @@ $$
 
 <p>For a binary linear classifier, we have \(f(x)=\sigma(w^Tx)\) and \(A_1 = \{x \in \mathcal{X}, f(x) \geq 0.5\}\) but \(\sigma(w^Tx) \geq 0.5\) is equivalent to \(w^Tx \geq 0.5\). \(w^Tx = 0.5\) is the equation of a hyperplane so \(A_1 = \{x \in \mathcal{X}, w^Tx \geq 0.5\}\) contains all the points which are on one side of the hyperlane. \(A_0\) contains the other half-space.</p>
 
-<p>For a multiclass linear classifier, we have \(f(x)_k=softmax(x)_k=\frac{\exp(w_k^Tx)}{\sum_{j}{\exp(w_j^Tx)}}\) and \(A_k = \{x \in \mathcal{X}, k = argmax_j(f(x)_j)\}\). The denominator of softmax is the same for all \(j\) so it does not matter for determining the maximum. Thus \(argmax_j(f(x)_j) = argmax_j(\exp(w_j^Tx)) = argmax_j(w_j^Tx)\) because \(\exp\) is increasing. 
+<p>For a multiclass linear classifier, we have \(f(x)_k=softmax(x)_k=\frac{\exp(w_k^Tx)}{\sum_{j}{\exp(w_j^Tx)}}\) and \(A_k = \{x \in \mathcal{X}, k = argmax_j(f(x)_j)\}\). The denominator of softmax is the same for all \(j\) so it does not matter for determining the maximum. Thus \(argmax_j(f(x)_j) = argmax_j(\exp(w_j^Tx)) = argmax_j(w_j^Tx)\) because \(\exp\) is increasing.
 
 Now, let's work a bit with the definition of argmax and inequalities to get the result:</p>
 

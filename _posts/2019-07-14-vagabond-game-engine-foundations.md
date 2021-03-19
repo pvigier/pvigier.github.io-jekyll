@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Game engine foundations"
+title: "Vagabond &#8211; Game Engine Foundations"
 date: 2019-07-14
 author: pierre
 tab: blog
@@ -21,7 +21,7 @@ The first thing I implemented was the state system. States are used to separate 
 
 I decided to use a state stack and not a finite state machine as it is more powerful and flexible. For example, with a state stack, it is a possible to open a pause screen when playing and then get back the game. Doing so is not possible with a simple finite state machine.
 
-# Render engine
+# Render Engine
 
 Next, I worked on the render engine. SFML provides the `sf::RenderWindow` class which is used to open a window, poll events, and draw inside the window.
 
@@ -29,13 +29,13 @@ My render engine is just a wrapper around `sf::RenderWindow`. It manages the scr
 
 Finally, its last mission is to forward input events to the input manager.
 
-# Scene graph
+# Scene Graph
 
 Then, I implemented a [scene graph](https://en.wikipedia.org/wiki/Scene_graph). The scene graph is used by the game state to draw all the game entities easily and efficiently. It provides several types of nodes to display sprites, animated sprites, tiles or particles. Moreover, it will also implement the light system with light nodes.
 
 The scene graph will also take care of drawing all the nodes in the right order. Finally, as all the nodes and the camera are managed by the scene graph it is easy to implement culling with a space-partitioning data structure such as a [quadtree](https://en.wikipedia.org/wiki/Quadtree).
 
-# Input management
+# Input Management
 
 I also work on an input manager. The input manager goal is to manage the bindings and to process the input events. It will allow the player to configure the bindings as he wants. When all the conditions of a binding are satisfied, the input manager simply calls the corresponding registered callback.
 

@@ -40,7 +40,7 @@ Another issue that may occur with discrete simulation is tunneling: we may have 
 
 Finally, in most resources I found, they were simulating realistic physic laws. Thus, they resolved collision using [elastic](https://en.wikipedia.org/wiki/Elastic_collision) or [inelastic collisions](https://en.wikipedia.org/wiki/Inelastic_collision). These behaviors are not well-suited for a top-down 2D RPG.
 
-# Design and algorithm
+# Design and Algorithm
 
 ## Design
 
@@ -109,7 +109,7 @@ newBox = Box(newPosition, node.box.size)
 
 Nothing fancy here.
 
-### Dynamic-static collisions
+### Dynamic-Static Collisions
 
 The next step is to find the collisions with static nodes, to do that I use a quadtree `staticNodeQuadtree` that contains all the static nodes. Then, I look for the first collision, move the dynamic node at the place where it collides. Finally, I reset its velocity in the direction of the normal so that it remains only the tangential component and it stops trying to enter in the static node:
 
@@ -126,7 +126,7 @@ node.box.position += minT * node.velocity
 node.box.velocity -= node.box.velocity.dot(normal) * normal
 ```
 
-### Dynamic-dynamic collisions
+### Dynamic-Dynamic Collisions
 
 The last step is finding all the collisions between dynamic nodes. Again, we will use a quadtree to do all the hard work:
 
@@ -141,19 +141,19 @@ for node1, node2 in collisions
 
 Contrary to the quadtree containing the static nodes that is kept between iterations, the quadtree for the dynamic nodes is created from scratch at each iteration as all the dynamic nodes may have moved and need an update.
 
-# Possible improvements
+# Possible Improvements
 
 Now that we have a basic physics engine that works we can try to add some improvements.
 
 ## Tunneling
 
-In the previous algorithm, we do not tackle the problem of tunneling. Tunneling may not be an issue depending on the geometry present in the world and if the framerate is constantly high. However, there is a simple way to check that no tunneling takes place. To do that, we must modify the quadtree data structure a bit so that we can check the collision between nodes in the quadtree and a given parallelogram. It is easy simple to do so.
+In the previous algorithm, we do not tackle the problem of tunneling. Tunneling may not be an issue depending on the geometry present in the world and if the framerate is constantly high. However, there is a simple way to check that no tunneling takes place. To do that, we must modify the quadtree data structure a bit so that we can check the collision between nodes in the quadtree and a given parallelogram. It is easy to do so.
 
 Then, we have to remark that the swept area of the bounding box of a dynamic node between two iterations is a parallelogram. Thus, we can find all the static nodes it may collide with by querying the quadtree containing the static nodes with a parallelogram that represents the swept area.
 
 ![](/media/img/vagabond-2d-physics-engine/tunneling_parallelogram.svg){: width="250" .center-image }
 
-## Wall sliding
+## Wall Sliding
 
 In a 2D top-down RPG, we may want the player to be able to slide along the walls even if a part of the velocity is toward the wall.
 
@@ -190,7 +190,7 @@ Finally, the last improvement I am thinking of is supporting several hitboxes fo
 
 I would simply add a list of hitboxes in the definition of `DynamicNode` and when there is a collision between the bounding boxes of two dynamic nodes, I would test the collision between their respective hitboxes.
 
-# Useful resources
+# Useful Resources
 
 * [Real-Time Collision Detection](http://realtimecollisiondetection.net/) by Christer Ericson
 * Game Physics Engine Design by Ian Millington

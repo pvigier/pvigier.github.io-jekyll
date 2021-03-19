@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Quadtree and collision detection"
+title: "Quadtree and Collision Detection"
 date: 2019-08-04
 author: pierre
 tab: blog
@@ -228,7 +228,7 @@ The last two parameters, we have not discussed yet, are `Threshold` and `MaxDept
 
 Now, we are ready to dive in more interesting operations.
 
-# Insertion and removal
+# Insertion and Removal
 
 Before, I show the code for insertion, we need to discuss which nodes will contain the values. There are two strategies:
 
@@ -476,9 +476,9 @@ void tryMerge(Node* node)
 
 `tryMerge` checks that all its children are leaves and that the total number of its values and its children's values is lower than the threshold. If it is the case, we copy all the values in the children in the current node and we remove the children.
 
-# Finding intersections
+# Finding Intersections
 
-## Intersection with a box
+## Intersection with a Box
 
 Finally, we are coming to interesting things: finding intersections. The first use case is retrieving all the values that are intersecting a given box. This is what we need to do culling for instance.
 
@@ -519,7 +519,7 @@ void query(Node* node, const Box<Float>& box, const Box<Float>& queryBox, std::v
 
 Firstly, we add all the values stored in the current node that intersect with the query box. Then, if the current node is an interior node, we do a recursive call for each child whose bounding box intersects the query box.
 
-## All pairwise intersections
+## All Pairwise Intersections
 
 The second use case that is supported is finding all the pairs of values stored in the quadtree that intersect. It is particularly useful for doing a physics engine. It is possible to achieve that with the `query` method. Indeed, we can call `query` for the bounding box of all values. However, it is possible to do that a bit more efficiently by adding the intersection only once for a pair (while we would find it twice by using `query`).
 
@@ -606,7 +606,7 @@ void findIntersectionsInDescendants(Node* node, const T& value, std::vector<std:
 
 That's all! Again, you can retrieve all the code from [GitHub](https://github.com/pvigier/Quadtree).
 
-# Useful resources
+# Useful Resources
 
 If you want to know more about collision detection and space partitioning data structure, I advise you to read [Real-Time Collision Detection](http://realtimecollisiondetection.net/) by Christer Ericson. It covers a lot of topics in-depth but it is very understandable. Moreover, it is possible to read chapters independently. It is really a good reference.
 

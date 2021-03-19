@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Entity-component-system &#8211; Part 1"
+title: "Entity-Component-System &#8211; Part 1"
 date: 2019-07-07
 author: pierre
 tab: blog
@@ -751,7 +751,7 @@ Entity getOwner(const T& component) const
 
 That's all for this first implementation. It only has 357 lines of code. You can find all the code in this [branch](https://github.com/pvigier/ecs/tree/unordered_map).
 
-# Profiling and benchmarks
+# Profiling and Benchmarks
 
 ## Benchmarks
 
@@ -767,7 +767,7 @@ It scales pretty well! The number of components processed by second is roughly t
 
 It also scales well with the number of components in the entities. When we iterate over entities with three components, it is three times slower than iterating over entities with one component which is expected as we must retrieve the three components.
 
-## Cache misses
+## Cache Misses
 
 I run the example available [here](https://github.com/pvigier/ecs/blob/master/examples/physics.cpp) with [cachegrind](http://valgrind.org/docs/manual/cg-manual.html) to measure the number of cache misses.
 

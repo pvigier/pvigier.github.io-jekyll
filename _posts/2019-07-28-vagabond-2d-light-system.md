@@ -12,7 +12,7 @@ This week, I have worked on a light system. It will allow me to simulate a day-n
 
 <!--more-->
 
-# The big picture
+# The Big Picture
 
 My light system uses two textures.
 
@@ -26,7 +26,7 @@ Here is an animation to sum up the process (sorry for the compression artifacts)
 
 ![](/media/img/vagabond-2d-light-system/big_picture.gif){: width="400" .center-image .modal-image }
 
-# Light shading
+# Light Shading
 
 For now, my light system only supports point lights.
 

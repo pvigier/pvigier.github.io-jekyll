@@ -16,7 +16,7 @@ Here is a quick glimpse of the overall process:
 
 <!--more-->
 
-# Floor plan generation
+# Floor Plan Generation
 
 The first step is to generate the floor plan that will be the input for the next steps.
 

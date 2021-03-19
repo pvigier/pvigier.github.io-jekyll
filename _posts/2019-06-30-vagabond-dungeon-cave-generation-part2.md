@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Dungeon and cave generation &#8211; Part 2"
+title: "Vagabond &#8211; Dungeon and Cave Generation &#8211; Part 2"
 date: 2019-06-30
 author: pierre
 tab: blog
@@ -13,13 +13,13 @@ This week, I continued to work on the [dungeon and cave generator]({{ site.baseu
 
 <!--more-->
 
-# Removing isolated cells
+# Removing Isolated Cells
 
 The first thing I did is implementing a flood fill to remove unreachable cells:
 
 ![](/media/img/vagabond-dungeon-cave-generation-part2/flood_fill.gif){: width="400" .center-image .modal-image }
 
-# Multiple corridors between rooms
+# Multiple Corridors Between Rooms
 
 Something really nice that I discovered when playing with the parameters of the generator is that if we make the noise around the rooms touching, interesting things happen.
 
@@ -37,7 +37,7 @@ What is nice is that we have more randomness and nice structures that appear but
 
 ![](/media/img/vagabond-dungeon-cave-generation-part2/0_10_00_rooms.png){: width="400" .center-image .modal-image }
 
-# Generating tiles for caves
+# Generating Tiles for Caves
 
 I spent almost all my time working on the generation of tiles. It is not really difficult but a bit tricky to have everything right.
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond &#8211; Rasterizing roads and rivers"
+title: "Vagabond &#8211; Rasterizing Roads and Rivers"
 date: 2019-06-02
 author: pierre
 tab: blog
@@ -13,7 +13,7 @@ This week, I finished the rasterization of polygonal maps that I started to impl
 
 <!--more-->
 
-# Rasterizing rivers
+# Rasterizing Rivers
 
 The first thing I did this week was to rasterize the rivers. I reuse my line rasterization algorithm. But instead of setting only one tile per coordinates output by the algorithm, I rasterize a whole square around the coordinates. It is as if I used a brush in a graphics editor such as GIMP or Photoshop.
 
@@ -24,7 +24,7 @@ Here are the results:
 ![](/media/img/vagabond-rasterizing-roads-rivers/Rivers.gif){: width="400" .center-image .modal-image }
 
 
-# Rasterizing roads
+# Rasterizing Roads
 
 Rasterizing roads was harder. Indeed, there are several issues I must take care of:
 
@@ -49,7 +49,7 @@ The fundamental reason is that the description of the road is given in the world
 
 Thus, I think I will use another method which will not necessarily give the shortest path but something more easy to manipulate. I am currently thinking about using distorted lines as I used for rivers and cell borders or Bezier curves which is a common technique to model roads.
 
-# Bigger worlds
+# Bigger Worlds
 
 Usually, rendering is not a big issue for tile-based video games as only a small portion of the world is displayed. But in my editor/generator, I want to be able to explore the entire world. For small worlds, there is no problem with the naive approach of drawing a grid of tiles. Indeed, for 600x600x4 (I use 4 layers of tiles to display the terrains) worlds which means 1 440 400 tiles, my laptop has no problem. But for 3000x3000x4 worlds which means 36 000 000 tiles the application slows down seriously.
 
@@ -59,7 +59,7 @@ If you want to get the impression of what a 3000x3000 world looks like, here is 
 
 ![](/media/img/vagabond-rasterizing-roads-rivers/Big.gif){: width="400" .center-image .modal-image }
 
-# Filling the biomes
+# Filling the Biomes
 
 Finally, I started to work on filling the cells that are currently so empty. The goal is not to add points of interest such as ruins, dungeon entries or small villages but to fill the cells with some monotonous decorations and vegetation.
 
@@ -85,7 +85,7 @@ The next steps are refining the object placement algorithm and adding decoration
 
 See you [next week]({{ site.baseurl }}{% post_url 2019-06-09-vagabond-forest-generation %}) for more!
 
-# Useful links
+# Useful Links
 
 * [Meshing in a Minecraft Game](https://0fps.net/2012/06/30/meshing-in-a-minecraft-game/) by 0fps
 * [Poisson Disk Sampling](https://web.archive.org/web/20150817064406/http://devmag.org.za/2009/05/03/poisson-disk-sampling/) by Herman Tulleken

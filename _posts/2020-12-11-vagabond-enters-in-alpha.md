@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vagabond enters in alpha!"
+title: "Vagabond Enters in Alpha!"
 date: 2020-12-11
 author: pierre
 tab: blog

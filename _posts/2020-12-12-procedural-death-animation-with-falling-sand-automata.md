@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Procedural Death Animation with Falling Sand Automata"
+title: "Procedural Death Animation With Falling Sand Automata"
 date: 2020-12-12
 author: pierre
 tab: blog
@@ -31,7 +31,7 @@ With these simple rules you can obtain animations like this:
 
 ![](/media/img/procedural-death-animation-with-falling-sand-automata/sand.gif){: .center-image .modal-image }
 
-# Generating death animations
+# Generating Death Animations
 
 Now let us see how to use the falling sand automata to create death animations for the monsters.
 

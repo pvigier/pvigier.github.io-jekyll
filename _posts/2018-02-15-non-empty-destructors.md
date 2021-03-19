@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Non empty destructors in C++"
+title: "Non Empty Destructors in C++"
 date: 2018-02-15
 author: pierre
 tab: blog
@@ -10,9 +10,9 @@ Have you already faced problems with nontrivial destructors?
 
 I face one recently which was really annoying. In this article, I want to share with you my knowledge of this problem and the solutions I use to address it.
 
-# The problem
+# The Problem
 
-The problem is not really that the destructor is nonempty but that the destructor is nontrivial: there is a release of memory or some states are changed in another part of the app.
+The problem is not really that the destructor is non empty but that the destructor is nontrivial: there is a release of memory or some states are changed in another part of the app.
 
 Let us take a very simple example with a class that does dynamic allocation to explain the problem:
 
@@ -61,7 +61,7 @@ Note that the copy or move constructors are often called when we use containers.
 
 <!--more-->
 
-# First solution: rule of three
+# First Solution: Rule of Three
 
 Firstly, this rule has nothing to do with Star Wars' [Rule of two](http://starwars.wikia.com/wiki/Rule_of_Two).
 
@@ -71,7 +71,7 @@ The [rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_program
 * copy constructor
 * copy assignment operator
 
-In particular, if the destructor is nonempty then we should define the copy constructor and the copy assignment operator.
+In particular, if the destructor is non empty then we should define the copy constructor and the copy assignment operator.
 
 So for our previous class `A`, we would do the following:
 
@@ -114,7 +114,7 @@ With C++11 the rule of three becomes the rule of five as we should also define t
 
 The main disadvantage of this method is that we have to write a lot of code to obtain the correct behavior. But this is the idiomatic way to encapsulate a low-level resource and follow [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization).
 
-# Second solution: RAII
+# Second Solution: RAII
 
 Another solution is to ensure the destructor is empty by, for instance, using only attributes that follows RAII (standard containers, `std::string`s, smart pointers, a file stream, etc.).
 
@@ -140,7 +140,7 @@ The code is simpler, we have not to worry about the memory and the previous `mai
 
 If adequate, this is the solution that should be chosen.
 
-# Third solution: forbid copy and move
+# Third Solution: Forbid Copy and Move
 
 The third solution is a bit radical: it is to forbid copy and move.
 
@@ -191,7 +191,7 @@ This time, if we try to compile the previous `main`, we would obtain a compile-t
 
 This solution has the benefit of being very fast to implement.
 
-# Fourth solution: set up and tear down
+# Fourth Solution: Set Up and Tear Down
 
 The last solution is to manage the initialization and the finalization outside of the constructor and the destructor.
 
