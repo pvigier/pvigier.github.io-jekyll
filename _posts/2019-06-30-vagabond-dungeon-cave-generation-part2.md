@@ -53,7 +53,7 @@ What is really cool is that it is super easy to switch from a rock cavern to a s
 
 I did not do a lot of interesting things this week. Moreover, there was a heatwave, here, in France and it was quite hard to work.
 
-The next steps for the dungeon generation is adding decorations and monsters. I will not do that next week as I will start to work more on the game engine now that I have some interesting things to feed it with.
+The next steps for the dungeon generation is [adding decorations and monsters]({{ site.baseurl }}{% post_url 2021-03-20-vagabond-dungeon-cave-generation-part3 %}). I will not do that next week as I will start to work more on the game engine now that I have some interesting things to feed it with.
 
 See you next week for more!
 
