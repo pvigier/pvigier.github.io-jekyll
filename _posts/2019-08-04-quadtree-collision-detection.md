@@ -395,14 +395,14 @@ Again, the `remove` method just calls an auxiliary method:
 ```cpp
 void remove(const T& value)
 {
-    remove(mRoot.get(), nullptr, mBox, value);
+    remove(mRoot.get(), mBox, value);
 }
 ```
 
-Here is the code of the auxiliary method, it is very analogous to insertion. :
+Here is the code of the auxiliary method, it is very analogous to insertion:
 
 ```cpp
-void remove(Node* node, Node* parent, const Box<Float>& box, const T& value)
+bool remove(Node* node, const Box<Float>& box, const T& value)
 {
     assert(node != nullptr);
     assert(box.contains(mGetBox(value)));
@@ -410,24 +410,26 @@ void remove(Node* node, Node* parent, const Box<Float>& box, const T& value)
     {
         // Remove the value from node
         removeValue(node, value);
-        // Try to merge the parent
-        if (parent != nullptr)
-            tryMerge(parent);
+        return true;
     }
     else
     {
         // Remove the value in a child if the value is entirely contained in it
         auto i = getQuadrant(box, mGetBox(value));
         if (i != -1)
-            remove(node->children[static_cast<std::size_t>(i)].get(), node, computeBox(box, i), value);
+        {
+            if (remove(node->children[static_cast<std::size_t>(i)].get(), computeBox(box, i), value))
+                return tryMerge(node);
+        }
         // Otherwise, we remove the value from the current node
         else
             removeValue(node, value);
+        return false;
     }
 }
 ```
 
-If the current node is a leaf, we remove the value from the list of values of the current node and we try to merge this node with its siblings and its parent. Otherwise, we determine in which quadrant the value's bounding box lies in. If it is entirely contained in a child, we do a recursive call. Otherwise, we remove from the values of the current node.
+If the current node is a leaf, we remove the value from the list of values of the current node and we return `true`. The return value will tell its parent that it should try to merge with its children. Otherwise, we determine in which quadrant the value's bounding box lies in. If it is entirely contained in a child, we do a recursive call and we try to merge the node if we are told to. Otherwise, we remove from the values of the current node.
 
 As we do not care about the order of the values stored in a node, I use a small optimization to erase a value, I just swap the value to erase with the last one and pop back:
 
@@ -455,7 +457,7 @@ void tryMerge(Node* node)
     for (const auto& child : node->children)
     {
         if (!isLeaf(child.get()))
-            return;
+            return false;
         nbValues += child->values.size();
     }
     if (nbValues <= Threshold)
@@ -470,11 +472,14 @@ void tryMerge(Node* node)
         // Remove the children
         for (auto& child : node->children)
             child.reset();
+        return true;
     }
+    else
+        return false;
 }
 ```
 
-`tryMerge` checks that all its children are leaves and that the total number of its values and its children's values is lower than the threshold. If it is the case, we copy all the values in the children in the current node and we remove the children.
+`tryMerge` checks that all its children are leaves and that the total number of its values and its children's values is lower than the threshold. If it is the case, we copy all the values in the children in the current node and we remove the children. If the node is merged we return `true` so that its parent also tries to merge with its children.
 
 # Finding Intersections
 
