@@ -12,7 +12,7 @@ Hi everyone!
 
 It has been a while since last time. I was working very hard on Vagabond to be able to announce you today that Vagabond is now in alpha!
 
-The game is available on [itch.io](https://pvigier.itch.io/vagabond) and its official website is [vagabondgame.com](https://www.vagabondgame.com/).
+The game is available on [itch.io](https://pvigier.itch.io/vagabond-demo) and its official website is [vagabondgame.com](https://www.vagabondgame.com/).
 
 <!--more-->
 

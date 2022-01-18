@@ -11,7 +11,7 @@ tags: vagabond pcg
 
 Few weeks ago, I released the [version alpha 2 of Vagabond](https://www.vagabondgame.com/2021/03/06/alpha-2-is-released.html). One of the new features is the ability to mine ore veins in caves. This article is the follow-up of the two previous parts on dungeon generation ([part 1]({{ site.baseurl }}{% post_url 2019-06-23-vagabond-dungeon-cave-generation %}), [part 2]({{ site.baseurl }}{% post_url 2019-06-30-vagabond-dungeon-cave-generation-part2 %})) where I explained how the structure of the caves were generated. However, the rooms were completely empty. In this article, I will explain how the rooms are filled with monsters, bosses, ore veins and treasures.
 
-If you want to try the game and explore the procedurally generated caves presented here, you can play the free demo available on [itch.io](https://pvigier.itch.io/vagabond). If you have any feedback, do not hesitate to send me a message, I would be delighted to read it. And if you like the project, it is still possible to support the game by buying the complete game with a special offer for early birds. ;)
+If you want to try the game and explore the procedurally generated caves presented here, you can play the free demo available on [itch.io](https://pvigier.itch.io/vagabond-demo). If you have any feedback, do not hesitate to send me a message, I would be delighted to read it. And if you like the project, it is still possible to support the game by buying the complete game with a special offer for early birds. ;)
 
 <!--more-->
 
