@@ -65,7 +65,7 @@ struct DoorComponent
 }
 ```
 
-The door system receives collision messages from the physics engine. If a collision occurs between an entity that has a door component and another entity, it transports the other entity at the door's destination. Nothing difficult, once all the other systems are in place.
+The door system receives collision messages from the physics engine. If a collision occurs between an entity that has a door component and another entity, it transports the other entity at the door destination. Nothing difficult, once all the other systems are in place.
 
 And it works well, even in multilayer mode where there are two players on different maps:
 

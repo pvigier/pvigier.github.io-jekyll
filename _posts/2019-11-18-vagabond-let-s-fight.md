@@ -47,7 +47,7 @@ It is not impressive yet, but with some particle effects and sound effects, it s
 
 # HUD
 
-It had been weeks, I was postponing the work on the user interface. I rolled up my sleeves and made a basic HUD to display the target monster's name and health.
+It had been weeks, I was postponing the work on the user interface. I rolled up my sleeves and made a basic HUD to display the target monster name and health.
 
 Moreover, I change the inputs. Now, everything is done with the mouse. Thus, I created a custom golden cursor you can see in the video below.
 

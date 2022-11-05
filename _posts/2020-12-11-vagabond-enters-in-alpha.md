@@ -16,7 +16,7 @@ The game is available on [Steam](https://store.steampowered.com/app/1673090/Vaga
 
 <!--more-->
 
-I wrote an [article](https://www.vagabondgame.com/2020/12/09/alpha-1-is-released.html) on the game's website about this first version if you want to know more. All the announcements about the game (releases, changelogs, news, etc.) will be there, while the devlogs will stay here, on my personal website.
+I wrote an [article](https://www.vagabondgame.com/2020/12/09/alpha-1-is-released.html) on the game website about this first version if you want to know more. All the announcements about the game (releases, changelogs, news, etc.) will be there, while the devlogs will stay here, on my personal website.
 
 During these nearly nine months without post, I did many things and therefore I have many things to write so expect several articles in the comings days and weeks! :)
 

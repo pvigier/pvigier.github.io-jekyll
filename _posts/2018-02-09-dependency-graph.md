@@ -82,7 +82,7 @@ Finally, you could use my little script to monitor the architecture of your proj
 
 # Some Details on the Code
 
-The script is pretty simple. I use the `re` module of Python to find the `#include`'s in source files.
+The script is pretty simple. I use the `re` module of Python to find the `#include`s in source files.
 
 Then the scripts creates a graph and uses a port to Python of [graphviz](https://www.graphviz.org/) to draw the graph. Graphviz creates very beautiful, this amazing tool is also used, for instance, by Doxygen to generate its diagram.
 

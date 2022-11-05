@@ -150,7 +150,7 @@ public:
 
 The template class is really simple, it just stores a type id that will be used later to index some data structures by component type.
 
-The first template parameter is the type of the component. The second one is a value convertible to `std::size_t` and will serve to set the component's type id.
+The first template parameter is the type of the component. The second one is a value convertible to `std::size_t` and will serve to set the component type id.
 
 For instance, we can define a `Position` component like that:
 
@@ -327,7 +327,7 @@ ComponentContainer(std::vector<std::bitset<ComponentCount>>& entityToBitset) :
 }
 ```
 
-The `get` method is simple, we just use `mEntityToComponent` to find the index of `entity`'s component in `mComponents`:
+The `get` method is simple, we just use `mEntityToComponent` to find the index of the `entity` component in `mComponents`:
 
 ```cpp
 T& get(Entity entity)
@@ -336,7 +336,7 @@ T& get(Entity entity)
 }
 ```
 
-The `add` method uses its arguments to emplace a new component at the end of `mComponents` then it sets up the links to go from the entity to the component and from the component to the entity. Finally, it sets the bit corresponding to the component to `true` in `entity`'s bitset:
+The `add` method uses its arguments to emplace a new component at the end of `mComponents` then it sets up the links to go from the entity to the component and from the component to the entity. Finally, it sets the bit corresponding to the component to `true` in the `entity` bitset:
 
 ```cpp
 template<typename... Args>
@@ -396,7 +396,7 @@ Entity getOwner(const T& component) const
 }
 ```
 
-The last method is `reserve` which has the same purpose as `EntityContainer`'s one:
+The last method is `reserve` which has the same purpose as `EntityContainer` one:
 
 ```cpp
 virtual void reserve(std::size_t size) override
@@ -657,7 +657,7 @@ void reserve(std::size_t size)
 }
 ```
 
-The `createEntity` method just returns the result of `EntityManager`'s `create` method:
+The `createEntity` method just returns the result of `EntityManager` `create` method:
 
 ```cpp
 Entity createEntity()
@@ -677,7 +677,7 @@ bool hasComponent(Entity entity) const
 }
 ```
 
-`hasComponents` uses a fold expression to create a bit set that represents the required components and then uses it against the entity's bit set to assess if the entity has all the required components:
+`hasComponents` uses a fold expression to create a bit set that represents the required components and then uses it against the entity bit set to assess if the entity has all the required components:
 
 ```cpp
 template<typename ...Ts>

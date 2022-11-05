@@ -43,7 +43,7 @@ while the event queue is not empty
         check for new circle events
 ```
 
-# Diagram's Data Structure
+# Diagram Data Structure
 
 The first issue I faced is how to store the Voronoi diagram.
 

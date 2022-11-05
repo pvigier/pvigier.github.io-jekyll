@@ -360,7 +360,7 @@ Firstly, there are some assertions to check that we are not doing something that
 
 Then, if the node is a leaf and we can insert a new value in it i.e. we are at `MaxDepth` or `Threshold` is not reached yet, we insert there. Otherwise, we split this node and we try again.
 
-If it is an interior, we compute the quadrant in which the value's bounding box is contained. If it is entirely contained in a child, we do a recursive call. Otherwise, we insert in this node.
+If it is an interior, we compute the quadrant in which the value bounding box is contained. If it is entirely contained in a child, we do a recursive call. Otherwise, we insert in this node.
 
 Finally, here is the split routine:
 
@@ -429,7 +429,7 @@ bool remove(Node* node, const Box<Float>& box, const T& value)
 }
 ```
 
-If the current node is a leaf, we remove the value from the list of values of the current node and we return `true`. The return value will tell its parent that it should try to merge with its children. Otherwise, we determine in which quadrant the value's bounding box lies in. If it is entirely contained in a child, we do a recursive call and we try to merge the node if we are told to. Otherwise, we remove from the values of the current node.
+If the current node is a leaf, we remove the value from the list of values of the current node and we return `true`. The return value will tell its parent that it should try to merge with its children. Otherwise, we determine in which quadrant the value bounding box lies in. If it is entirely contained in a child, we do a recursive call and we try to merge the node if we are told to. Otherwise, we remove from the values of the current node.
 
 As we do not care about the order of the values stored in a node, I use a small optimization to erase a value, I just swap the value to erase with the last one and pop back:
 

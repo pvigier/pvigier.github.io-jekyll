@@ -53,11 +53,11 @@ A [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault) will oc
 
 Why?
 
-Because when the `main` function ends, the destructor of `A` is called to delete `a` and `anotherA`. When `a` is destroyed the memory cell to which `a`'s `mPointer` points to is freed. Then, when `anotherA` is destroyed, we try to free the memory to which `anotherA`'s `mPointer` points to. But as `anotherA` is a copy of `a`, its `mPointer` points to the same memory cell as `a`'s `mPointer`. Thus, we try to free twice the same memory cell which causes the `Segmentation fault`.
+Because when the `main` function ends, the destructor of `A` is called to delete `a` and `anotherA`. When `a` is destroyed the memory cell to which the `mPointer` of `a` points to is freed. Then, when `anotherA` is destroyed, we try to free the memory to which the `mPointer` of `anotherA` points to. But as `anotherA` is a copy of `a`, its `mPointer` points to the same memory cell as that of `a`. Thus, we try to free twice the same memory cell which causes the `Segmentation fault`.
 
 So, the problem is that because of the copy the destructor is called twice on the same attributes.
 
-Note that the copy or move constructors are often called when we use containers. For instance, there is a copy or a move when the `std::vector`'s `push_back` is called.
+Note that the copy or move constructors are often called when we use containers. For instance, there is a copy or a move when the `std::vector` `push_back` is called.
 
 <!--more-->
 

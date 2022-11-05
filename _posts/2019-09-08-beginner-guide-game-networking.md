@@ -15,7 +15,7 @@ There are mainly two possible network architectures: peer-to-peer and client-ser
 
 While the peer-to-peer architecture is still used in some games, client-server is the standard as it is easier to implement, it requires less bandwidth and it is easier to prevent cheating. Thus, in this guide, we will focus on client-server architecture.
 
-More precisely, we will be interested in authoritative servers, it means that the server is always right. For instance, if a player thinks it is at coordinates (10, 5) but the server tells him that it is at (5, 3), then the client should update its position to the server's one, and not the opposite. Using an authoritative server enables us to detect cheating more easily.
+More precisely, we will be interested in authoritative servers, it means that the server is always right. For instance, if a player thinks it is at coordinates (10, 5) but the server tells him that it is at (5, 3), then the client should update its position to that of the server, and not the opposite. Using an authoritative server enables us to detect cheating more easily.
 
 There are mainly three components in game networking:
 
@@ -216,7 +216,7 @@ I advise you to implement a way to simulate high latency and low refresh rates i
 If you are looking for more networking resources, you can find them there:
 * [Glenn Fielder's blog](https://web.archive.org/web/20190328001900/https://gafferongames.com/), you should read its entire blog, it contains lots of great articles. [Here](https://web.archive.org/web/20180823014743/https://gafferongames.com/tags/networking) are all its articles concerning networking.
 * [Awesome Game Networking](https://github.com/MFatihMAR/Awesome-Game-Networking) by M. Fatih MAR is an extensive list of articles and videos on game networking.
-* [r/gamedev's wiki](https://www.reddit.com/r/gamedev/wiki/index#wiki_networking) also contains many useful links.
+* [r/gamedev wiki](https://www.reddit.com/r/gamedev/wiki/index#wiki_networking) also contains many useful links.
 
 # Conclusion
 
